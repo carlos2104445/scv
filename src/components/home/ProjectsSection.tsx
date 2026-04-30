@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
@@ -43,19 +44,17 @@ export function ProjectsSection() {
                 href={`/what-we-do/${project.slug}`}
                 className="group block card-base hover-lift h-full"
               >
-                {/* Image placeholder */}
-                <div className="relative h-48 bg-gradient-to-br from-brand-orange/10 to-brand-orange/5 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  {/* Decorative pattern */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-2xl bg-brand-orange/10 flex items-center justify-center">
-                      <span className="text-3xl font-serif font-bold text-brand-orange/30">
-                        {project.title[0]}
-                      </span>
-                    </div>
-                  </div>
+                {/* Project image */}
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   {/* Category badge */}
-                  <div className="absolute top-3 left-3">
+                  <div className="absolute top-3 left-3 z-10">
                     <span
                       className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
                         categoryColors[project.category]

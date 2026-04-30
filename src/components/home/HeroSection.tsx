@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
@@ -13,6 +14,7 @@ const slides = [
       "Since 1986, Selam Children's Village has been providing comprehensive care, education, and vocational training to Ethiopia's most vulnerable children and youth.",
     cta: { label: "Learn More", href: "/about" },
     ctaSecondary: { label: "Donate Now", href: "/get-involved/donate" },
+    image: "/images/hero/slide-1.png",
     gradient: "from-brand-dark/80 via-brand-dark/50 to-transparent",
   },
   {
@@ -22,6 +24,7 @@ const slides = [
       "Your support helps us provide education, healthcare, and a loving home to over 255 children in our care.",
     cta: { label: "Our Programs", href: "/what-we-do" },
     ctaSecondary: { label: "Get Involved", href: "/get-involved/how-to-help" },
+    image: "/images/hero/slide-2.png",
     gradient: "from-brand-orange/70 via-brand-dark/40 to-transparent",
   },
   {
@@ -31,6 +34,7 @@ const slides = [
       "Our TVET College offers vocational training across 11 departments, empowering youth with the skills they need to thrive.",
     cta: { label: "TVET College", href: "/technical-vocational-training" },
     ctaSecondary: { label: "View Projects", href: "/all-projects" },
+    image: "/images/hero/slide-3.png",
     gradient: "from-brand-dark/80 via-brand-dark/40 to-transparent",
   },
 ];
@@ -71,19 +75,21 @@ export function HeroSection() {
             i === current ? "opacity-100" : "opacity-0"
           }`}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/60 to-brand-dark/30" />
-          <div
-            className={`absolute inset-0 bg-gradient-to-r ${s.gradient}`}
-          />
-          {/* Placeholder pattern for images */}
-          <div className="absolute inset-0 bg-brand-dark">
-            <div
-              className="absolute inset-0 opacity-20"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }}
+          {/* Background image */}
+          <div className="absolute inset-0">
+            <Image
+              src={s.image}
+              alt=""
+              fill
+              className={`object-cover transition-transform duration-[8000ms] ease-out ${
+                i === current ? "scale-110" : "scale-100"
+              }`}
+              priority={i === 0}
             />
           </div>
+          {/* Gradient overlays for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/70 via-brand-dark/40 to-brand-dark/30 z-[1]" />
+          <div className={`absolute inset-0 bg-gradient-to-r ${s.gradient} z-[1]`} />
         </div>
       ))}
 

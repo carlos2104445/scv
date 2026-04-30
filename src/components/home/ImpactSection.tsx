@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ImpactCounter } from "@/components/blocks/SectionHeading";
 
@@ -15,14 +16,16 @@ const stats = [
 export function ImpactSection() {
   return (
     <section className="relative py-20 md:py-28 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark to-brand-dark-light" />
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40' fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-        }}
-      />
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/projects/campus.png"
+          alt=""
+          fill
+          className="object-cover"
+        />
+      </div>
+      <div className="absolute inset-0 bg-brand-dark/85" />
 
       <div className="relative z-10 container-xl">
         <motion.div
