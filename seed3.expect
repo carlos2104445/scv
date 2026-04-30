@@ -1,0 +1,6 @@
+#!/usr/bin/expect -f
+set timeout 60
+spawn ssh -o StrictHostKeyChecking=no root@82.25.101.6 "cd /var/www/selam-admin/app/admin && export PATH=\"/usr/local/bin:\$PATH\" && set -a && source .env && set +a && npx tsx prisma/seed-people.ts"
+expect "password:"
+send "passQwerty@2dot.\r"
+expect eof

@@ -9,6 +9,8 @@ import { TeamSection } from "@/components/home/TeamSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { PartnersSection } from "@/components/home/PartnersSection";
 
+export const dynamic = "force-dynamic";
+
 export default function HomePage() {
   return (
     <>
