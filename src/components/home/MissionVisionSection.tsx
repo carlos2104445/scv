@@ -62,10 +62,10 @@ export function MissionVisionSection() {
                 >
                   <card.icon className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-dark mb-3 tracking-normal">
+                <h3 className="text-2xl font-bold text-brand-dark mb-3 tracking-normal">
                   {card.title}
                 </h3>
-                <p className="text-neutral-600 leading-relaxed text-sm">
+                <p className="text-neutral-600 leading-relaxed">
                   {card.description}
                 </p>
               </div>

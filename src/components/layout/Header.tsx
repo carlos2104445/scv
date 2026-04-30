@@ -122,7 +122,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200",
+                      "flex items-center gap-1 px-3 py-2 rounded-lg text-[15px] font-medium transition-all duration-200",
                       pathname === item.href || pathname.startsWith(item.href + "/")
                         ? "text-brand-orange"
                         : "text-neutral-700 hover:text-brand-orange hover:bg-brand-orange-50"
@@ -155,7 +155,7 @@ export function Header() {
                             <Link
                               href={child.href}
                               className={cn(
-                                "flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm transition-all duration-200",
+                                "flex items-center gap-3 px-4 py-2.5 rounded-xl text-[15px] transition-all duration-200",
                                 pathname === child.href
                                   ? "bg-brand-orange-50 text-brand-orange font-medium"
                                   : "text-neutral-700 hover:bg-neutral-50 hover:text-brand-dark"
@@ -209,7 +209,7 @@ export function Header() {
               </Link>
               <Link
                 href="/get-involved/donate"
-                className="hidden md:flex btn-primary text-sm py-2 px-5"
+                className="hidden md:flex btn-primary text-[15px] py-2 px-5"
               >
                 <Heart className="w-4 h-4" />
                 Donate Now

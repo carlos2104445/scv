@@ -101,7 +101,7 @@ export function HeroSection() {
               <span className="block">{slide.title}</span>
               <span className="block text-brand-orange">{slide.subtitle}</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-white/80 leading-relaxed">
+            <p className="mt-6 text-lg md:text-xl lg:text-2xl text-white/80 leading-relaxed">
               {slide.description}
             </p>
             <div className="mt-8 flex flex-wrap gap-4">

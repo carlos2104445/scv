@@ -52,7 +52,7 @@
   }
 
   body {
-    @apply font-sans text-brand-dark antialiased;
+    @apply font-sans text-brand-dark antialiased text-base leading-relaxed;
     background-color: #ffffff;
   }
 
@@ -61,19 +61,19 @@
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    @apply text-5xl md:text-6xl lg:text-7xl;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl;
+    @apply text-3xl md:text-4xl lg:text-5xl;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl;
+    @apply text-2xl md:text-3xl lg:text-4xl;
   }
 
   h4 {
-    @apply text-xl md:text-2xl;
+    @apply text-xl md:text-2xl lg:text-3xl;
   }
 
   /* Focus ring styling */

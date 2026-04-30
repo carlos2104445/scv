@@ -42,7 +42,7 @@ export function PersonCard({ person, index }: { person: Person; index: number })
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-brand-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-20" />
       </div>
-      <h4 className="text-sm font-bold text-brand-dark tracking-normal">{person.name}</h4>
+      <h4 className="text-base font-bold text-brand-dark tracking-normal">{person.name}</h4>
       <p className="text-xs text-neutral-500 mt-0.5">{person.role}</p>
     </motion.div>
   );
