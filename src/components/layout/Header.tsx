@@ -56,8 +56,8 @@ export function Header() {
   return (
     <>
       {/* Top Utility Bar */}
-      <div className="bg-brand-dark text-white text-sm hidden lg:block">
-        <div className="container-xl flex items-center justify-between py-2">
+      <div className="bg-brand-dark text-white text-sm hidden xl:block">
+        <div className="mx-auto max-w-[1440px] px-6 2xl:px-10 flex items-center justify-between py-2">
           <div className="flex items-center gap-2 text-neutral-300">
             <Phone className="w-3.5 h-3.5" />
             <span>{siteSettings.contact.phones[0].number}</span>
@@ -94,22 +94,22 @@ export function Header() {
             : "bg-white"
         )}
       >
-        <div className="container-xl">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 xl:px-6 2xl:px-10">
+          <div className="flex items-center justify-between h-16 xl:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center group">
+            <Link href="/" className="flex items-center shrink-0 group">
               <Image
                 src="/images/logo.jpg"
                 alt="Selam Children's Village Logo"
                 width={200}
                 height={60}
-                className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-11 xl:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 priority
               />
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1" role="navigation" aria-label="Main navigation">
+            <nav className="hidden xl:flex items-center gap-0.5 xl:gap-1 2xl:gap-2" role="navigation" aria-label="Main navigation">
               {navigation.main.map((item) => (
                 <div
                   key={item.label}
@@ -122,7 +122,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-1 px-3 py-2 rounded-lg text-[15px] font-medium transition-all duration-200",
+                      "flex items-center gap-1 whitespace-nowrap px-2.5 xl:px-3 2xl:px-4 py-2 rounded-lg text-sm xl:text-[15px] font-medium transition-all duration-200",
                       pathname === item.href || pathname.startsWith(item.href + "/")
                         ? "text-brand-orange"
                         : "text-neutral-700 hover:text-brand-orange hover:bg-brand-orange-50"
@@ -135,7 +135,7 @@ export function Header() {
                     {item.children && (
                       <ChevronDown
                         className={cn(
-                          "w-3.5 h-3.5 transition-transform duration-200",
+                          "w-3.5 h-3.5 transition-transform duration-200 shrink-0",
                           activeMenu === item.label && "rotate-180"
                         )}
                       />
@@ -155,7 +155,7 @@ export function Header() {
                             <Link
                               href={child.href}
                               className={cn(
-                                "flex items-center gap-3 px-4 py-2.5 rounded-xl text-[15px] transition-all duration-200",
+                                "flex items-center gap-3 px-4 py-2.5 rounded-xl text-[15px] transition-all duration-200 whitespace-nowrap",
                                 pathname === child.href
                                   ? "bg-brand-orange-50 text-brand-orange font-medium"
                                   : "text-neutral-700 hover:bg-neutral-50 hover:text-brand-dark"
@@ -182,7 +182,7 @@ export function Header() {
                                     <Link
                                       key={sub.href}
                                       href={sub.href}
-                                      className="flex items-center px-3 py-1.5 rounded-lg text-xs text-neutral-600 hover:text-brand-orange hover:bg-brand-orange-50 transition-all"
+                                      className="flex items-center px-3 py-1.5 rounded-lg text-xs text-neutral-600 hover:text-brand-orange hover:bg-brand-orange-50 transition-all whitespace-nowrap"
                                     >
                                       {sub.label}
                                     </Link>
@@ -199,7 +199,7 @@ export function Header() {
             </nav>
 
             {/* Right actions */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 shrink-0">
               <Link
                 href="/search"
                 className="p-2 rounded-xl text-neutral-600 hover:text-brand-orange hover:bg-brand-orange-50 transition-all"
@@ -209,13 +209,13 @@ export function Header() {
               </Link>
               <Link
                 href="/get-involved/donate"
-                className="hidden md:flex btn-primary text-[15px] py-2 px-5"
+                className="hidden md:flex btn-primary text-sm xl:text-[15px] py-2 px-4 xl:px-5 whitespace-nowrap"
               >
                 <Heart className="w-4 h-4" />
                 Donate Now
               </Link>
               <button
-                className="lg:hidden p-2 rounded-xl text-neutral-600 hover:text-brand-orange hover:bg-brand-orange-50 transition-all"
+                className="xl:hidden p-2 rounded-xl text-neutral-600 hover:text-brand-orange hover:bg-brand-orange-50 transition-all"
                 onClick={() => setMobileOpen(true)}
                 aria-label="Open menu"
               >
