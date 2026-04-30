@@ -1,4 +1,20 @@
-export { auth as middleware } from "@/lib/auth";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+export const runtime = "nodejs";
+
+export function middleware(request: NextRequest) {
+  // Check for auth session cookie
+  const authCookie = request.cookies.get("authjs.session-token") || request.cookies.get("__Secure-authjs.session-token");
+
+  if (!authCookie) {
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("callbackUrl", request.nextUrl.pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  return NextResponse.next();
+}
 
 export const config = {
   matcher: [
