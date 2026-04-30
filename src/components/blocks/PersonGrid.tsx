@@ -1,7 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Person } from "@/data/people";
+import Image from "next/image";
+
+export interface Person {
+  id?: string;
+  name: string;
+  role: string;
+  photo?: string | null;
+  bio?: string | null;
+}
 
 export function PersonGrid({ people }: { people: Person[] }) {
   return (
@@ -23,10 +31,21 @@ export function PersonGrid({ people }: { people: Person[] }) {
             transition={{ duration: 0.4, delay: i * 0.08 }}
             className="group card-base hover-lift p-6 text-center"
           >
-            <div className="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br from-neutral-100 to-neutral-50 border border-neutral-200 flex items-center justify-center overflow-hidden mb-4 group-hover:shadow-lg group-hover:shadow-brand-orange/10 transition-all duration-300">
-              <span className="text-2xl font-serif font-bold text-neutral-400 group-hover:text-brand-orange transition-colors">
-                {initials}
-              </span>
+            <div className="relative w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br from-neutral-100 to-neutral-50 border border-neutral-200 flex items-center justify-center overflow-hidden mb-4 group-hover:shadow-lg group-hover:shadow-brand-orange/10 transition-all duration-300">
+              {person.photo ? (
+                <Image 
+                  src={person.photo.startsWith("http") ? person.photo : `https://dashboard.kitchen251.tech${person.photo}`} 
+                  alt={person.name} 
+                  fill 
+                  className="object-cover transition-transform duration-500 group-hover:scale-110" 
+                  unoptimized={person.photo.startsWith("http")}
+                />
+              ) : (
+                <span className="text-2xl font-serif font-bold text-neutral-400 group-hover:text-brand-orange transition-colors relative z-10">
+                  {initials}
+                </span>
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-20" />
             </div>
             <h3 className="text-base font-bold text-brand-dark tracking-normal">{person.name}</h3>
             <p className="text-sm text-brand-orange font-medium mt-1">{person.role}</p>

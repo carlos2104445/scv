@@ -1,13 +1,430 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+// ─── Auth ───────────────────────────────────────────────────────────────────
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  EDITOR
+  AUTHOR
+  FUNDRAISER
+  HR
+  VIEWER
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(EDITOR)
+  avatar    String?
+  lastLogin DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  auditLogs AuditLog[]
+  media     Media[]
+}
+
+// ─── Content ────────────────────────────────────────────────────────────────
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Page {
+  id        String        @id @default(cuid())
+  title     String
+  slug      String        @unique
+  heroImage String?
+  body      String        @db.Text
+  seoTitle  String?
+  seoDesc   String?
+  seoImage  String?
+  status    ContentStatus @default(DRAFT)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model News {
+  id          String        @id @default(cuid())
+  title       String
+  slug        String        @unique
+  publishDate DateTime      @default(now())
+  coverImage  String?
+  excerpt     String?       @db.Text
+  body        String        @db.Text
+  category    String        @default("news")
+  tags        String[]
+  authorId    String?
+  author      Person?       @relation(fields: [authorId], references: [id])
+  featured    Boolean       @default(false)
+  seoTitle    String?
+  seoDesc     String?
+  status      ContentStatus @default(DRAFT)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+enum ProjectCategory {
+  CYC
+  COMMUNITY
+  TVET
+  PROJECT
+}
+
+model Project {
+  id          String          @id @default(cuid())
+  title       String
+  slug        String          @unique
+  category    ProjectCategory @default(CYC)
+  excerpt     String?         @db.Text
+  description String?         @db.Text
+  body        String          @db.Text
+  sdgs        Int[]
+  coverImage  String?
+  donateUrl   String?
+  order       Int             @default(0)
+  seoTitle    String?
+  seoDesc     String?
+  status      ContentStatus   @default(DRAFT)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  kpis ProjectKpi[]
+}
+
+model ProjectKpi {
+  id        String  @id @default(cuid())
+  projectId String
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  label     String
+  value     Int
+  suffix    String?
+  order     Int     @default(0)
+}
+
+model Department {
+  id          String        @id @default(cuid())
+  name        String
+  slug        String        @unique
+  shortTitle  String
+  description String        @db.Text
+  body        String?       @db.Text
+  highlights  String[]
+  order       Int           @default(0)
+  status      ContentStatus @default(DRAFT)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+enum PersonCategory {
+  BOARD
+  SENIOR
+  EXTENDED
+  SWITZERLAND
+}
+
+model Person {
+  id        String         @id @default(cuid())
+  name      String
+  role      String
+  category  PersonCategory
+  photo     String?
+  bio       String?        @db.Text
+  order     Int            @default(0)
+  status    ContentStatus  @default(PUBLISHED)
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  news News[]
+}
+
+model Event {
+  id          String        @id @default(cuid())
+  title       String
+  slug        String        @unique
+  startsAt    DateTime
+  endsAt      DateTime?
+  allDay      Boolean       @default(false)
+  location    String?
+  address     String?
+  coverImage  String?
+  body        String        @db.Text
+  registerUrl String?
+  tags        String[]
+  seoTitle    String?
+  seoDesc     String?
+  status      ContentStatus @default(DRAFT)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  CONTRACT
+  VOLUNTEER
+  INTERNSHIP
+}
+
+enum JobStatus {
+  DRAFT
+  OPEN
+  CLOSED
+  ARCHIVED
+}
+
+model Job {
+  id              String    @id @default(cuid())
+  title           String
+  slug            String    @unique
+  department      String?
+  location        String?
+  jobType         JobType   @default(FULL_TIME)
+  deadline        DateTime?
+  description     String    @db.Text
+  requirements    String?   @db.Text
+  responsibilities String?  @db.Text
+  benefits        String?   @db.Text
+  applyMode       String    @default("form")
+  applyUrl        String?
+  applyEmail      String?
+  status          JobStatus @default(DRAFT)
+  featured        Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  applications JobApplication[]
+}
+
+model GalleryAlbum {
+  id        String        @id @default(cuid())
+  title     String
+  slug      String        @unique
+  coverImage String?
+  category  String?
+  date      DateTime      @default(now())
+  status    ContentStatus @default(DRAFT)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  images GalleryImage[]
+}
+
+model GalleryImage {
+  id      String       @id @default(cuid())
+  albumId String
+  album   GalleryAlbum @relation(fields: [albumId], references: [id], onDelete: Cascade)
+  url     String
+  caption String?
+  alt     String?
+  order   Int          @default(0)
+}
+
+enum PublicationType {
+  NEWSLETTER
+  MAGAZINE
+  ANNUAL_REPORT
+  AUDIT_REPORT
+  POLICY
+}
+
+model Publication {
+  id        String          @id @default(cuid())
+  title     String
+  type      PublicationType
+  year      Int
+  coverImage String?
+  pdfUrl    String?
+  summary   String?         @db.Text
+  isPublic  Boolean         @default(true)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  photo     String?
+  role      String?
+  quote     String   @db.Text
+  date      DateTime @default(now())
+  order     Int      @default(0)
+  featured  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Partner {
+  id        String   @id @default(cuid())
+  name      String
+  logo      String?
+  url       String?
+  type      String   @default("Funder")
+  since     Int?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ─── Inbox ──────────────────────────────────────────────────────────────────
+
+enum VolunteerStatus {
+  NEW
+  REVIEWING
+  INTERVIEW
+  ACCEPTED
+  REJECTED
+  WITHDRAWN
+}
+
+model VolunteerApplication {
+  id        String          @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String
+  phone     String?
+  gender    String?
+  country   String?
+  city      String?
+  message   String?         @db.Text
+  status    VolunteerStatus @default(NEW)
+  notes     String?         @db.Text
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+}
+
+enum ContactStatus {
+  UNREAD
+  READ
+  REPLIED
+  ARCHIVED
+}
+
+model ContactMessage {
+  id        String        @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String        @db.Text
+  status    ContactStatus @default(UNREAD)
+  notes     String?       @db.Text
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+enum AppStatus {
+  NEW
+  SCREENING
+  SHORTLISTED
+  INTERVIEW
+  OFFERED
+  HIRED
+  REJECTED
+}
+
+model JobApplication {
+  id        String    @id @default(cuid())
+  jobId     String
+  job       Job       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  name      String
+  email     String
+  phone     String?
+  cvUrl     String?
+  coverLetter String? @db.Text
+  status    AppStatus @default(NEW)
+  notes     String?   @db.Text
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+enum SubStatus {
+  PENDING
+  CONFIRMED
+  UNSUBSCRIBED
+  BOUNCED
+}
+
+model Subscriber {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  source       String?
+  status       SubStatus @default(PENDING)
+  subscribedAt DateTime  @default(now())
+}
+
+// ─── Donations ──────────────────────────────────────────────────────────────
+
+model BankAccount {
+  id            String  @id @default(cuid())
+  bankName      String
+  branch        String?
+  accountName   String
+  accountNumber String
+  currency      String  @default("ETB")
+  swiftCode     String?
+  instructions  String? @db.Text
+  logo          String?
+  order         Int     @default(0)
+  isPublic      Boolean @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ─── Site Settings ──────────────────────────────────────────────────────────
+
+model SiteSetting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String @db.Text
+}
+
+model HeroSlide {
+  id       String  @id @default(cuid())
+  image    String
+  title    String?
+  subtitle String?
+  ctaLabel String?
+  ctaUrl   String?
+  order    Int     @default(0)
+  isActive Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ─── Media ──────────────────────────────────────────────────────────────────
+
+model Media {
+  id         String   @id @default(cuid())
+  filename   String
+  url        String
+  mimeType   String
+  size       Int
+  alt        String?
+  uploadedBy String?
+  uploader   User?    @relation(fields: [uploadedBy], references: [id])
+  createdAt  DateTime @default(now())
+}
+
+// ─── Audit ──────────────────────────────────────────────────────────────────
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
+  action     String
+  collection String
+  recordId   String?
+  details    String?  @db.Text
+  createdAt  DateTime @default(now())
 }

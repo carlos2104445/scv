@@ -1,11 +1,15 @@
-"use client";
-
 import { PageHero } from "@/components/blocks/PageHero";
 import { PersonGrid } from "@/components/blocks/PersonGrid";
-import { getPeopleByCategory } from "@/data/people";
+import { prisma } from "@/lib/prisma";
 
-export default function ExtendedManagementPage() {
-  const members = getPeopleByCategory("extended");
+export const dynamic = "force-dynamic";
+
+export default async function ExtendedManagementPage() {
+  const members = await prisma.person.findMany({
+    where: { category: "EXTENDED", status: "PUBLISHED" },
+    orderBy: { order: "asc" },
+  });
+
   return (
     <>
       <PageHero

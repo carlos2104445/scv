@@ -1,11 +1,15 @@
-"use client";
-
 import { PageHero } from "@/components/blocks/PageHero";
 import { PersonGrid } from "@/components/blocks/PersonGrid";
-import { getPeopleByCategory } from "@/data/people";
+import { prisma } from "@/lib/prisma";
 
-export default function SeniorManagementPage() {
-  const members = getPeopleByCategory("senior");
+export const dynamic = "force-dynamic";
+
+export default async function SeniorManagementPage() {
+  const members = await prisma.person.findMany({
+    where: { category: "SENIOR", status: "PUBLISHED" },
+    orderBy: { order: "asc" },
+  });
+
   return (
     <>
       <PageHero
