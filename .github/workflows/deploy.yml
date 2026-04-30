@@ -29,25 +29,24 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Prepare standalone package
+      - name: Prepare deploy archive
         run: |
           mkdir -p deploy
           cp -r .next/standalone/. deploy/
           cp -r .next/static deploy/.next/static
           cp -r public deploy/public 2>/dev/null || true
+          tar czf frontend-deploy.tar.gz -C deploy .
 
-      - name: Deploy to VPS via SSH
+      - name: Upload archive to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          source: "deploy/*"
-          target: "/var/www/selam-frontend"
-          strip_components: 1
-          overwrite: true
+          source: "frontend-deploy.tar.gz"
+          target: "/var/www"
 
-      - name: Restart application
+      - name: Extract and restart
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -55,7 +54,12 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             export PATH="/usr/local/bin:$PATH"
+            pm2 stop selam-frontend 2>/dev/null || true
+            rm -rf /var/www/selam-frontend
+            mkdir -p /var/www/selam-frontend
             cd /var/www/selam-frontend
+            tar xzf /var/www/frontend-deploy.tar.gz
+            rm /var/www/frontend-deploy.tar.gz
             pm2 delete selam-frontend 2>/dev/null || true
             PORT=3000 pm2 start server.js --name selam-frontend
             pm2 save
