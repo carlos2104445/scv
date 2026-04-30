@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Heart,
   Phone,
@@ -88,17 +89,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Column 1: About */}
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-orange to-brand-orange-dark flex items-center justify-center">
-                <span className="text-white font-serif font-bold text-lg">
-                  S
-                </span>
-              </div>
-              <div>
-                <h3 className="text-base font-bold text-white tracking-normal">
-                  Selam Children&apos;s Village
-                </h3>
-              </div>
+            <div className="mb-5 bg-white p-2 rounded-xl inline-block">
+              <Image
+                src="/images/logo.jpg"
+                alt="Selam Children's Village Logo"
+                width={150}
+                height={45}
+                className="h-10 w-auto object-contain"
+              />
             </div>
             <p className="text-neutral-400 text-sm leading-relaxed mb-5">
               Established in 1986 by Mrs. Tsehay Roschli, Selam Children&apos;s Village

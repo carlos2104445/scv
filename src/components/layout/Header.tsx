@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Menu,
@@ -96,20 +97,15 @@ export function Header() {
         <div className="container-xl">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-br from-brand-orange to-brand-orange-dark flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:shadow-brand-orange/25 transition-all duration-300">
-                <span className="text-white font-serif font-bold text-lg lg:text-xl">
-                  S
-                </span>
-              </div>
-              <div className="hidden sm:block">
-                <h1 className="text-base lg:text-lg font-bold text-brand-dark leading-tight tracking-normal">
-                  Selam Children&apos;s Village
-                </h1>
-                <p className="text-[10px] lg:text-xs text-neutral-500 font-medium tracking-wide uppercase">
-                  Transforming Lives Since 1986
-                </p>
-              </div>
+            <Link href="/" className="flex items-center group">
+              <Image
+                src="/images/logo.jpg"
+                alt="Selam Children's Village Logo"
+                width={200}
+                height={60}
+                className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
