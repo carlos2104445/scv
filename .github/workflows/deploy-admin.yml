@@ -28,42 +28,41 @@ jobs:
       - name: Build
         run: cd admin && npm run build
 
-      - name: Deploy to VPS
+      - name: Prepare deploy package
+        run: |
+          mkdir -p deploy
+          cp -r admin/.next/standalone/. deploy/
+          cp -r admin/.next/static deploy/admin/.next/static
+          cp -r admin/prisma deploy/admin/prisma
+          tar czf admin-deploy.tar.gz -C deploy .
+
+      - name: Upload to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          source: "admin/.next/standalone/,admin/.next/static/,admin/prisma/,admin/package.json,admin/nginx/"
-          target: "/var/www/selam-admin"
-          strip_components: 1
-          overwrite: true
+          source: "admin-deploy.tar.gz"
+          target: "/var/www"
 
-      - name: Setup and restart on VPS
+      - name: Deploy and restart
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd /var/www/selam-admin
-            
-            # Copy static files into standalone
-            mkdir -p .next/standalone/.next
-            cp -r .next/static .next/standalone/.next/
-            
-            # Copy prisma schema for migrations
-            mkdir -p .next/standalone/prisma
-            cp -r prisma/* .next/standalone/prisma/
-            
-            # Install production deps in standalone
-            cd .next/standalone
-            npm install @prisma/client prisma dotenv --save 2>/dev/null || true
-            npx prisma generate 2>/dev/null || true
-            
-            # Copy env file
-            cp /var/www/selam-admin/.env .env 2>/dev/null || true
-            
-            # Restart with PM2
-            pm2 restart selam-admin 2>/dev/null || pm2 start server.js --name selam-admin -- -p 3001
+            export PATH="/usr/local/bin:$PATH"
+            pm2 stop selam-admin 2>/dev/null || true
+            rm -rf /var/www/selam-admin/app
+            mkdir -p /var/www/selam-admin/app
+            cd /var/www/selam-admin/app
+            tar xzf /var/www/admin-deploy.tar.gz
+            rm /var/www/admin-deploy.tar.gz
+            cd admin
+            cp /var/www/selam-admin/.env .
+            npm install @prisma/adapter-pg pg @prisma/client bcryptjs dotenv 2>/dev/null
+            npx prisma generate 2>/dev/null
+            pm2 delete selam-admin 2>/dev/null || true
+            PORT=3001 pm2 start server.js --name selam-admin
             pm2 save
