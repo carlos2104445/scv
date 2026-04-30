@@ -26,8 +26,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
       - name: Build
         run: npm run build
+        env:
+          DATABASE_URL: "postgresql://dummy:dummy@localhost:5432/dummy"
 
       - name: Prepare deploy archive
         run: |
@@ -35,6 +40,8 @@ jobs:
           cp -r .next/standalone/. deploy/
           cp -r .next/static deploy/.next/static
           cp -r public deploy/public 2>/dev/null || true
+          cp -r prisma deploy/prisma 2>/dev/null || true
+          cp prisma.config.ts deploy/prisma.config.ts 2>/dev/null || true
           tar czf frontend-deploy.tar.gz -C deploy .
 
       - name: Upload archive to VPS
@@ -61,5 +68,9 @@ jobs:
             tar xzf /var/www/frontend-deploy.tar.gz
             rm /var/www/frontend-deploy.tar.gz
             pm2 delete selam-frontend 2>/dev/null || true
-            PORT=3000 pm2 start server.js --name selam-frontend
+            npm install @prisma/adapter-pg pg @prisma/client 2>/dev/null
+            npx prisma generate 2>/dev/null
+            # Share database connection with admin panel
+            export DATABASE_URL=$(grep DATABASE_URL /var/www/selam-admin/.env | cut -d '=' -f2- | tr -d '"')
+            DATABASE_URL=$DATABASE_URL PORT=3000 pm2 start server.js --name selam-frontend
             pm2 save
