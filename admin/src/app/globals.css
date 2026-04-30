@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-orange: #f37233;
+  --color-brand-orange-dark: #d45f23;
+  --color-brand-orange-50: #fef3ec;
+  --color-brand-dark: #292929;
+  --color-sidebar: #1a1a2e;
+  --color-sidebar-hover: #25253e;
+  --color-sidebar-active: #30305a;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8f9fa;
+  --color-border: #e5e7eb;
+  --font-sans: "Inter", "Public Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-surface-muted);
+    color: var(--color-brand-dark);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; }
+  h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.01em; }
+  h3 { font-size: 1.125rem; font-weight: 600; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl
+    bg-brand-orange text-white font-semibold text-sm
+    hover:bg-brand-orange-dark active:scale-[0.97]
+    transition-all duration-200 cursor-pointer;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl
+    bg-white text-brand-dark font-semibold text-sm border border-border
+    hover:bg-surface-muted active:scale-[0.97]
+    transition-all duration-200 cursor-pointer;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl
+    bg-red-500 text-white font-semibold text-sm
+    hover:bg-red-600 active:scale-[0.97]
+    transition-all duration-200 cursor-pointer;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg
+    text-neutral-600 font-medium text-sm
+    hover:bg-neutral-100 active:scale-[0.97]
+    transition-all duration-200 cursor-pointer;
+  }
+  .card {
+    @apply bg-white rounded-2xl border border-border shadow-sm;
+  }
+  .input-field {
+    @apply w-full px-4 py-2.5 rounded-xl border border-border bg-white
+    text-sm text-brand-dark placeholder-neutral-400
+    focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20
+    outline-none transition-all;
+  }
+  .label {
+    @apply block text-sm font-medium text-brand-dark mb-1.5;
+  }
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-draft {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-700;
+  }
+  .badge-published {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700;
+  }
+  .badge-archived {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-neutral-100 text-neutral-600;
+  }
+  .badge-new {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-700;
+  }
+  .badge-danger {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700;
+  }
+  .kpi-card {
+    @apply bg-white rounded-2xl border border-border shadow-sm p-5 flex flex-col gap-1;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+/* Tiptap editor styles */
+.tiptap-editor .ProseMirror {
+  min-height: 200px;
+  padding: 1rem;
+  outline: none;
+}
+.tiptap-editor .ProseMirror p { margin-bottom: 0.75rem; }
+.tiptap-editor .ProseMirror h2 { font-size: 1.25rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+.tiptap-editor .ProseMirror h3 { font-size: 1.1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+.tiptap-editor .ProseMirror ul,
+.tiptap-editor .ProseMirror ol { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+.tiptap-editor .ProseMirror li { margin-bottom: 0.25rem; }
+.tiptap-editor .ProseMirror a { color: var(--color-brand-orange); text-decoration: underline; }
+.tiptap-editor .ProseMirror img { max-width: 100%; border-radius: 0.5rem; margin: 1rem 0; }
+.tiptap-editor .ProseMirror blockquote {
+  border-left: 3px solid var(--color-brand-orange);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #6b7280;
+}
