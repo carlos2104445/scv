@@ -45,3 +45,5 @@ admin/node_modules
 admin/.next/
 admin/.env
 admin/.deploy_key*
+
+/src/generated/prisma
