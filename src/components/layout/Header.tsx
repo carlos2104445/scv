@@ -6,25 +6,13 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Menu,
-  X,
   Search,
   ChevronDown,
-  Phone,
   Heart,
-  Users,
-  Mail,
-  Briefcase,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { navigation, siteSettings } from "@/data/site-settings";
+import { navigation } from "@/data/site-settings";
 import { MobileMenu } from "./MobileMenu";
-
-const topBarIcons: Record<string, React.ReactNode> = {
-  "Job Openings": <Briefcase className="w-3.5 h-3.5" />,
-  Donate: <Heart className="w-3.5 h-3.5" />,
-  "Become a Volunteer": <Users className="w-3.5 h-3.5" />,
-  "Contact Us": <Mail className="w-3.5 h-3.5" />,
-};
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -55,35 +43,6 @@ export function Header() {
 
   return (
     <>
-      {/* Top Utility Bar */}
-      <div className="bg-brand-dark text-white text-sm hidden xl:block">
-        <div className="mx-auto max-w-[1440px] px-6 2xl:px-10 flex items-center justify-between py-2">
-          <div className="flex items-center gap-2 text-neutral-300">
-            <Phone className="w-3.5 h-3.5" />
-            <span>{siteSettings.contact.phones[0].number}</span>
-            <span className="mx-2 text-neutral-600">|</span>
-            <Mail className="w-3.5 h-3.5" />
-            <span>{siteSettings.contact.email}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            {navigation.topBar.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200",
-                  item.label === "Donate"
-                    ? "bg-brand-orange text-white hover:bg-brand-orange-dark"
-                    : "text-neutral-300 hover:text-white hover:bg-white/10"
-                )}
-              >
-                {topBarIcons[item.label]}
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Main Header */}
       <header
@@ -122,7 +81,7 @@ export function Header() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-1 whitespace-nowrap px-2.5 xl:px-3 2xl:px-4 py-2 rounded-lg text-sm xl:text-[15px] font-medium transition-all duration-200",
+                      "flex items-center gap-1 whitespace-nowrap px-2.5 xl:px-3 2xl:px-4 py-2 rounded-lg text-[15px] xl:text-base font-medium transition-all duration-200",
                       pathname === item.href || pathname.startsWith(item.href + "/")
                         ? "text-brand-orange"
                         : "text-neutral-700 hover:text-brand-orange hover:bg-brand-orange-50"
@@ -209,7 +168,7 @@ export function Header() {
               </Link>
               <Link
                 href="/get-involved/donate"
-                className="hidden md:flex btn-primary text-sm xl:text-[15px] py-2 px-4 xl:px-5 whitespace-nowrap"
+                className="hidden md:flex btn-primary text-[15px] xl:text-base py-2 px-4 xl:px-5 whitespace-nowrap"
               >
                 <Heart className="w-4 h-4" />
                 Donate Now
