@@ -35,7 +35,15 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageHero title="Contact Us" subtitle="We'd love to hear from you." breadcrumbs={[{ label: "Get Involved", href: "/get-involved/how-to-help" }, { label: "Contact Us", href: "/get-involved/contact-us" }]} />
+      <PageHero 
+        title="Contact Us" 
+        subtitle="We'd love to hear from you." 
+        breadcrumbs={[
+          { label: "Get Involved", href: "/get-involved/how-to-help" }, 
+          { label: "Contact Us", href: "/get-involved/contact-us" }
+        ]} 
+        backgroundImageUrl="/images/contact-banner.jpg"
+      />
       <section className="section-padding">
         <div className="container-xl">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -66,7 +74,18 @@ export default function ContactPage() {
                   <div className="flex items-center gap-3"><Mail className="w-5 h-5 text-brand-orange shrink-0" /><a href={`mailto:${siteSettings.contact.email}`} className="text-sm text-neutral-600 hover:text-brand-orange">{siteSettings.contact.email}</a></div>
                 </div>
               </div>
-              <div className="card-base overflow-hidden h-64"><iframe src={siteSettings.map.embedUrl} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Location" /></div>
+              <div className="card-base overflow-hidden h-[400px]">
+                <iframe 
+                  src={siteSettings.map.embedUrl} 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  title="Location" 
+                  className="invert-[90%] hue-rotate-180 contrast-125 opacity-90"
+                />
+              </div>
             </div>
           </div>
         </div>

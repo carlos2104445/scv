@@ -40,16 +40,11 @@ export default function DonatePage() {
           { label: "Get Involved", href: "/get-involved/how-to-help" },
           { label: "Donate", href: "/get-involved/donate" },
         ]}
+        backgroundImageUrl="/images/donate-banner.jpg"
       />
       <section className="section-padding">
         <div className="container-xl">
           <div className="max-w-4xl mx-auto space-y-12">
-            
-            {/* Banner Image */}
-            <div className="relative w-full aspect-[3/1] md:aspect-[4/1] rounded-2xl overflow-hidden shadow-lg bg-neutral-100">
-              {/* Replace the src with the actual uploaded image path when available */}
-              <Image src="/images/donate-banner.jpg" alt="Giving is a Blessing" fill className="object-cover" />
-            </div>
 
             {/* Content */}
             <div className="space-y-6 text-neutral-700 leading-relaxed text-[15px] sm:text-base">
