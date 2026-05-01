@@ -93,7 +93,7 @@ export function PersonSlider({ people }: { people: Person[] }) {
                       src={
                         person.photo.startsWith("http")
                           ? person.photo
-                          : `https://admin.kitchen251.tech${person.photo}`
+                          : `https://dashboard.kitchen251.tech${person.photo}`
                       }
                       alt={person.name}
                       fill
