@@ -19,12 +19,22 @@ export const projects: Project[] = [
     excerpt:
       "Providing a nurturing family environment for orphaned and vulnerable children through our model village approach.",
     description:
-      "The Family Model Village is at the heart of Selam Children's Village. It provides a stable, loving family environment where orphaned and vulnerable children grow up in family-like units, each headed by a house mother who provides personalized care and support.",
+      "For four decades, Selam Children's Village (SCV) has been a sanctuary for orphaned and vulnerable children. While we successfully began with traditional institutional care in 1986, our commitment to the highest global standards of child psychology led to a major transformation in 2011.",
+    additionalParagraphs: [
+      "We proudly transitioned to the Family Model Village Child Care program because we believe every child deserves more than just a facility—they deserve a family.",
+      "Today, our children do not live in dormitories; they live in their own homes. Each house provides a warm, family-like environment led by a dedicated foster mother, a foster aunt, and a father figure.",
+      "Beyond daily meals and a safe environment, we ensure every child receives:"
+    ],
+    services: [
+      { title: "A Loving Family", description: "Individualized attention and deep psychosocial support to heal from past trauma." },
+      { title: "Holistic Health", description: "Comprehensive medical care at the Selam Clinic." },
+      { title: "Empowerment", description: "Life-skills training and education to build confident, independent futures." }
+    ],
     image: "/images/projects/family-village.jpg",
     kpis: [
-      { label: "Children Cared For", value: 255 },
-      { label: "Male Children", value: 157 },
-      { label: "Female Children", value: 98 },
+      { label: "Children in Care", value: 255 },
+      { label: "Male", value: 157 },
+      { label: "Female", value: 98 },
       { label: "House Mothers", value: 12 },
     ],
     sdgs: [1, 2, 3, 4, 10],
