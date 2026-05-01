@@ -65,9 +65,9 @@ jobs:
             cp /var/www/selam-admin/.env .
             # Symlink persistent uploads dir into app
             ln -sf /var/www/selam-admin/uploads uploads
-            npm install @prisma/adapter-pg pg @prisma/client bcryptjs dotenv sharp 2>/dev/null
-            npx prisma generate 2>/dev/null
-            npx prisma db push --skip-generate 2>/dev/null || true
+            npm install @prisma/adapter-pg pg @prisma/client prisma bcryptjs dotenv sharp
+            npx prisma generate
+            npx prisma db push --skip-generate --accept-data-loss
             pm2 delete selam-admin 2>/dev/null || true
             PORT=3001 pm2 start server.js --name selam-admin
             pm2 save
