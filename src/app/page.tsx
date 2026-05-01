@@ -5,6 +5,7 @@ import { MissionVisionSection } from "@/components/home/MissionVisionSection";
 import { ProjectsSection } from "@/components/home/ProjectsSection";
 import { ImpactSection } from "@/components/home/ImpactSection";
 import { NewsSection } from "@/components/home/NewsSection";
+import { EventsSection } from "@/components/home/EventsSection";
 import { TeamSection } from "@/components/home/TeamSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { PartnersSection } from "@/components/home/PartnersSection";
@@ -21,6 +22,7 @@ export default function HomePage() {
         <ProjectsSection />
         <ImpactSection />
         <NewsSection />
+        <EventsSection />
         <TeamSection />
         <TestimonialsSection />
         <PartnersSection />
