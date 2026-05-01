@@ -54,6 +54,8 @@ jobs:
           script: |
             export PATH="/usr/local/bin:$PATH"
             pm2 stop selam-admin 2>/dev/null || true
+            # Preserve uploads across deployments
+            mkdir -p /var/www/selam-admin/uploads
             rm -rf /var/www/selam-admin/app
             mkdir -p /var/www/selam-admin/app
             cd /var/www/selam-admin/app
@@ -61,8 +63,11 @@ jobs:
             rm /var/www/admin-deploy.tar.gz
             cd admin
             cp /var/www/selam-admin/.env .
-            npm install @prisma/adapter-pg pg @prisma/client bcryptjs dotenv 2>/dev/null
+            # Symlink persistent uploads dir into app
+            ln -sf /var/www/selam-admin/uploads uploads
+            npm install @prisma/adapter-pg pg @prisma/client bcryptjs dotenv sharp 2>/dev/null
             npx prisma generate 2>/dev/null
+            npx prisma db push --skip-generate 2>/dev/null || true
             pm2 delete selam-admin 2>/dev/null || true
             PORT=3001 pm2 start server.js --name selam-admin
             pm2 save

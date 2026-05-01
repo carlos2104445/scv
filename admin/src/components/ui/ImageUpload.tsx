@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import Image from "next/image";
 import { UploadCloud, X, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -57,7 +56,17 @@ export function ImageUpload({ value, onChange, onRemove, className, name }: Imag
       
       {value ? (
         <div className="relative w-full max-w-[200px] aspect-[4/5] rounded-xl overflow-hidden border border-border group">
-          <Image src={value} alt="Uploaded image" fill className="object-cover" />
+          {/* Use native img to avoid Next.js Image optimization issues with uploaded files */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={value}
+            alt="Uploaded image"
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              // If the image fails to load, show a placeholder
+              (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='250' fill='%23f0f0f0'%3E%3Crect width='200' height='250'/%3E%3Ctext x='50%25' y='50%25' fill='%23999' font-size='14' text-anchor='middle' dy='.3em'%3EImage not found%3C/text%3E%3C/svg%3E";
+            }}
+          />
           <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <button
               type="button"

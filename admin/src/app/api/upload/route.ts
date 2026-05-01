@@ -31,20 +31,15 @@ export async function POST(req: Request) {
     // Always save as .jpg since we convert with .jpeg()
     const filename = `${uniqueSuffix}.jpg`;
     
-    // Ensure public/uploads exists
-    const uploadsDir = path.join(process.cwd(), "public", "uploads");
-    try {
-      await mkdir(uploadsDir, { recursive: true });
-    } catch (e) {
-      // Directory might exist, ignore error
-    }
+    // Store in uploads/ at project root (not public/ — standalone doesn't serve public/)
+    const uploadsDir = path.join(process.cwd(), "uploads");
+    await mkdir(uploadsDir, { recursive: true });
 
     const filepath = path.join(uploadsDir, filename);
     await writeFile(filepath, processedBuffer);
 
-    // Return the URL that the frontend and admin can access
-    // Admin uses relative /uploads/... 
-    return NextResponse.json({ url: `/uploads/${filename}` });
+    // Return the API-served URL so it works in both dev and standalone mode
+    return NextResponse.json({ url: `/api/uploads/${filename}` });
   } catch (error: any) {
     console.error("Upload error:", error);
     return NextResponse.json(
