@@ -239,7 +239,11 @@ export const majorProjects: Project[] = [
     title: "Li-Way Project",
     category: "project",
     excerpt: "Livelihoods for Women and Youth — economic empowerment at scale.",
-    description: "The Li-Way Project focuses on creating sustainable livelihoods for women and youth through market-driven skills training, apprenticeships, and enterprise development in partnership with international development organizations.",
+    description: "Selam Children’s Village has implemented a pilot project entitled Livelihood Improvement for Women and Youth /LI-WAY/ Project in partnership with Save the Children Ethiopia with financial support from the Swedish International Development Cooperation Agency (SIDA).",
+    additionalParagraphs: [
+      "The overall objective of the program was to contribute to sustainable poverty reduction, improved gender relations and social stability of women and youths in Addis Ababa by increasing their income and access to economic opportunities. The project provided short-term vocational skill training and facilitated employment for 89 youths.",
+      "Through the LI-WAY Project, SCV has facilitated the establishment of a legal savings and credit association named “Selam LI-WAY-EYE Saving and Credit Association”. The association has 188 members and SCV has deposited a total amount of 1,800,000.00 ETB as an initial capital. Currently, the capital of the association has increased to 3,000,000.00 ETB. 73 members have accessed loan from the association and all of them successfully repaid."
+    ],
     image: "/images/projects/li-way.jpg",
     kpis: [
       { label: "Beneficiaries", value: 1500 },
@@ -252,7 +256,16 @@ export const majorProjects: Project[] = [
     title: "BINA Project",
     category: "project",
     excerpt: "Building Inclusive and Nurturing Alternatives for vulnerable youth.",
-    description: "The BINA Project provides alternative care and transition services for vulnerable youth, helping them build independent lives through education, training, and social support systems.",
+    description: "BINA is an Arabic word meaning “reconstruction”. Financier of the project is German Cooperation through bfz (Training and Development Centers of the Bavarian Employers’ Associations).",
+    additionalParagraphs: [
+      "The aim of the project is to allow deprived youth to discover their talents and gain first experiences in an area of vocational training. Afterwards, participants shall enroll in internships, longer vocational training or seek employment/self-employment.",
+      "It’s a one year project with possibility of extension for another six years. The goal of this project is to stabilize the economic situation of a country by reducing youth unemployment; improving the situation of young people and their families through vocational training and job placement in work."
+    ],
+    services: [
+      { title: "Instructor Training", description: "Technical instructors from the college are trained and upgraded in selected occupations." },
+      { title: "Youth Training", description: "250 Adolescents and young adults are trained in five elected vocational areas." },
+      { title: "Job Placement", description: "A job placement service for graduates is established at the local education provider." }
+    ],
     image: "/images/projects/bina.jpg",
     kpis: [
       { label: "Youth Served", value: 450 },
@@ -265,7 +278,12 @@ export const majorProjects: Project[] = [
     title: "Bridge Project",
     category: "project",
     excerpt: "Bridging the gap for street-connected children and youth.",
-    description: "The Bridge Project works with street-connected children and youth, providing outreach, rehabilitation, family reintegration, and alternative care services to help them transition off the streets.",
+    description: "Selam TVET College has signed a Partnership Agreement with First consult for Bridge Project implementation to provide capacity building training to machine operators of manufacturing companies to enhance their productivity, quality and profitability.",
+    additionalParagraphs: [
+      "Additionally, this training will help the company’s (employees) operators to claim benefit and career.",
+      "The agreement has signed to provide training to 1,000 operators of 50 manufacturing companies. The partnership agreement is worth of 5.9 million ETB.",
+      "Currently, 105 (91 Male, 14 Female) individuals are attending capacity building training."
+    ],
     image: "/images/projects/bridge.jpg",
     kpis: [
       { label: "Children Reached", value: 300 },
@@ -278,7 +296,12 @@ export const majorProjects: Project[] = [
     title: "PaSeway Project",
     category: "project",
     excerpt: "Pathway to Self-Employment for Women and Youth.",
-    description: "PaSeway enables women and youth to achieve economic independence through technical and vocational education, business development services, and access to financial services.",
+    description: "Selam Children’s Village has been implementing a project called “Pathways for Sustainable Employment for Women and Youth in Ethiopia” (PASEWAY) in partnership with Plan International Ethiopia.",
+    additionalParagraphs: [
+      "The project is aimed at both young women and young men (60/40) between the ages of 15 and 29 years with a total of 1,050 young people to be reached. The number of indirect beneficiaries is estimated at around 300,000. With this project, we intend to focus, not just on unemployed young people, but also young people who are underemployed or who find themselves in precarious employment conditions.",
+      "From SCV’s side, the project has concentrated on two districts of the city in particular: Woredas 3, 4, 6 and 7 of the Addis Ketema sub-city, and Woredas 9, 10, 11, 12 and 14 of Yeka sub-city.",
+      "We are addressing the unemployed and under-employed young people through our TVET College by delivering quality short-term and level II training freely in five selected sectors such as Metal Works, Furniture Making, Hotel kitchen Operation, Catering Services and Garment."
+    ],
     image: "/images/projects/paseway.jpg",
     kpis: [
       { label: "Participants", value: 800 },
@@ -291,7 +314,13 @@ export const majorProjects: Project[] = [
     title: "EYE Project",
     category: "project",
     excerpt: "Empowering Youth in Ethiopia through quality education and training.",
-    description: "The EYE Project focuses on improving the quality and relevance of technical and vocational education and training to better prepare Ethiopian youth for the labor market.",
+    description: "Selam Children’s Village /SCV/ in partnership with Woord en Daad, a Netherland based International Organization, has been implementing Employable Youth in Ethiopia (EYE) Program as of 2017.",
+    additionalParagraphs: [
+      "The EYE Project aims to contribute to increased employability of Male & Female Youths in Ethiopia for a better future and to contribute to improved capability of potential migrants to move self-sufficiency within the labor market to realize their full potential and improve their livelihoods.",
+      "The approach used for the EYE Project is the Job and Business Service (JBS) model, which actively links the main actors of the youth training and employment. Through this approach, all the major actors: the youth, the training provider (Selam TVET College), employers, and other key stakeholders are connected to meet the project objective.",
+      "EYE is a five years project that is being implemented in two Sub Cities of Addis Ababa, Yeka and Bole. The project is intended to create employment opportunities for 3000 youths by providing short-term TVET training in nine fields.",
+      "As per the project agreement, EYE Project provided hard and soft skills training to 3358 youths. Out of this, 2664 youths have graduated and 2596 youths have been linked with wage and self-employment opportunities."
+    ],
     image: "/images/projects/eye.jpg",
     kpis: [
       { label: "Students Trained", value: 650 },
