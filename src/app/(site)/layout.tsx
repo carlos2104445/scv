@@ -3,6 +3,8 @@ import { Footer } from "@/components/layout/Footer";
 import { AnnouncementPopup } from "@/components/global/AnnouncementPopup";
 import { prisma } from "@/lib/prisma";
 
+export const revalidate = 60; // Revalidate layout every 60 seconds
+
 export default async function SiteLayout({
   children,
 }: {
