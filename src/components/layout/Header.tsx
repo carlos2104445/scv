@@ -10,20 +10,14 @@ import {
   ChevronDown,
   Heart,
   Phone,
-  Mail,
-  Users,
-  Briefcase,
+  Facebook,
+  Twitter,
+  Youtube,
+  Instagram,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navigation, siteSettings } from "@/data/site-settings";
 import { MobileMenu } from "./MobileMenu";
-
-const topBarIcons: Record<string, React.ReactNode> = {
-  "Job Openings": <Briefcase className="w-3.5 h-3.5" />,
-  "Donate": <Heart className="w-3.5 h-3.5" />,
-  "Become a Volunteer": <Users className="w-3.5 h-3.5" />,
-  "Contact Us": <Mail className="w-3.5 h-3.5" />,
-};
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -55,30 +49,46 @@ export function Header() {
   return (
     <>
       {/* Top Utility Bar */}
-      <div className="bg-brand-dark text-white text-sm hidden xl:block">
-        <div className="mx-auto max-w-[1440px] px-6 2xl:px-10 flex items-center justify-between py-2">
-          <div className="flex items-center gap-2 text-neutral-300">
-            <Phone className="w-3.5 h-3.5" />
-            <span>{siteSettings.contact.phones[0].number}</span>
-            <span className="mx-2 text-neutral-600">|</span>
-            <Mail className="w-3.5 h-3.5" />
-            <span>{siteSettings.contact.email}</span>
+      <div className="bg-[#F5E6E1] text-brand-dark text-xs hidden xl:block">
+        <div className="mx-auto max-w-[1440px] px-6 2xl:px-10 flex items-center justify-between py-1.5">
+          <div className="flex items-center gap-4 text-brand-dark/80">
+            {/* Social Icons */}
+            <div className="flex items-center gap-3">
+              <a href={siteSettings.socials.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors">
+                <Facebook className="w-3.5 h-3.5" />
+              </a>
+              <a href={siteSettings.socials.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors">
+                <Twitter className="w-3.5 h-3.5" />
+              </a>
+              <a href={siteSettings.socials.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors">
+                <Youtube className="w-3.5 h-3.5" />
+              </a>
+              <a href={siteSettings.socials.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors">
+                <Instagram className="w-3.5 h-3.5" />
+              </a>
+            </div>
+            
+            {/* Phone */}
+            <div className="flex items-center gap-1.5">
+              <Phone className="w-3.5 h-3.5" />
+              <span>{siteSettings.contact.phones[0].number}</span>
+            </div>
           </div>
-          <div className="flex items-center gap-1">
-            {navigation.topBar.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all duration-200",
-                  item.label === "Donate"
-                    ? "bg-brand-orange text-white hover:bg-brand-orange-dark"
-                    : "text-neutral-300 hover:text-white hover:bg-white/10"
+
+          {/* Links */}
+          <div className="flex items-center gap-2 text-brand-dark/80 font-medium">
+            {navigation.topBar.map((item, index) => (
+              <div key={item.href} className="flex items-center gap-2">
+                <Link
+                  href={item.href}
+                  className="hover:text-brand-orange transition-colors"
+                >
+                  {item.label}
+                </Link>
+                {index < navigation.topBar.length - 1 && (
+                  <span className="text-brand-dark/30 text-[10px] mx-0.5">|</span>
                 )}
-              >
-                {topBarIcons[item.label]}
-                {item.label}
-              </Link>
+              </div>
             ))}
           </div>
         </div>

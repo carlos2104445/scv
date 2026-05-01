@@ -13,7 +13,12 @@ interface PageHeroProps {
   backgroundImageUrl?: string;
 }
 
-export function PageHero({ title, subtitle, breadcrumbs, backgroundImageUrl }: PageHeroProps) {
+export function PageHero({ 
+  title, 
+  subtitle, 
+  breadcrumbs, 
+  backgroundImageUrl = "/images/contact-banner.jpg" 
+}: PageHeroProps) {
   return (
     <section className="relative bg-brand-dark overflow-hidden">
       {/* Background Image or Pattern */}

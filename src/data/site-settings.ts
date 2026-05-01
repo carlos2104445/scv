@@ -37,7 +37,8 @@ export const siteSettings = {
 
 export const navigation = {
   topBar: [
-    { label: "Job Openings", href: "/job-openings" },
+    { label: "Jobs", href: "/job-openings" },
+    { label: "Donate", href: "/get-involved/donate" },
     { label: "Become a Volunteer", href: "/get-involved/become-a-volunteer" },
     { label: "Contact Us", href: "/get-involved/contact-us" },
   ],
