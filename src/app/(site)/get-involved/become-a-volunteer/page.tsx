@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PageHero } from "@/components/blocks/PageHero";
@@ -78,7 +79,39 @@ export default function VolunteerPage() {
       />
       <section className="section-padding">
         <div className="container-xl">
+          
+          {/* Introductory Content */}
+          <div className="max-w-5xl mx-auto mb-20 space-y-16">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div>
+                <h2 className="text-3xl font-bold text-brand-dark mb-4">Where it all began. Let&apos;s help together.</h2>
+                <p className="text-neutral-600 leading-relaxed text-lg">
+                  Would you like to travel and give something back to the communities you visit at the same time? Do you want to make the world a better place? Have you got skills you&apos;d like to share? Do you want to learn new skills while helping others? If the answer to any of these questions is &apos;YES&apos;, then volunteering with us could be the perfect choice for you.
+                </p>
+              </div>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <Image src="/images/volunteer-1.png" alt="Volunteers helping in community" fill className="object-cover" />
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div className="order-2 md:order-1 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <Image src="/images/volunteer-2.png" alt="Joyful volunteers showing impact" fill className="object-cover" />
+              </div>
+              <div className="order-1 md:order-2">
+                <h2 className="text-3xl font-bold text-brand-dark mb-4">More People, More impact</h2>
+                <p className="text-neutral-600 leading-relaxed text-lg">
+                  Selam Children Village believes that unless members of the civil society are involved proactively in the process of development, sustainable change will not happen. We encourage and invite individuals for volunteer opportunities and volunteer registration, to be an active part of our organization and share the same vision and purpose as us &ndash; to work for the welfare of children and their families. Volunteers are the backbone of every organization &ndash; they not only carry the organization&apos;s ideals within them, but also spread the message far and beyond, sensitizing the society towards the cause. Volunteer for NGO, volunteer to serve, spread some smiles!
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
           <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-brand-dark">Apply to Volunteer</h3>
+              <p className="text-neutral-500 mt-2">Fill out the form below and we will get back to you.</p>
+            </div>
             <motion.form
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               onSubmit={handleSubmit(onSubmit)}
