@@ -43,9 +43,23 @@ export default function OurHistoryPage() {
               </div>
               <h2 className="text-2xl">Our Founder</h2>
               <p className="mt-2 text-brand-orange font-semibold">Mrs. Tsehay Roschli</p>
-              <p className="mt-4 text-neutral-600 leading-relaxed max-w-2xl mx-auto">
-                A Swiss-Ethiopian social worker with a profound vision for Ethiopia&apos;s children. Her compassion and determination laid the foundation for what would become one of the country&apos;s most impactful child welfare organizations.
-              </p>
+              <div className="mt-8 text-neutral-600 leading-relaxed max-w-3xl mx-auto text-left space-y-4">
+                <p>
+                  Selam Children&apos;s Village was established by Ms. Tsehay Roschli, a visionary and mother of many. It was founded in 1986. At that time, Mrs. Tsehay was living in Switzerland when severe famine and drought struck Ethiopia, especially in the northern part. Many Ethiopians died, and a large number of children lost their parents.
+                </p>
+                <p>
+                  Mrs. Tsehay, who saw this sad news on a TV channel in Switzerland, felt deeply disturbed and thought that she must do something. She brought clothes and money she had collected from her friends and relatives and distributed them to the victims.
+                </p>
+                <p>
+                  However, she was concerned about the magnitude of the problem, especially the future of children who had lost their parents. She returned to Switzerland and consulted her family—Mr. David Roschli and Mrs. Meria Roschli—as well as her siblings. Her family was very willing to support this good deed and guaranteed her that they would be by her side to achieve her vision. Mrs. Tsehay and her family wasted no time and started the fundraising work.
+                </p>
+                <p>
+                  In 1985, Mrs. Tsehay returned to Ethiopia with some money she had raised. She approached the government and asked how they would assist her if she took in and cared for 20 children. The officials promised her a plot of land, tax-free privileges to import materials, and other assistance. With an official letter stating the government&apos;s support, her family and friends continued to raise money for her.
+                </p>
+                <p>
+                  After securing land on the outskirts of Addis Ababa in Kotebe, she wasted no time. In three months, the house was ready to shelter the children. She went to Bati in Wello, where she had witnessed the misery months prior. She had planned for only 20 children, but she picked 28 children who had lost their parents due to the drought and started the journey of Selam Children&apos;s Village.
+                </p>
+              </div>
             </motion.div>
 
             {/* Timeline */}
