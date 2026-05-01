@@ -1,37 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Filter } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
-import { projects, majorProjects } from "@/data/projects";
+import type { Project } from "@/lib/api";
 
-const allProjects = [...projects, ...majorProjects];
+const API = process.env.NEXT_PUBLIC_ADMIN_API_URL || "https://dashboard.kitchen251.tech/api/v1";
 
 const categories = [
   { value: "all", label: "All Programs" },
-  { value: "cyc", label: "Child & Youth Care" },
-  { value: "community", label: "Community Support" },
-  { value: "project", label: "Projects" },
+  { value: "CYC", label: "Child & Youth Care" },
+  { value: "COMMUNITY", label: "Community Support" },
+  { value: "PROJECT", label: "Projects" },
 ];
 
 const categoryColors: Record<string, string> = {
-  cyc: "bg-blue-100 text-blue-700",
-  community: "bg-emerald-100 text-emerald-700",
-  tvet: "bg-purple-100 text-purple-700",
-  project: "bg-amber-100 text-amber-700",
+  CYC: "bg-blue-100 text-blue-700",
+  COMMUNITY: "bg-emerald-100 text-emerald-700",
+  TVET: "bg-purple-100 text-purple-700",
+  PROJECT: "bg-amber-100 text-amber-700",
 };
 
 const categoryLabels: Record<string, string> = {
-  cyc: "Child & Youth Care",
-  community: "Community Support",
-  tvet: "TVET",
-  project: "Project",
+  CYC: "Child & Youth Care",
+  COMMUNITY: "Community Support",
+  TVET: "TVET",
+  PROJECT: "Project",
 };
 
 export default function AllProjectsPage() {
+  const [allProjects, setAllProjects] = useState<Project[]>([]);
   const [filter, setFilter] = useState("all");
+
+  useEffect(() => {
+    fetch(`${API}/projects`).then(r => r.json()).then(res => setAllProjects(res.data || [])).catch(() => {});
+  }, []);
+
   const filtered = filter === "all" ? allProjects : allProjects.filter((p) => p.category === filter);
 
   return (

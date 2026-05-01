@@ -2,14 +2,12 @@
 
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { use } from "react";
+import { use, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Heart, ArrowRight, BarChart3, Globe, CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ImpactCounter } from "@/components/blocks/SectionHeading";
-import { projects, majorProjects } from "@/data/projects";
-
-const allProjects = [...projects, ...majorProjects];
+import type { Project } from "@/lib/api";
 
 const sdgNames: Record<number, string> = {
   1: "No Poverty", 2: "Zero Hunger", 3: "Good Health", 4: "Quality Education",
@@ -17,17 +15,35 @@ const sdgNames: Record<number, string> = {
   16: "Peace & Justice", 17: "Partnerships",
 };
 
+const API = process.env.NEXT_PUBLIC_ADMIN_API_URL || "https://dashboard.kitchen251.tech/api/v1";
+
 export default function ProjectDetailPage({ params }: { params: Promise<{ project: string }> }) {
   const { project: slug } = use(params);
-  const project = allProjects.find((p) => p.slug === slug);
+  const [project, setProject] = useState<Project | null>(null);
+  const [allProjects, setAllProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    fetch(`${API}/projects`).then(r => r.json()).then(res => {
+      const projects: Project[] = res.data || [];
+      setAllProjects(projects);
+      const found = projects.find((p) => p.slug === slug);
+      setProject(found || null);
+      setLoading(false);
+    }).catch(() => setLoading(false));
+  }, [slug]);
+
+  if (loading) return <div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 border-4 border-brand-orange border-t-transparent rounded-full animate-spin" /></div>;
   if (!project) notFound();
+
+  const bodyParagraphs = project.body.split("\n\n").filter(Boolean);
+  const services = Array.isArray(project.services) ? project.services : [];
 
   return (
     <>
       <PageHero
         title={project.title}
-        subtitle={project.excerpt}
+        subtitle={project.excerpt || ""}
         breadcrumbs={[
           { label: "What We Do", href: "/what-we-do" },
           { label: project.title, href: `/what-we-do/${project.slug}` },
@@ -42,25 +58,18 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ projec
               <motion.div
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               >
-                <p className="text-lg text-neutral-600 leading-relaxed">{project.description}</p>
-                
-                {/* Additional Paragraphs */}
-                {project.additionalParagraphs && project.additionalParagraphs.length > 0 && (
-                  <div className="mt-4 space-y-4">
-                    {project.additionalParagraphs.map((paragraph, idx) => (
-                      <p key={idx} className="text-lg text-neutral-600 leading-relaxed">
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-                )}
+                {bodyParagraphs.map((paragraph, idx) => (
+                  <p key={idx} className="text-lg text-neutral-600 leading-relaxed mt-4 first:mt-0">
+                    {paragraph}
+                  </p>
+                ))}
 
                 {/* Services / Features Grid */}
-                {project.services && project.services.length > 0 && (
+                {services.length > 0 && (
                   <div className="mt-12">
                     <h3 className="text-xl font-bold text-brand-dark tracking-normal mb-6">Services Provided</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {project.services.map((service, idx) => (
+                      {services.map((service, idx) => (
                         <div key={idx} className="p-5 rounded-xl bg-white border border-neutral-100 shadow-sm hover:shadow-md transition-shadow">
                           <div className="flex items-start gap-3">
                             <CheckCircle2 className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" />
@@ -118,7 +127,6 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ projec
                 transition={{ delay: 0.2 }}
                 className="sticky top-28 space-y-6"
               >
-                {/* Donate Card */}
                 <div className="card-base p-6 bg-gradient-to-br from-brand-orange-50 to-white">
                   <h3 className="text-lg font-bold text-brand-dark tracking-normal">Support This Program</h3>
                   <p className="mt-2 text-sm text-neutral-600">Your donation directly supports this program and the lives it transforms.</p>
@@ -127,11 +135,10 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ projec
                   </Link>
                 </div>
 
-                {/* Quick Links */}
                 <div className="card-base p-6">
                   <h3 className="text-lg font-bold text-brand-dark mb-4 tracking-normal">Related Programs</h3>
                   <div className="space-y-2">
-                    {projects.slice(0, 5).filter(p => p.slug !== slug).map((p) => (
+                    {allProjects.slice(0, 5).filter(p => p.slug !== slug).map((p) => (
                       <Link
                         key={p.slug}
                         href={`/what-we-do/${p.slug}`}

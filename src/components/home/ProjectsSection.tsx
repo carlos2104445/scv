@@ -5,23 +5,23 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
-import { projects } from "@/data/projects";
+import type { Project } from "@/lib/api";
 
 const categoryColors: Record<string, string> = {
-  cyc: "bg-blue-100 text-blue-700",
-  community: "bg-emerald-100 text-emerald-700",
-  tvet: "bg-purple-100 text-purple-700",
-  project: "bg-amber-100 text-amber-700",
+  CYC: "bg-blue-100 text-blue-700",
+  COMMUNITY: "bg-emerald-100 text-emerald-700",
+  TVET: "bg-purple-100 text-purple-700",
+  PROJECT: "bg-amber-100 text-amber-700",
 };
 
 const categoryLabels: Record<string, string> = {
-  cyc: "Child & Youth Care",
-  community: "Community Support",
-  tvet: "TVET",
-  project: "Project",
+  CYC: "Child & Youth Care",
+  COMMUNITY: "Community Support",
+  TVET: "TVET",
+  PROJECT: "Project",
 };
 
-export function ProjectsSection() {
+export function ProjectsSection({ projects = [] }: { projects?: Project[] }) {
   return (
     <section className="section-padding bg-neutral-50">
       <div className="container-xl">
@@ -47,7 +47,7 @@ export function ProjectsSection() {
                 {/* Project image */}
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src={project.image}
+                    src={project.coverImage || "/images/projects/placeholder.jpg"}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"

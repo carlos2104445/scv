@@ -5,9 +5,17 @@ import { motion } from "framer-motion";
 import { ArrowRight, GraduationCap, CheckCircle2, BarChart3 } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ImpactCounter } from "@/components/blocks/SectionHeading";
-import { departments } from "@/data/departments";
+import { useState, useEffect } from "react";
+import type { Department } from "@/lib/api";
+
+const API = process.env.NEXT_PUBLIC_ADMIN_API_URL || "https://dashboard.kitchen251.tech/api/v1";
 
 export default function TVETPage() {
+  const [departments, setDepartments] = useState<Department[]>([]);
+
+  useEffect(() => {
+    fetch(`${API}/departments`).then(r => r.json()).then(res => setDepartments(res.data || [])).catch(() => {});
+  }, []);
   return (
     <>
       <PageHero

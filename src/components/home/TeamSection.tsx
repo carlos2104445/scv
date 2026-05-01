@@ -1,13 +1,8 @@
 import { SectionHeading } from "@/components/blocks/SectionHeading";
 import { PersonSlider } from "@/components/blocks/PersonSlider";
-import { prisma } from "@/lib/prisma";
+import type { Person } from "@/lib/api";
 
-export async function TeamSection() {
-  const people = await prisma.person.findMany({
-    where: { status: "PUBLISHED" },
-    orderBy: { order: "asc" },
-  });
-
+export function TeamSection({ people = [] }: { people?: Person[] }) {
   const boardMembers = people.filter((p) => p.category === "BOARD");
   const seniorManagement = people.filter((p) => p.category === "SENIOR");
   const extendedManagement = people.filter((p) => p.category === "EXTENDED");

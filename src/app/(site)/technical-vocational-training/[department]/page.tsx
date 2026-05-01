@@ -1,22 +1,34 @@
 "use client";
 
 import { notFound } from "next/navigation";
-import { use } from "react";
+import { use, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, GraduationCap } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
-import { departments } from "@/data/departments";
+import type { Department } from "@/lib/api";
+
+const API = process.env.NEXT_PUBLIC_ADMIN_API_URL || "https://dashboard.kitchen251.tech/api/v1";
 
 export default function DepartmentPage({ params }: { params: Promise<{ department: string }> }) {
   const { department: slug } = use(params);
-  const dept = departments.find((d) => d.slug === slug);
+  const [dept, setDept] = useState<Department | null>(null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    fetch(`${API}/departments`).then(r => r.json()).then(res => {
+      const found = (res.data as Department[]).find((d) => d.slug === slug);
+      setDept(found || null);
+      setLoading(false);
+    }).catch(() => setLoading(false));
+  }, [slug]);
+
+  if (loading) return <div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 border-4 border-brand-orange border-t-transparent rounded-full animate-spin" /></div>;
   if (!dept) notFound();
 
   return (
     <>
       <PageHero
-        title={dept.title}
+        title={dept.name}
         subtitle={dept.description}
         breadcrumbs={[
           { label: "TVET College", href: "/technical-vocational-training" },
@@ -35,7 +47,7 @@ export default function DepartmentPage({ params }: { params: Promise<{ departmen
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={dept.image}
-                      alt={dept.title}
+                      alt={dept.name}
                       className="object-cover w-full h-full"
                     />
                   </div>
@@ -43,15 +55,17 @@ export default function DepartmentPage({ params }: { params: Promise<{ departmen
 
                 <p className="text-lg text-neutral-600 leading-relaxed mb-6">{dept.description}</p>
 
-                {dept.additionalParagraphs && dept.additionalParagraphs.length > 0 && (
+                {dept.body && dept.body !== dept.description && (
                   <div className="space-y-4 mb-10">
-                    {dept.additionalParagraphs.map((para, idx) => (
-                      <p key={idx} className="text-lg text-neutral-600 leading-relaxed">{para}</p>
+                    {dept.body.split("\n\n").filter(Boolean).map((para, idx) => (
+                      <p key={idx} className="text-lg text-neutral-600 leading-relaxed">
+                        {para}
+                      </p>
                     ))}
                   </div>
                 )}
 
-                {dept.services && dept.services.length > 0 && (
+                {dept.services && Array.isArray(dept.services) && (dept.services as { title: string; description: string }[]).length > 0 && (
                   <div className="mt-12 mb-10">
                     <h3 className="text-xl font-bold text-brand-dark tracking-normal mb-6">Key Training Areas</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

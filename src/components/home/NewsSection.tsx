@@ -4,33 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
-
-const newsArticles = [
-  {
-    slug: "182-youth-graduate-from-beyepp",
-    title: "182 Youth Graduate from BEYEPP",
-    excerpt:
-      "A momentous occasion as 182 young men and women graduate from the Building Ethiopian Youth Employment and Productivity Program, marking another milestone in our commitment to youth empowerment.",
-    date: "2025-03-15",
-    category: "News",
-  },
-  {
-    slug: "fundraising-for-water-well-drilling",
-    title: "Fundraising for Water Well Drilling",
-    excerpt:
-      "Join our campaign to bring clean water to the community. Clean water access will improve health outcomes and quality of life for hundreds of families.",
-    date: "2025-02-20",
-    category: "Campaign",
-  },
-  {
-    slug: "girls-be-ambitious-project-graduation",
-    title: "Girls Be Ambitious Project Graduation Ceremony",
-    excerpt:
-      "Celebrating the achievements of young women who have completed our Girls Be Ambitious skills training program, ready to enter the workforce with confidence.",
-    date: "2025-01-10",
-    category: "Events",
-  },
-];
+import type { NewsArticle } from "@/lib/api";
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-US", {
@@ -40,7 +14,7 @@ function formatDate(dateStr: string) {
   });
 }
 
-export function NewsSection() {
+export function NewsSection({ articles: newsArticles = [] }: { articles?: NewsArticle[] }) {
   return (
     <section className="section-padding bg-white">
       <div className="container-xl">
@@ -74,7 +48,7 @@ export function NewsSection() {
                   <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-sm">
                     <div className="flex items-center gap-1.5 text-xs font-medium text-neutral-600">
                       <Calendar className="w-3.5 h-3.5" />
-                      {formatDate(article.date)}
+                      {formatDate(article.publishDate)}
                     </div>
                   </div>
                   {/* Category */}
