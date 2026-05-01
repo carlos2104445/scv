@@ -37,14 +37,13 @@ export const siteSettings = {
 
 export const navigation = {
   topBar: [
-    { label: "Job Openings", href: "/job-openings" },
     { label: "Donate", href: "/get-involved/donate" },
     { label: "Become a Volunteer", href: "/get-involved/become-a-volunteer" },
     { label: "Contact Us", href: "/get-involved/contact-us" },
   ],
   main: [
     {
-      label: "About",
+      label: "About Us",
       href: "/about",
       children: [
         { label: "About Our Organization", href: "/about" },
@@ -54,12 +53,6 @@ export const navigation = {
           label: "Vision, Mission & Core Values",
           href: "/about/vision-mission-core-values",
         },
-      ],
-    },
-    {
-      label: "Our Leadership",
-      href: "/leadership",
-      children: [
         {
           label: "Executive Board Members",
           href: "/leadership/executive-board-members",
@@ -111,22 +104,12 @@ export const navigation = {
       ],
     },
     {
-      label: "Get Involved",
-      href: "/get-involved",
+      label: "News & Resources",
+      href: "/news-updates",
       children: [
-        { label: "How to Help", href: "/get-involved/how-to-help" },
-        { label: "Donate", href: "/get-involved/donate" },
-        {
-          label: "Become a Volunteer",
-          href: "/get-involved/become-a-volunteer",
-        },
-        { label: "Contact Us", href: "/get-involved/contact-us" },
-      ],
-    },
-    {
-      label: "Resources",
-      href: "/resources",
-      children: [
+        { label: "News & Updates", href: "/news-updates" },
+        { label: "Event Calendar", href: "/event-calendar" },
+        { label: "Gallery", href: "/gallery" },
         { label: "Publications", href: "/resources/publication" },
         {
           label: "Newsletter & Magazine",
@@ -140,8 +123,19 @@ export const navigation = {
         },
       ],
     },
-    { label: "News & Updates", href: "/news-updates" },
-    { label: "Gallery", href: "/gallery" },
-    { label: "Events", href: "/event-calendar" },
+    {
+      label: "Get Involved",
+      href: "/get-involved",
+      children: [
+        { label: "How to Help", href: "/get-involved/how-to-help" },
+        { label: "Donate", href: "/get-involved/donate" },
+        {
+          label: "Become a Volunteer",
+          href: "/get-involved/become-a-volunteer",
+        },
+        { label: "Job Openings", href: "/job-openings" },
+        { label: "Contact Us", href: "/get-involved/contact-us" },
+      ],
+    },
   ],
 };

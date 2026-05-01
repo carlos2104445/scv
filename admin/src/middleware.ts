@@ -1,20 +1,15 @@
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { auth } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
-export function middleware(request: NextRequest) {
-  // Check for auth session cookie
-  const authCookie = request.cookies.get("authjs.session-token") || request.cookies.get("__Secure-authjs.session-token");
-
-  if (!authCookie) {
-    const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("callbackUrl", request.nextUrl.pathname);
+export default auth((req) => {
+  if (!req.auth) {
+    const loginUrl = new URL("/login", req.url);
+    loginUrl.searchParams.set("callbackUrl", req.nextUrl.pathname);
     return NextResponse.redirect(loginUrl);
   }
-
-  return NextResponse.next();
-}
+});
 
 export const config = {
   matcher: [
@@ -23,9 +18,10 @@ export const config = {
      * - /login
      * - /api/auth (NextAuth routes)
      * - /api/v1 (public REST API)
+     * - /api/uploads (Uploaded assets)
      * - /_next (Next.js internals)
      * - /favicon.ico, /images, etc
      */
-    "/((?!login|api/auth|api/v1|_next|favicon.ico|images).*)",
+    "/((?!login|api/auth|api/v1|api/uploads|_next|favicon.ico|images).*)",
   ],
 };

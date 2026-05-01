@@ -15,18 +15,28 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
 function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <div className="min-h-screen">
-      <Sidebar collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} />
-      <Topbar collapsed={collapsed} />
+      <Sidebar 
+        collapsed={collapsed} 
+        onToggleDesktop={() => setCollapsed(!collapsed)} 
+        mobileOpen={mobileOpen}
+        onCloseMobile={() => setMobileOpen(false)}
+      />
+      <Topbar 
+        collapsed={collapsed} 
+        onToggleMobile={() => setMobileOpen(!mobileOpen)}
+      />
       <main
         className={cn(
-          "pt-16 min-h-screen transition-all duration-300",
-          collapsed ? "pl-16" : "pl-64"
+          "pt-16 min-h-screen transition-all duration-300 w-full",
+          collapsed ? "md:pl-16" : "md:pl-64",
+          "pl-0"
         )}
       >
-        <div className="p-6">{children}</div>
+        <div className="p-4 md:p-6">{children}</div>
       </main>
     </div>
   );

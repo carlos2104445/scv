@@ -74,7 +74,7 @@ const navIcons: Record<string, React.ElementType> = {
   "Hero Slides": ImagePlay, Announcement: Megaphone, Media: Image,
 };
 
-function SidebarItem({ item, collapsed }: { item: NavItem; collapsed: boolean }) {
+function SidebarItem({ item, collapsed, onClick }: { item: NavItem; collapsed: boolean; onClick?: () => void }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const isActive = item.href ? pathname === item.href : item.children?.some((c) => pathname.startsWith(c.href));
@@ -83,9 +83,10 @@ function SidebarItem({ item, collapsed }: { item: NavItem; collapsed: boolean })
     return (
       <Link
         href={item.href}
+        onClick={onClick}
         className={cn(
           "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all",
-          isActive ? "bg-sidebar-active text-white" : "text-neutral-400 hover:bg-sidebar-hover hover:text-white"
+          isActive ? "bg-white/10 text-white shadow-sm ring-1 ring-white/5" : "text-zinc-400 hover:bg-white/5 hover:text-white"
         )}
       >
         <item.icon className="w-5 h-5 shrink-0" />
@@ -100,7 +101,7 @@ function SidebarItem({ item, collapsed }: { item: NavItem; collapsed: boolean })
         onClick={() => setOpen(!open)}
         className={cn(
           "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all",
-          isActive ? "bg-sidebar-active text-white" : "text-neutral-400 hover:bg-sidebar-hover hover:text-white"
+          isActive ? "bg-white/10 text-white shadow-sm ring-1 ring-white/5" : "text-zinc-400 hover:bg-white/5 hover:text-white"
         )}
       >
         <item.icon className="w-5 h-5 shrink-0" />
@@ -112,18 +113,19 @@ function SidebarItem({ item, collapsed }: { item: NavItem; collapsed: boolean })
         )}
       </button>
       {open && !collapsed && item.children && (
-        <div className="ml-5 pl-3 border-l border-sidebar-active/50 mt-1 space-y-0.5">
+        <div className="ml-5 pl-3 border-l border-white/10 mt-1.5 space-y-1">
           {item.children.map((child) => {
             const Icon = navIcons[child.label] || FileText;
             return (
               <Link
                 key={child.href}
                 href={child.href}
+                onClick={onClick}
                 className={cn(
                   "flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all",
                   pathname === child.href || pathname.startsWith(child.href + "/")
-                    ? "text-brand-orange bg-sidebar-active/50"
-                    : "text-neutral-500 hover:text-neutral-300 hover:bg-sidebar-hover"
+                    ? "text-brand-orange bg-brand-orange/10 font-semibold"
+                    : "text-zinc-500 hover:text-zinc-300 hover:bg-white/5"
                 )}
               >
                 <Icon className="w-4 h-4" />
@@ -137,63 +139,95 @@ function SidebarItem({ item, collapsed }: { item: NavItem; collapsed: boolean })
   );
 }
 
-export function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle: () => void }) {
+export function Sidebar({ 
+  collapsed, 
+  onToggleDesktop, 
+  mobileOpen, 
+  onCloseMobile 
+}: { 
+  collapsed: boolean; 
+  onToggleDesktop: () => void;
+  mobileOpen: boolean;
+  onCloseMobile: () => void;
+}) {
   return (
-    <aside
-      className={cn(
-        "fixed top-0 left-0 h-screen bg-sidebar flex flex-col border-r border-sidebar-hover z-40 transition-all duration-300",
-        collapsed ? "w-16" : "w-64"
+    <>
+      {/* Mobile Overlay */}
+      {mobileOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 md:hidden transition-opacity" 
+          onClick={onCloseMobile}
+        />
       )}
-    >
-      {/* Logo */}
-      <div className="flex items-center justify-between px-4 h-16 border-b border-sidebar-hover">
-        {!collapsed && (
-          <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-orange to-brand-orange-dark flex items-center justify-center">
-              <span className="text-white font-bold text-sm">S</span>
-            </div>
-            <div>
-              <p className="text-white font-bold text-sm leading-tight">SCV Admin</p>
-              <p className="text-neutral-500 text-[10px]">CMS Dashboard</p>
-            </div>
-          </Link>
-        )}
-        <button onClick={onToggle} className="p-1.5 rounded-lg text-neutral-400 hover:bg-sidebar-hover hover:text-white transition-all">
-          {collapsed ? <Menu className="w-5 h-5" /> : <X className="w-4 h-4" />}
-        </button>
-      </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
-        {navItems.map((item) => (
-          <SidebarItem key={item.label} item={item} collapsed={collapsed} />
-        ))}
-      </nav>
+      <aside
+        className={cn(
+          "fixed top-0 left-0 h-screen bg-sidebar flex flex-col border-r border-sidebar-hover z-50 transition-transform duration-300 shadow-xl md:shadow-none",
+          collapsed ? "md:w-16" : "md:w-64",
+          "w-64",
+          mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+        )}
+      >
+        {/* Logo */}
+        <div className="flex items-center justify-between px-4 h-16 border-b border-white/5">
+          {!collapsed && (
+            <Link href="/" className="flex items-center gap-2.5" onClick={onCloseMobile}>
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-orange to-brand-orange-dark flex items-center justify-center">
+                <span className="text-white font-bold text-sm">S</span>
+              </div>
+              <div>
+                <p className="text-white font-bold text-sm leading-tight">SCV Admin</p>
+                <p className="text-neutral-500 text-[10px]">CMS Dashboard</p>
+              </div>
+            </Link>
+          )}
+          <button onClick={onToggleDesktop} className="hidden md:block p-1.5 rounded-lg text-zinc-400 hover:bg-white/5 hover:text-white transition-all">
+            {collapsed ? <Menu className="w-5 h-5" /> : <X className="w-4 h-4" />}
+          </button>
+          <button onClick={onCloseMobile} className="md:hidden p-1.5 rounded-lg text-zinc-400 hover:bg-white/5 hover:text-white transition-all">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Navigation */}
+        <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
+          {navItems.map((item) => (
+            <SidebarItem key={item.label} item={item} collapsed={collapsed} onClick={onCloseMobile} />
+          ))}
+        </nav>
 
       {/* User */}
-      <div className="px-3 py-3 border-t border-sidebar-hover">
+      <div className="px-3 py-3 border-t border-white/5">
         <button
           onClick={() => signOut({ callbackUrl: "/login" })}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-neutral-400 hover:bg-sidebar-hover hover:text-white transition-all"
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-zinc-400 hover:bg-white/5 hover:text-white transition-all"
         >
           <LogOut className="w-5 h-5 shrink-0" />
           {!collapsed && <span>Sign Out</span>}
         </button>
       </div>
     </aside>
+    </>
   );
 }
 
-export function Topbar({ collapsed }: { collapsed: boolean }) {
+export function Topbar({ collapsed, onToggleMobile }: { collapsed: boolean; onToggleMobile: () => void }) {
   const { data: session } = useSession();
   return (
     <header
       className={cn(
-        "fixed top-0 right-0 h-16 bg-white/80 backdrop-blur-xl border-b border-border flex items-center justify-between px-6 z-30 transition-all",
-        collapsed ? "left-16" : "left-64"
+        "fixed top-0 right-0 h-16 bg-white/80 backdrop-blur-xl border-b border-border flex items-center justify-between px-4 md:px-6 z-30 transition-all shadow-sm",
+        collapsed ? "md:left-16" : "md:left-64",
+        "left-0"
       )}
     >
       <div className="flex items-center gap-3">
+        <button 
+          onClick={onToggleMobile}
+          className="md:hidden p-2 rounded-xl text-neutral-500 hover:bg-surface-muted transition-all"
+        >
+          <Menu className="w-5 h-5" />
+        </button>
         <button className="flex items-center gap-2 px-3 py-2 rounded-xl bg-surface-muted text-neutral-500 text-sm hover:bg-neutral-200 transition-all">
           <Search className="w-4 h-4" />
           <span className="hidden sm:inline">Search...</span>

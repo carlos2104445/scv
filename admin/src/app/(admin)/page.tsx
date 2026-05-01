@@ -60,15 +60,18 @@ export default async function DashboardPage() {
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {kpis.map((kpi) => (
-          <Link key={kpi.label} href={kpi.href} className="kpi-card hover:shadow-md transition-shadow group">
-            <div className="flex items-center justify-between">
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${kpi.color}`}>
+          <Link key={kpi.label} href={kpi.href} className="kpi-card group relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none transition-transform group-hover:scale-110 group-hover:-rotate-12 duration-500">
+              <kpi.icon className="w-24 h-24" />
+            </div>
+            <div className="flex items-center justify-between relative z-10">
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-sm border border-black/5 ${kpi.color}`}>
                 <kpi.icon className="w-5 h-5" />
               </div>
-              <ArrowRight className="w-4 h-4 text-neutral-300 group-hover:text-brand-orange group-hover:translate-x-1 transition-all" />
+              <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-brand-orange group-hover:translate-x-1 transition-all" />
             </div>
-            <p className="text-2xl font-bold text-brand-dark mt-3">{kpi.value}</p>
-            <p className="text-xs text-neutral-500 font-medium">{kpi.label}</p>
+            <p className="text-3xl font-bold text-brand-dark mt-4 relative z-10">{kpi.value}</p>
+            <p className="text-xs text-slate-500 font-medium relative z-10">{kpi.label}</p>
           </Link>
         ))}
       </div>
@@ -82,18 +85,18 @@ export default async function DashboardPage() {
           </div>
           <div className="divide-y divide-border">
             {activity.length === 0 ? (
-              <div className="px-5 py-8 text-center text-neutral-400 text-sm">No recent activity</div>
+              <div className="px-5 py-8 text-center text-slate-400 text-sm">No recent activity</div>
             ) : (
               activity.map((item, i) => (
-                <Link key={i} href={item.href} className="flex items-center gap-3 px-5 py-3 hover:bg-surface-muted transition-colors">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${item.type === "volunteer" ? "bg-blue-50 text-blue-600" : "bg-emerald-50 text-emerald-600"}`}>
+                <Link key={i} href={item.href} className="flex items-center gap-3 px-5 py-3 hover:bg-surface-muted transition-colors group">
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 border border-black/5 ${item.type === "volunteer" ? "bg-blue-50 text-blue-600" : "bg-emerald-50 text-emerald-600"}`}>
                     {item.type === "volunteer" ? <UserCheck className="w-4 h-4" /> : <Mail className="w-4 h-4" />}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-brand-dark truncate">{item.label}</p>
-                    <p className="text-xs text-neutral-500 truncate">{item.sub}</p>
+                    <p className="text-sm font-medium text-brand-dark truncate group-hover:text-brand-orange transition-colors">{item.label}</p>
+                    <p className="text-xs text-slate-500 truncate">{item.sub}</p>
                   </div>
-                  <span className="text-[10px] text-neutral-400 shrink-0">{formatDateTime(item.date)}</span>
+                  <span className="text-[10px] text-slate-400 shrink-0">{formatDateTime(item.date)}</span>
                 </Link>
               ))
             )}
@@ -109,12 +112,12 @@ export default async function DashboardPage() {
                 <Link
                   key={a.label}
                   href={a.href}
-                  className="flex flex-col items-center gap-2 p-3 rounded-xl bg-surface-muted hover:bg-brand-orange-50 hover:text-brand-orange transition-all text-center group"
+                  className="flex flex-col items-center gap-2 p-3 rounded-xl bg-surface-muted hover:bg-white hover:shadow-sm hover:ring-1 hover:ring-border transition-all text-center group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-white border border-border flex items-center justify-center group-hover:border-brand-orange/30 transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-border flex items-center justify-center shadow-sm group-hover:border-brand-orange/30 group-hover:text-brand-orange transition-colors">
                     <a.icon className="w-5 h-5" />
                   </div>
-                  <span className="text-xs font-medium">{a.label}</span>
+                  <span className="text-xs font-medium text-slate-600 group-hover:text-brand-dark transition-colors">{a.label}</span>
                 </Link>
               ))}
             </div>

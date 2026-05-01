@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { X } from "lucide-react";
+import Image from "next/image";
 
 /* ─── Types ─── */
 
@@ -225,17 +226,26 @@ function ImageModal({
   className: string;
 }) {
   const img = (
-    <picture>
+    <>
       {/* Desktop source: ≥768px */}
-      <source media="(min-width: 768px)" srcSet={config.desktopImageUrl} />
+      <Image
+        src={config.desktopImageUrl}
+        alt={config.alt}
+        width={1200}
+        height={1200}
+        className="hidden md:block w-full h-auto max-h-[85vh] object-contain rounded-2xl shadow-2xl"
+        priority
+      />
       {/* Mobile fallback */}
-      <img
+      <Image
         src={config.mobileImageUrl}
         alt={config.alt}
-        className="w-full h-auto max-h-[85vh] object-contain rounded-2xl shadow-2xl"
-        loading="eager"
+        width={800}
+        height={1200}
+        className="block md:hidden w-full h-auto max-h-[85vh] object-contain rounded-2xl shadow-2xl"
+        priority
       />
-    </picture>
+    </>
   );
 
   return (

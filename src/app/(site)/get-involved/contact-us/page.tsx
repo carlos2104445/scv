@@ -8,6 +8,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PageHero } from "@/components/blocks/PageHero";
 import { siteSettings } from "@/data/site-settings";
+import { submitContact } from "@/actions/contact";
 
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -19,8 +20,18 @@ type FormData = z.infer<typeof schema>;
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({ resolver: zodResolver(schema) });
-  const onSubmit = async (data: FormData) => { console.log("Contact:", data); await new Promise(r => setTimeout(r, 1000)); setSubmitted(true); };
+  
+  const onSubmit = async (data: FormData) => {
+    setSubmitError(null);
+    const result = await submitContact(data);
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setSubmitError(result.error || "Something went wrong.");
+    }
+  };
 
   return (
     <>
@@ -41,6 +52,7 @@ export default function ContactPage() {
                   <div><label className="block text-sm font-medium mb-1.5">Email *</label><input type="email" {...register("email")} className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none text-sm" />{errors.email && <p className="mt-1 text-xs text-red-500"><AlertCircle className="w-3 h-3 inline mr-1" />{errors.email.message}</p>}</div>
                   <div><label className="block text-sm font-medium mb-1.5">Subject *</label><input {...register("subject")} className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none text-sm" />{errors.subject && <p className="mt-1 text-xs text-red-500"><AlertCircle className="w-3 h-3 inline mr-1" />{errors.subject.message}</p>}</div>
                   <div><label className="block text-sm font-medium mb-1.5">Message *</label><textarea rows={5} {...register("message")} className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none text-sm resize-none" />{errors.message && <p className="mt-1 text-xs text-red-500"><AlertCircle className="w-3 h-3 inline mr-1" />{errors.message.message}</p>}</div>
+                  {submitError && <p className="text-sm text-red-500 text-center font-medium">{submitError}</p>}
                   <button type="submit" disabled={isSubmitting} className="btn-primary w-full"><Send className="w-4 h-4" />{isSubmitting ? "Sending..." : "Send Message"}</button>
                 </motion.form>
               )}

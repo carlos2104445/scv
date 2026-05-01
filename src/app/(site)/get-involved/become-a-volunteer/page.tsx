@@ -8,6 +8,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PageHero } from "@/components/blocks/PageHero";
 
+import { submitVolunteer } from "@/actions/volunteer";
+
 const schema = z.object({
   firstName: z.string().min(2, "First name is required"),
   lastName: z.string().min(2, "Last name is required"),
@@ -24,15 +26,19 @@ type FormData = z.infer<typeof schema>;
 
 export default function VolunteerPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
   const onSubmit = async (data: FormData) => {
-    // TODO: POST to /api/forms/volunteer when API is ready
-    console.log("Volunteer form:", data);
-    await new Promise((r) => setTimeout(r, 1000));
-    setSubmitted(true);
+    setSubmitError(null);
+    const result = await submitVolunteer(data);
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setSubmitError(result.error || "Something went wrong.");
+    }
   };
 
   if (submitted) {
@@ -129,6 +135,8 @@ export default function VolunteerPage() {
                 <label className="block text-sm font-medium text-brand-dark mb-1.5">Message / Skills</label>
                 <textarea rows={4} {...register("message")} className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 focus:border-brand-orange focus:ring-2 focus:ring-brand-orange/20 outline-none transition-all text-sm resize-none" placeholder="Tell us about your skills and how you'd like to help..." />
               </div>
+
+              {submitError && <p className="text-sm text-red-500 text-center font-medium">{submitError}</p>}
 
               <button type="submit" disabled={isSubmitting} className="btn-primary w-full">
                 <Send className="w-4 h-4" />
