@@ -4,6 +4,8 @@ export interface Project {
   category: "cyc" | "community" | "tvet" | "project";
   excerpt: string;
   description: string;
+  additionalParagraphs?: string[];
+  services?: { title: string; description: string }[];
   image: string;
   kpis: { label: string; value: number; suffix?: string }[];
   sdgs: number[];
@@ -139,10 +141,21 @@ export const projects: Project[] = [
     excerpt:
       "Providing essential healthcare services to children, staff, and community members.",
     description:
-      "The Selam Clinic provides comprehensive healthcare services including preventive care, treatment, health education, and mental health support to all children in our care, our staff, and the surrounding community.",
+      "Established in 1988, Selam Clinic was founded with a vital mission: to provide high-quality healthcare to the children and youth of Selam Children's Village (SCV) and the surrounding community. For over three decades, we have remained committed to accessibility, offering services free of charge or through a minimal cost-sharing model to ensure that quality care is never out of reach.",
+    additionalParagraphs: [
+      "Our facility has evolved into a multi-disciplinary health hub, offering a wide range of essential services designed to meet the diverse needs of our patients.",
+      "Quality and safety are the pillars of our operations. We are honored to have been awarded the Green Working License for 2015 E.C. This prestigious recognition was granted by the regulatory authorities in acknowledgment of Selam Clinic meeting and exceeding the standard regulatory procedures and healthcare benchmarks. This certification underscores our commitment to maintaining a safe, efficient, and professional medical environment for every patient we serve."
+    ],
+    services: [
+      { title: "Preventative Care", description: "Focused health education and TB/HIV prevention and treatment programs." },
+      { title: "Maternal Health", description: "Comprehensive Focused Antenatal Care (FANC) to support healthy pregnancies and deliveries." },
+      { title: "Diagnostic Excellence", description: "Modern laboratory services, Digital X-ray, and Ultrasound examinations for accurate and timely diagnosis." },
+      { title: "General Medicine", description: "A dedicated Outpatient Department (OPD) for daily health concerns." },
+      { title: "Dental Care", description: "We are proud to announce that the clinic has recently been licensed to provide professional dental services to our children, youth, and community members." }
+    ],
     image: "/images/projects/clinic.jpg",
     kpis: [
-      { label: "Patients Annually", value: 3200 },
+      { label: "Patients Reached", value: 16688 },
       { label: "Healthcare Workers", value: 8 },
     ],
     sdgs: [3, 10],

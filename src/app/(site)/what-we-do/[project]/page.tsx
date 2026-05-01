@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { use } from "react";
 import { motion } from "framer-motion";
-import { Heart, ArrowRight, BarChart3, Globe } from "lucide-react";
+import { Heart, ArrowRight, BarChart3, Globe, CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ImpactCounter } from "@/components/blocks/SectionHeading";
 import { projects, majorProjects } from "@/data/projects";
@@ -43,6 +43,37 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ projec
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               >
                 <p className="text-lg text-neutral-600 leading-relaxed">{project.description}</p>
+                
+                {/* Additional Paragraphs */}
+                {project.additionalParagraphs && project.additionalParagraphs.length > 0 && (
+                  <div className="mt-4 space-y-4">
+                    {project.additionalParagraphs.map((paragraph, idx) => (
+                      <p key={idx} className="text-lg text-neutral-600 leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {/* Services / Features Grid */}
+                {project.services && project.services.length > 0 && (
+                  <div className="mt-12">
+                    <h3 className="text-xl font-bold text-brand-dark tracking-normal mb-6">Services Provided</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {project.services.map((service, idx) => (
+                        <div key={idx} className="p-5 rounded-xl bg-white border border-neutral-100 shadow-sm hover:shadow-md transition-shadow">
+                          <div className="flex items-start gap-3">
+                            <CheckCircle2 className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" />
+                            <div>
+                              <h4 className="font-bold text-brand-dark">{service.title}</h4>
+                              <p className="text-sm text-neutral-600 mt-1">{service.description}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* KPIs */}
                 {project.kpis.length > 0 && (
