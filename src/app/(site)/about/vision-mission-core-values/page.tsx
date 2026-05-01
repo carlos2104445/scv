@@ -5,7 +5,7 @@ import { Eye, Target, Gem, CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 
 const coreValues = [
-  "Integrity", "Compassion", "Excellence", "Teamwork", "Accountability", "Innovation",
+  "Accountability", "Compassionate", "Professionalism", "Responsiveness", "Stewardship", "Team Spirit", "Transparency"
 ];
 
 export default function VisionMissionPage() {
@@ -31,7 +31,7 @@ export default function VisionMissionPage() {
               </div>
               <h2 className="text-2xl font-bold text-brand-dark">Our Vision</h2>
               <p className="mt-4 text-neutral-600 leading-relaxed">
-                To see a society where every child and youth is cared for, educated, and empowered to become a self-reliant and productive citizen contributing positively to their community and nation.
+                To see the most vulnerable children and youth of Ethiopia received care and education to realize their full potential.
               </p>
             </motion.div>
 
@@ -44,7 +44,7 @@ export default function VisionMissionPage() {
               </div>
               <h2 className="text-2xl font-bold text-brand-dark">Our Mission</h2>
               <p className="mt-4 text-neutral-600 leading-relaxed">
-                To provide comprehensive and holistic care, education, and vocational training to orphaned, abandoned, and vulnerable children and youth, empowering them to become productive members of society and agents of positive change.
+                SCV is committed to promote child care and positive youth development through provision of holistic services, and enabling community to care for the most vulnerable children and youth of Ethiopia.
               </p>
             </motion.div>
           </div>
