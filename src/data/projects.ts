@@ -61,11 +61,23 @@ export const projects: Project[] = [
     excerpt:
       "Empowering youth through skills training, mentorship, and support to become self-reliant members of society.",
     description:
-      "Our Youth Support Program helps young adults who have grown up in our care transition into independent, self-sufficient members of society through vocational training, mentorship, and startup support.",
+      "The Youth Support Department is a cornerstone of the Children, Youth & Community Support Project. Our mission is to bridge the gap between childhood and adulthood, equipping young people with the skills, confidence, and resources they need to live independently and thrive within their communities.",
+    additionalParagraphs: [
+      "Transitioning to independence is a gradual process. Once children reach the age of 18 and demonstrate the necessary maturity and readiness they transition into our Semi-Independent Living (SIL) program. This phase functions as a 'living laboratory' where youth reside within the community while receiving a structured safety net.",
+      "Achieving Full Integration: The final milestone of our program is professional self-sufficiency. Following graduation, we provide a six-month job search window with intensive guidance. Full integration is achieved once a young person secures a stable job, becomes financially self-reliant, and successfully manages their own life endeavors."
+    ],
+    services: [
+      { title: "Financial Assistance", description: "Monthly allowances to manage housing, food, and daily essentials." },
+      { title: "Social Work Support", description: "Regular follow-ups, orientation, and mentorship from dedicated social workers." },
+      { title: "Holistic Care", description: "Continued psychosocial and educational support to navigate the complexities of adult life." },
+      { title: "Technical Skill Training", description: "Hands-on vocational paths for immediate career entry." },
+      { title: "Higher Education", description: "Support for university studies based on academic merit and personal interest." }
+    ],
     image: "/images/projects/youth-support.jpg",
     kpis: [
-      { label: "Youth Supported", value: 180 },
-      { label: "Successfully Employed", value: 142 },
+      { label: "Number of Youth", value: 93 },
+      { label: "Male", value: 59 },
+      { label: "Female", value: 34 },
     ],
     sdgs: [1, 4, 8, 10],
   },
