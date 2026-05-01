@@ -1,5 +1,5 @@
 import { SectionHeading } from "@/components/blocks/SectionHeading";
-import { TeamGroup } from "./TeamCards";
+import { PersonSlider } from "@/components/blocks/PersonSlider";
 import { prisma } from "@/lib/prisma";
 
 export async function TeamSection() {
@@ -21,13 +21,31 @@ export async function TeamSection() {
           subtitle="Dedicated leaders committed to our mission of transforming lives and nurturing hope."
         />
 
-        <div className="mt-14">
-          <TeamGroup title="Executive Board Members" people={boardMembers} />
-          <TeamGroup title="Senior Management Team" people={seniorManagement} />
-          <TeamGroup
-            title="Extended Management Team"
-            people={extendedManagement}
-          />
+        <div className="mt-14 space-y-16">
+          {boardMembers.length > 0 && (
+            <div>
+              <h3 className="text-2xl font-bold text-brand-dark mb-6 text-center tracking-tight">
+                Executive Board Members
+              </h3>
+              <PersonSlider people={boardMembers} />
+            </div>
+          )}
+          {seniorManagement.length > 0 && (
+            <div>
+              <h3 className="text-2xl font-bold text-brand-dark mb-6 text-center tracking-tight">
+                Senior Management Team
+              </h3>
+              <PersonSlider people={seniorManagement} />
+            </div>
+          )}
+          {extendedManagement.length > 0 && (
+            <div>
+              <h3 className="text-2xl font-bold text-brand-dark mb-6 text-center tracking-tight">
+                Extended Management Team
+              </h3>
+              <PersonSlider people={extendedManagement} />
+            </div>
+          )}
         </div>
       </div>
     </section>
