@@ -13,6 +13,7 @@ import {
   getHeroSlides, getImpactStats, getProjects, getNews, getEvents,
   getTestimonials, getPartners, getPeople, getSettings,
 } from "@/lib/api";
+import { ScrollDepthWrapper } from "@/components/global/ScrollDepthWrapper";
 
 export const dynamic = "force-dynamic";
 
@@ -34,16 +35,16 @@ export default async function HomePage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="bg-neutral-50 overflow-hidden">
         <HeroSection slides={slides} />
-        <MissionVisionSection settings={settings} />
-        <ProjectsSection projects={projects} />
-        <ImpactSection stats={stats} />
-        <NewsSection articles={newsResult.data} />
-        <EventsSection events={events} />
-        <TeamSection people={people} />
-        <TestimonialsSection testimonials={testimonials} />
-        <PartnersSection partners={partners} />
+        <ScrollDepthWrapper><MissionVisionSection settings={settings} /></ScrollDepthWrapper>
+        <ScrollDepthWrapper><ProjectsSection projects={projects} /></ScrollDepthWrapper>
+        <ScrollDepthWrapper><ImpactSection stats={stats} /></ScrollDepthWrapper>
+        <ScrollDepthWrapper><NewsSection articles={newsResult.data} /></ScrollDepthWrapper>
+        <ScrollDepthWrapper><EventsSection events={events} /></ScrollDepthWrapper>
+        <ScrollDepthWrapper><TeamSection people={people} /></ScrollDepthWrapper>
+        <ScrollDepthWrapper><TestimonialsSection testimonials={testimonials} /></ScrollDepthWrapper>
+        <ScrollDepthWrapper><PartnersSection partners={partners} /></ScrollDepthWrapper>
       </main>
       <Footer />
     </>
