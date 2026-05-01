@@ -44,13 +44,22 @@ export const projects: Project[] = [
     title: "Day Care Center",
     category: "cyc",
     excerpt:
-      "Quality early childhood development and day care services for children of working families in the community.",
+      "Quality early childhood development and day care services for children of economically vulnerable working mothers.",
     description:
-      "Our Day Care Center provides quality early childhood education and care for children aged 3-6, supporting working parents while ensuring children receive proper nutrition, education, and socialization.",
+      "SCV has established a day care center with the aim of providing service for children (aged 2-4 years old) coming from economically poor women-headed families. The mothers of these children are very poor women who are fully engaged in the informal economy including petty trade, daily labor, and house maid etc to get income and run their daily livelihoods.",
+    additionalParagraphs: [
+      "The day care center helps mothers by keeping their kids the whole day (from 8:00 am-5:00pm) giving proper care within Selam Day Care facilities, so that the women could freely engage in their daily laborious jobs. Children at the day care get proper care while their parents are away to generate income. The center provides three meals per day (from Monday to Saturday) and the necessary care to the children until parents return from their daily work and take them back home."
+    ],
+    services: [
+      { title: "Full-Day Supervision", description: "Safe and proper care from 8:00 AM to 5:00 PM, allowing mothers to work freely." },
+      { title: "Nutritional Support", description: "Three nutritious meals provided per day from Monday to Saturday." },
+      { title: "Early Childhood Care", description: "Dedicated support for children aged 2-4 from economically vulnerable families." }
+    ],
     image: "/images/projects/daycare.jpg",
     kpis: [
-      { label: "Children Enrolled", value: 120 },
-      { label: "Qualified Staff", value: 15 },
+      { label: "Children Enrolled", value: 242 },
+      { label: "Male", value: 149 },
+      { label: "Female", value: 93 },
     ],
     sdgs: [1, 4, 5, 10],
   },
@@ -88,11 +97,20 @@ export const projects: Project[] = [
     excerpt:
       "Ensuring children receive nutritious meals to support their health and academic performance.",
     description:
-      "The School Feeding Program provides nutritious daily meals to children within our village and surrounding community schools, addressing hunger and improving educational outcomes.",
+      "There are more than 3000 students and trainees enrolled in Selam Educational institutions (KG to Technical and Vocational College). The lunch service is provided for students who cannot afford to have one meal per day due to the economic condition of their families.",
+    additionalParagraphs: [
+      "The aim of this support is to minimize irregular school attendance and malnutrition, which ultimately results in poor academic performance. The service is not only limited to Selam Schools and the TVET College but also extends to other nearby government-owned schools."
+    ],
+    services: [
+      { title: "Daily Lunch Service", description: "Providing nutritious daily meals to students facing severe economic hardship." },
+      { title: "Academic Performance Support", description: "Reducing malnutrition to improve school attendance and cognitive development." },
+      { title: "Community Reach", description: "Extending feeding programs to surrounding government-owned schools." }
+    ],
     image: "/images/projects/school-feeding.jpg",
     kpis: [
-      { label: "Meals Served Daily", value: 450 },
-      { label: "Children Fed", value: 320 },
+      { label: "Total Children", value: 526 },
+      { label: "Male", value: 260 },
+      { label: "Female", value: 266 },
     ],
     sdgs: [1, 2, 3, 4],
   },
@@ -101,28 +119,45 @@ export const projects: Project[] = [
     title: "Educational Support",
     category: "community",
     excerpt:
-      "Providing scholarships, tutoring, and educational materials to help children succeed academically.",
+      "Providing scholarships, materials, and tutoring to protect children from dropping out of school.",
     description:
-      "Our Educational Support program provides comprehensive academic assistance including school supplies, tutoring, library access, and scholarships to ensure every child in our care achieves their full academic potential.",
-    image: "/images/projects/education.jpg",
-    kpis: [
-      { label: "Students Supported", value: 380 },
-      { label: "Scholarships Awarded", value: 45 },
+      "The Educational Support program is designed to protect children from dropping out of school. It helps minimize absenteeism and reduces the economic burden on disadvantaged families.",
+    additionalParagraphs: [
+      "This program contributes directly to the improvement of children's academic performance by addressing both their material and academic needs. By ensuring they have the right tools, we give every child a fair chance at a bright future."
     ],
-    sdgs: [4, 5, 10],
+    services: [
+      { title: "Scholarships & Allowances", description: "Providing financial support and monthly allowances to cover basic educational needs." },
+      { title: "School Materials", description: "Provision of essential stationery, backpacks, and required school uniforms." },
+      { title: "Tutorial Support", description: "After-school tutoring and academic guidance to improve performance." }
+    ],
+    image: "/images/projects/education.png",
+    kpis: [
+      { label: "Students Supported", value: 202 },
+      { label: "Male", value: 114 },
+      { label: "Female", value: 88 },
+    ],
+    sdgs: [1, 4, 8, 10],
   },
   {
     slug: "destitute-elderly-women-support",
     title: "Elderly Women Support",
     category: "community",
     excerpt:
-      "Caring for destitute elderly women by providing shelter, food, and healthcare services.",
+      "Providing care, monthly allowances, and work therapy for destitute elderly women.",
     description:
-      "This program extends our mission of care to destitute elderly women in the community, providing them with shelter, regular meals, healthcare, and a supportive community environment.",
+      "The Elderly Women Support program was designed in 2010 to provide vital services to elderly women who live as widows, are chronically ill, or are HIV positive.",
+    additionalParagraphs: [
+      "Since these vulnerable elderly women are unable to save earnings for themselves and often lack family support, they are provided with a monthly cash allowance to meet their basic needs.",
+      "Additionally, handicraft materials are provided so they can engage in the production of handmade products, which serves as a valuable and engaging work therapy for them."
+    ],
+    services: [
+      { title: "Monthly Allowance", description: "Providing direct cash assistance to help elderly women cover their daily living expenses." },
+      { title: "Work Therapy", description: "Supplying handicraft materials to encourage therapeutic engagement and skill use." },
+      { title: "Holistic Care", description: "Offering a supportive community network for widows and those living with chronic illnesses." }
+    ],
     image: "/images/projects/elderly-support.jpg",
     kpis: [
-      { label: "Women Supported", value: 60 },
-      { label: "Years Running", value: 15 },
+      { label: "Total Women Supported", value: 10 },
     ],
     sdgs: [1, 2, 3, 5, 10],
   },
@@ -131,13 +166,20 @@ export const projects: Project[] = [
     title: "Hygiene Kit for Girls",
     category: "community",
     excerpt:
-      "Supporting girls' education and dignity by providing essential hygiene kits and health education.",
+      "Supporting girls' education and dignity by providing essential hygiene kits.",
     description:
-      "Our Hygiene Kit program addresses a critical barrier to girls' education by providing sanitary supplies and health education, ensuring girls can attend school regularly with dignity.",
+      "A hygiene kit (sanitary pads, soaps and hair pomade) scheme is organized to create a chance for destitute girls to attend classes with full concentration and gain self-confidence, relieving anxiety regarding basic necessities.",
+    additionalParagraphs: [
+      "This support has a huge impact in minimizing class absenteeism for girls during their menstruation period. The service is not limited only to Selam Schools and the TVET College, but also extends to other nearby government-owned schools."
+    ],
+    services: [
+      { title: "Essential Hygiene Kits", description: "Providing sanitary pads, soaps, and hair pomade to destitute girls." },
+      { title: "Reducing Absenteeism", description: "Ensuring girls do not miss school due to lack of basic menstrual hygiene products." },
+      { title: "Community Outreach", description: "Extending the support beyond Selam to surrounding government schools." }
+    ],
     image: "/images/projects/hygiene-kit.jpg",
     kpis: [
-      { label: "Girls Reached", value: 500 },
-      { label: "Kits Distributed", value: 2400 },
+      { label: "Total Girls Supported", value: 300 },
     ],
     sdgs: [3, 4, 5, 6],
   },
@@ -146,13 +188,20 @@ export const projects: Project[] = [
     title: "Women Economic Empowerment",
     category: "community",
     excerpt:
-      "Empowering women through skills training, microfinance, and entrepreneurship support.",
+      "Empowering disadvantaged women through basic business skills and startup funding.",
     description:
-      "This program empowers women in the surrounding community through vocational skills training, access to microfinance, business mentorship, and cooperative formation to achieve financial independence.",
+      "The Women Economic Empowerment program started in 2016. Disadvantaged women are selected and receive basic business skills to help them engage in income-generating businesses and enable them to be self-supportive families.",
+    additionalParagraphs: [
+      "Besides training on business skills, women are given matching funds to launch start-ups and engage in small businesses, ensuring long-term financial independence and community growth."
+    ],
+    services: [
+      { title: "Business Skills Training", description: "Comprehensive training to develop essential entrepreneurial and business management skills." },
+      { title: "Start-up Funding", description: "Providing matching funds to help women successfully launch and sustain their small businesses." },
+      { title: "Self-Reliance Support", description: "Empowering women to become financially independent and support their families." }
+    ],
     image: "/images/projects/women-empowerment.jpg",
     kpis: [
-      { label: "Women Trained", value: 200 },
-      { label: "Businesses Started", value: 85 },
+      { label: "Women Supported", value: 30 },
     ],
     sdgs: [1, 5, 8, 10],
   },
