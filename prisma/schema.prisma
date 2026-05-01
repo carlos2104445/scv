@@ -90,6 +90,7 @@ model Project {
   excerpt     String?         @db.Text
   description String?         @db.Text
   body        String          @db.Text
+  services    Json?
   sdgs        Int[]
   coverImage  String?
   donateUrl   String?
@@ -120,6 +121,8 @@ model Department {
   shortTitle  String
   description String        @db.Text
   body        String?       @db.Text
+  services    Json?
+  image       String?
   highlights  String[]
   order       Int           @default(0)
   status      ContentStatus @default(DRAFT)
@@ -390,16 +393,20 @@ model SiteSetting {
 }
 
 model HeroSlide {
-  id       String  @id @default(cuid())
-  image    String
-  title    String?
-  subtitle String?
-  ctaLabel String?
-  ctaUrl   String?
-  order    Int     @default(0)
-  isActive Boolean @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String  @id @default(cuid())
+  image       String
+  title       String?
+  subtitle    String?
+  description String? @db.Text
+  ctaLabel    String?
+  ctaUrl      String?
+  ctaSecLabel String?
+  ctaSecUrl   String?
+  gradient    String?
+  order       Int     @default(0)
+  isActive    Boolean @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Announcement {
@@ -449,4 +456,30 @@ model AuditLog {
   recordId   String?
   details    String?  @db.Text
   createdAt  DateTime @default(now())
+}
+
+// ─── Homepage ───────────────────────────────────────────────────────────────
+
+model ImpactStat {
+  id        String   @id @default(cuid())
+  label     String
+  value     Int
+  suffix    String?
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ─── History ────────────────────────────────────────────────────────────────
+
+model TimelineEntry {
+  id        String   @id @default(cuid())
+  year      String
+  title     String
+  body      String   @db.Text
+  image     String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
