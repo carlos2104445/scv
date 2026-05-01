@@ -9,7 +9,7 @@ import {
   LayoutDashboard, FileText, Newspaper, FolderKanban, GraduationCap,
   Users, CalendarDays, Briefcase, Image, BookOpen, MessageSquareQuote,
   Handshake, Inbox, Mail, UserCheck, ClipboardList, AtSign,
-  Landmark, Settings, SlidersHorizontal, ImagePlay,
+  Landmark, Settings, SlidersHorizontal, ImagePlay, Megaphone,
   ChevronDown, Menu, X, LogOut, Search, Bell,
 } from "lucide-react";
 
@@ -59,6 +59,7 @@ const navItems: NavItem[] = [
     children: [
       { label: "Settings", href: "/site/settings" },
       { label: "Hero Slides", href: "/site/hero-slides" },
+      { label: "Announcement", href: "/site/announcement" },
     ],
   },
   { label: "Media", href: "/media", icon: Image },
@@ -70,7 +71,7 @@ const navIcons: Record<string, React.ElementType> = {
   Publications: BookOpen, Testimonials: MessageSquareQuote, Partners: Handshake,
   Volunteers: UserCheck, Contacts: Mail, "Job Applications": ClipboardList,
   Subscribers: AtSign, "Bank Accounts": Landmark, Settings: Settings,
-  "Hero Slides": ImagePlay, Media: Image,
+  "Hero Slides": ImagePlay, Announcement: Megaphone, Media: Image,
 };
 
 function SidebarItem({ item, collapsed }: { item: NavItem; collapsed: boolean }) {

@@ -402,6 +402,28 @@ model HeroSlide {
   updatedAt DateTime @updatedAt
 }
 
+model Announcement {
+  id              String  @id @default(cuid())
+  /// "text" or "image"
+  type            String  @default("text")
+  /// For text mode
+  title           String?
+  body            String? @db.Text
+  ctaLabel        String?
+  ctaUrl          String?
+  /// For image mode
+  desktopImageUrl String?
+  mobileImageUrl  String?
+  imageAlt        String?
+  linkUrl         String?
+  /// Display settings
+  isActive        Boolean @default(false)
+  /// 0 = once per session, >0 = cooldown in hours
+  cooldownHours   Int     @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
 // ─── Media ──────────────────────────────────────────────────────────────────
 
 model Media {
