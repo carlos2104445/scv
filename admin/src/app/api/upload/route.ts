@@ -15,21 +15,29 @@ export async function POST(req: Request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Auto-crop and resize the image to a standard portrait size (400x500)
-    // fit: "cover" ensures it fills the dimension, cropping excess
-    const processedBuffer = await sharp(buffer)
-      .resize({
-        width: 400,
-        height: 500,
-        fit: "cover",
-        position: "top", // crop from the top so heads aren't cut off as often
-      })
-      .jpeg({ quality: 85 })
-      .toBuffer();
-
+    const isPdf = file.type === "application/pdf";
+    let processedBuffer: Buffer;
+    let filename: string;
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    // Always save as .jpg since we convert with .jpeg()
-    const filename = `${uniqueSuffix}.jpg`;
+
+    if (isPdf) {
+      processedBuffer = buffer;
+      filename = `${uniqueSuffix}.pdf`;
+    } else {
+      // Auto-crop and resize the image to a standard portrait size (400x500)
+      // fit: "cover" ensures it fills the dimension, cropping excess
+      processedBuffer = await sharp(buffer)
+        .resize({
+          width: 400,
+          height: 500,
+          fit: "cover",
+          position: "top", // crop from the top so heads aren't cut off as often
+        })
+        .jpeg({ quality: 85 })
+        .toBuffer();
+      // Always save as .jpg since we convert with .jpeg()
+      filename = `${uniqueSuffix}.jpg`;
+    }
     
     // Store in uploads/ at project root (not public/ — standalone doesn't serve public/)
     const uploadsDir = path.join(process.cwd(), "uploads");

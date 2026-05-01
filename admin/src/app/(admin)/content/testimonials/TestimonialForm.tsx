@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Save, Trash2 } from "lucide-react";
+import { ImageUpload } from "@/components/ui/ImageUpload";
 
 interface TestimonialFormProps {
   initialData?: { id: string; name: string; role: string | null; quote: string; photo: string | null; featured: boolean; order: number; };
@@ -12,6 +13,7 @@ interface TestimonialFormProps {
 
 export function TestimonialForm({ initialData, action, deleteAction }: TestimonialFormProps) {
   const isEdit = !!initialData;
+  const [photo, setPhoto] = useState<string | null>(initialData?.photo || null);
   const [deleting, setDeleting] = useState(false);
 
   return (
@@ -36,7 +38,15 @@ export function TestimonialForm({ initialData, action, deleteAction }: Testimoni
           <div><label className="label">Role / Title</label><input name="role" defaultValue={initialData?.role || ""} className="input-field" placeholder="e.g. Former Student" /></div>
         </div>
         <div><label className="label">Quote</label><textarea name="quote" defaultValue={initialData?.quote || ""} rows={5} className="input-field resize-y" placeholder="Their testimonial..." required /></div>
-        <div><label className="label">Photo URL</label><input name="photo" defaultValue={initialData?.photo || ""} className="input-field" placeholder="https://..." /></div>
+        <div>
+          <label className="label">Photo</label>
+          <ImageUpload
+            name="photo"
+            value={photo}
+            onChange={setPhoto}
+            onRemove={() => setPhoto(null)}
+          />
+        </div>
         <div className="grid grid-cols-2 gap-4">
           <div><label className="label">Order</label><input type="number" name="order" defaultValue={initialData?.order || 0} className="input-field" /></div>
           <div className="flex items-center gap-2 pt-7">

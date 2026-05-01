@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Save, Trash2 } from "lucide-react";
+import { ImageUpload } from "@/components/ui/ImageUpload";
+import { FileUpload } from "@/components/ui/FileUpload";
 
 interface PublicationFormProps {
   initialData?: { id: string; title: string; type: string; year: number; coverImage: string | null; pdfUrl: string | null; summary: string | null; isPublic: boolean; };
@@ -12,6 +14,8 @@ interface PublicationFormProps {
 
 export function PublicationForm({ initialData, action, deleteAction }: PublicationFormProps) {
   const isEdit = !!initialData;
+  const [coverImage, setCoverImage] = useState<string | null>(initialData?.coverImage || null);
+  const [pdfUrl, setPdfUrl] = useState<string | null>(initialData?.pdfUrl || null);
   const [deleting, setDeleting] = useState(false);
 
   return (
@@ -44,8 +48,24 @@ export function PublicationForm({ initialData, action, deleteAction }: Publicati
           </div>
           <div><label className="label">Year</label><input type="number" name="year" defaultValue={initialData?.year || new Date().getFullYear()} className="input-field" required /></div>
         </div>
-        <div><label className="label">Cover Image URL</label><input name="coverImage" defaultValue={initialData?.coverImage || ""} className="input-field" placeholder="https://..." /></div>
-        <div><label className="label">PDF URL</label><input name="pdfUrl" defaultValue={initialData?.pdfUrl || ""} className="input-field" placeholder="https://..." /></div>
+        <div>
+          <label className="label">Cover Image</label>
+          <ImageUpload
+            name="coverImage"
+            value={coverImage}
+            onChange={setCoverImage}
+            onRemove={() => setCoverImage(null)}
+          />
+        </div>
+        <div>
+          <label className="label">PDF File</label>
+          <FileUpload
+            name="pdfUrl"
+            value={pdfUrl}
+            onChange={setPdfUrl}
+            onRemove={() => setPdfUrl(null)}
+          />
+        </div>
         <div><label className="label">Summary</label><textarea name="summary" defaultValue={initialData?.summary || ""} rows={4} className="input-field resize-y" placeholder="Brief summary of this publication..." /></div>
         <div className="flex items-center gap-2">
           <input type="checkbox" name="isPublic" id="isPublic" defaultChecked={initialData?.isPublic !== false} className="w-4 h-4 rounded border-border" />
