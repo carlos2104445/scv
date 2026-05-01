@@ -24,9 +24,28 @@ export function PartnersSection({ partners }: { partners?: Partner[] }) {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: i * 0.05 }}
-              className="group flex items-center justify-center h-24 rounded-2xl bg-white border border-neutral-100 shadow-sm hover:shadow-md hover:border-brand-orange/20 transition-all duration-300 cursor-pointer"
+              className="group flex items-center justify-center h-24 rounded-2xl bg-white border border-neutral-100 shadow-sm hover:shadow-md hover:border-brand-orange/20 transition-all duration-300 cursor-pointer overflow-hidden p-4 relative"
+              title={partner.name}
             >
-              <span className="text-sm font-semibold text-neutral-400 group-hover:text-brand-dark transition-colors text-center px-3">
+              {partner.logo ? (
+                // Use native img wrapped to show as object-contain
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                  onError={(e) => {
+                    // Fallback to text if image fails to load
+                    (e.target as HTMLImageElement).style.display = "none";
+                    const sibling = (e.target as HTMLImageElement).nextElementSibling as HTMLElement;
+                    if (sibling) sibling.style.display = "block";
+                  }}
+                />
+              ) : null}
+              
+              <span 
+                className={`text-sm font-semibold text-neutral-400 group-hover:text-brand-dark transition-colors text-center ${partner.logo ? 'hidden' : 'block'}`}
+              >
                 {partner.name}
               </span>
             </motion.div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Save, Trash2 } from "lucide-react";
+import { ImageUpload } from "@/components/ui/ImageUpload";
 
 interface PartnerFormProps {
   initialData?: { id: string; name: string; logo: string | null; url: string | null; type: string; since: number | null; order: number; };
@@ -13,6 +14,7 @@ interface PartnerFormProps {
 export function PartnerForm({ initialData, action, deleteAction }: PartnerFormProps) {
   const isEdit = !!initialData;
   const [deleting, setDeleting] = useState(false);
+  const [logoUrl, setLogoUrl] = useState<string | null>(initialData?.logo || null);
 
   return (
     <form action={action} className="space-y-6 max-w-3xl">
@@ -32,7 +34,17 @@ export function PartnerForm({ initialData, action, deleteAction }: PartnerFormPr
       </div>
       <div className="card p-5 space-y-5">
         <div><label className="label">Organization Name</label><input name="name" defaultValue={initialData?.name || ""} className="input-field font-semibold" required /></div>
-        <div><label className="label">Logo URL</label><input name="logo" defaultValue={initialData?.logo || ""} className="input-field" placeholder="https://..." /></div>
+        
+        <div>
+          <label className="label">Logo Image</label>
+          <ImageUpload
+            name="logo"
+            value={logoUrl}
+            onChange={(url) => setLogoUrl(url)}
+            onRemove={() => setLogoUrl(null)}
+          />
+        </div>
+
         <div><label className="label">Website URL</label><input name="url" defaultValue={initialData?.url || ""} className="input-field" placeholder="https://..." /></div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div><label className="label">Type</label>
