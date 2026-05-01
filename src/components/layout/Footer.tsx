@@ -195,19 +195,7 @@ export function Footer() {
               </li>
             </ul>
 
-            {/* Map */}
-            <div className="mt-5 rounded-xl overflow-hidden border border-white/10 h-32">
-              <iframe
-                src={siteSettings.map.embedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Selam Children's Village Location"
-              />
-            </div>
+
           </div>
         </div>
       </div>
