@@ -1,10 +1,18 @@
-"use client";
-import { motion } from "framer-motion";
-import { FileText } from "lucide-react";
-import { PageHero } from "@/components/blocks/PageHero";
-export default function PublicationPage() {
+import { getPage } from "@/lib/api";
+import { GenericPage } from "@/components/blocks/GenericPage";
+import { notFound } from "next/navigation";
+
+export default async function PublicationPage() {
+  const page = await getPage("publication");
+  if (!page) return notFound();
+
   return (
-    <><PageHero title="Publications" subtitle="Reports, studies, and publications." breadcrumbs={[{ label: "Resources", href: "/resources" }, { label: "Publications", href: "/resources/publication" }]} />
-    <section className="section-padding"><div className="container-xl"><motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl mx-auto text-center"><FileText className="w-12 h-12 text-neutral-300 mx-auto mb-4" /><h2 className="text-2xl font-bold">Coming Soon</h2><p className="mt-2 text-neutral-600">Publications will be available for download soon.</p></motion.div></div></section></>
+    <GenericPage 
+      page={page} 
+      breadcrumbs={[
+        { label: "Resources", href: "/resources" }, 
+        { label: page.title, href: "/resources/publication" }
+      ]} 
+    />
   );
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Save, Eye, Trash2 } from "lucide-react";
 import { slugify } from "@/lib/utils";
+import { ImageUpload } from "@/components/ui/ImageUpload";
 
 interface EventFormProps {
   initialData?: {
@@ -37,6 +38,7 @@ export function EventForm({ initialData, action, deleteAction }: EventFormProps)
   const [slug, setSlug] = useState(initialData?.slug || "");
   const [autoSlug, setAutoSlug] = useState(!isEdit);
   const [deleting, setDeleting] = useState(false);
+  const [coverImage, setCoverImage] = useState<string | null>(initialData?.coverImage || null);
 
   const handleTitleChange = (val: string) => { setTitle(val); if (autoSlug) setSlug(slugify(val)); };
 
@@ -75,7 +77,15 @@ export function EventForm({ initialData, action, deleteAction }: EventFormProps)
               <label htmlFor="allDay" className="text-sm font-medium">All Day Event</label>
             </div>
             <div><label className="label">Location</label><input name="location" defaultValue={initialData?.location || ""} className="input-field" placeholder="Venue name..." /></div>
-            <div><label className="label">Cover Image URL</label><input name="coverImage" defaultValue={initialData?.coverImage || ""} className="input-field" placeholder="https://..." /></div>
+            <div>
+              <label className="label">Cover Image</label>
+              <ImageUpload
+                name="coverImage"
+                value={coverImage}
+                onChange={setCoverImage}
+                onRemove={() => setCoverImage(null)}
+              />
+            </div>
             <div><label className="label">Registration URL</label><input name="registerUrl" defaultValue={initialData?.registerUrl || ""} className="input-field" placeholder="https://..." /></div>
             <div><label className="label">Tags</label><input name="tags" defaultValue={initialData?.tags?.join(", ") || ""} className="input-field" placeholder="tag1, tag2" /><p className="text-xs text-neutral-400 mt-1">Comma-separated</p></div>
           </div>

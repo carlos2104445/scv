@@ -1,10 +1,18 @@
-"use client";
-import { motion } from "framer-motion";
-import { Newspaper } from "lucide-react";
-import { PageHero } from "@/components/blocks/PageHero";
-export default function NewsletterMagazinePage() {
+import { getPage } from "@/lib/api";
+import { GenericPage } from "@/components/blocks/GenericPage";
+import { notFound } from "next/navigation";
+
+export default async function NewsletterPage() {
+  const page = await getPage("newsletter-magazine");
+  if (!page) return notFound();
+
   return (
-    <><PageHero title="Newsletter & Magazine" subtitle="Periodic newsletters and magazine issues." breadcrumbs={[{ label: "Resources", href: "/resources" }, { label: "Newsletter & Magazine", href: "/resources/newsletter-magazine" }]} />
-    <section className="section-padding"><div className="container-xl"><motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl mx-auto text-center"><Newspaper className="w-12 h-12 text-neutral-300 mx-auto mb-4" /><h2 className="text-2xl font-bold">Coming Soon</h2><p className="mt-2 text-neutral-600">Newsletter and magazine archives will be available soon.</p></motion.div></div></section></>
+    <GenericPage 
+      page={page} 
+      breadcrumbs={[
+        { label: "Resources", href: "/resources" }, 
+        { label: page.title, href: "/resources/newsletter-magazine" }
+      ]} 
+    />
   );
 }

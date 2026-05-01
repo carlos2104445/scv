@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Save, Eye, Trash2, ChevronDown } from "lucide-react";
 import { cn, slugify } from "@/lib/utils";
+import { ImageUpload } from "@/components/ui/ImageUpload";
 
 interface NewsFormProps {
   initialData?: {
@@ -33,6 +34,7 @@ export function NewsForm({ initialData, action, deleteAction }: NewsFormProps) {
   const [autoSlug, setAutoSlug] = useState(!isEdit);
   const [seoOpen, setSeoOpen] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [coverImage, setCoverImage] = useState<string | null>(initialData?.coverImage || null);
 
   const handleTitleChange = (val: string) => {
     setTitle(val);
@@ -144,8 +146,13 @@ export function NewsForm({ initialData, action, deleteAction }: NewsFormProps) {
               <p className="text-xs text-neutral-400 mt-1">Comma-separated</p>
             </div>
             <div>
-              <label className="label">Cover Image URL</label>
-              <input name="coverImage" defaultValue={initialData?.coverImage || ""} className="input-field" placeholder="https://..." />
+              <label className="label">Cover Image</label>
+              <ImageUpload
+                name="coverImage"
+                value={coverImage}
+                onChange={setCoverImage}
+                onRemove={() => setCoverImage(null)}
+              />
             </div>
             <div className="flex items-center gap-2">
               <input type="checkbox" name="featured" id="featured" defaultChecked={initialData?.featured} className="w-4 h-4 rounded border-border text-brand-orange focus:ring-brand-orange" />

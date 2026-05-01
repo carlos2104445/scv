@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Save, Eye, Trash2 } from "lucide-react";
 import { slugify } from "@/lib/utils";
+import { ImageUpload } from "@/components/ui/ImageUpload";
 
 interface ProjectFormProps {
   initialData?: {
@@ -30,6 +31,7 @@ export function ProjectForm({ initialData, action, deleteAction }: ProjectFormPr
   const [slug, setSlug] = useState(initialData?.slug || "");
   const [autoSlug, setAutoSlug] = useState(!isEdit);
   const [deleting, setDeleting] = useState(false);
+  const [coverImage, setCoverImage] = useState<string | null>(initialData?.coverImage || null);
 
   const handleTitleChange = (val: string) => { setTitle(val); if (autoSlug) setSlug(slugify(val)); };
 
@@ -71,7 +73,15 @@ export function ProjectForm({ initialData, action, deleteAction }: ProjectFormPr
                 <option value="PROJECT">Project</option>
               </select>
             </div>
-            <div><label className="label">Cover Image URL</label><input name="coverImage" defaultValue={initialData?.coverImage || ""} className="input-field" placeholder="https://..." /></div>
+            <div>
+              <label className="label">Cover Image</label>
+              <ImageUpload
+                name="coverImage"
+                value={coverImage}
+                onChange={setCoverImage}
+                onRemove={() => setCoverImage(null)}
+              />
+            </div>
             <div><label className="label">Donate URL</label><input name="donateUrl" defaultValue={initialData?.donateUrl || ""} className="input-field" placeholder="https://..." /></div>
             <div><label className="label">SDGs (comma-separated numbers)</label><input name="sdgs" defaultValue={initialData?.sdgs?.join(", ") || ""} className="input-field" placeholder="1, 4, 8" /></div>
             <div><label className="label">Display Order</label><input type="number" name="order" defaultValue={initialData?.order || 0} className="input-field" /></div>

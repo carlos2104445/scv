@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Save, Eye, Trash2 } from "lucide-react";
 import { slugify } from "@/lib/utils";
+import { ImageUpload } from "@/components/ui/ImageUpload";
 
 interface AlbumFormProps {
   initialData?: { id: string; title: string; slug: string; coverImage: string | null; category: string | null; date: Date; status: string; };
@@ -17,6 +18,7 @@ export function AlbumForm({ initialData, action, deleteAction }: AlbumFormProps)
   const [slug, setSlug] = useState(initialData?.slug || "");
   const [autoSlug, setAutoSlug] = useState(!isEdit);
   const [deleting, setDeleting] = useState(false);
+  const [coverImage, setCoverImage] = useState<string | null>(initialData?.coverImage || null);
 
   return (
     <form action={action} className="space-y-6 max-w-3xl">
@@ -40,7 +42,15 @@ export function AlbumForm({ initialData, action, deleteAction }: AlbumFormProps)
         <div><label className="label">Album Title</label><input name="title" value={title} onChange={(e) => { setTitle(e.target.value); if (autoSlug) setSlug(slugify(e.target.value)); }} className="input-field font-semibold" required /></div>
         <div><label className="label">Slug</label><input name="slug" value={slug} onChange={(e) => { setSlug(e.target.value); setAutoSlug(false); }} className="input-field font-mono text-sm" /></div>
         <div><label className="label">Category</label><input name="category" defaultValue={initialData?.category || ""} className="input-field" placeholder="e.g. Campus, Events" /></div>
-        <div><label className="label">Cover Image URL</label><input name="coverImage" defaultValue={initialData?.coverImage || ""} className="input-field" placeholder="https://..." /></div>
+        <div>
+          <label className="label">Cover Image</label>
+          <ImageUpload
+            name="coverImage"
+            value={coverImage}
+            onChange={setCoverImage}
+            onRemove={() => setCoverImage(null)}
+          />
+        </div>
         <div><label className="label">Date</label><input type="date" name="date" defaultValue={initialData?.date ? new Date(initialData.date).toISOString().slice(0, 10) : new Date().toISOString().slice(0, 10)} className="input-field w-48" /></div>
       </div>
     </form>

@@ -63,6 +63,12 @@ export interface Partner {
   type: string; order: number;
 }
 
+export interface Page {
+  id: string; title: string; slug: string; heroImage: string | null;
+  body: string; seoTitle: string | null; seoDesc: string | null;
+  seoImage: string | null;
+}
+
 export interface TimelineEntry {
   id: string; year: string; title: string; body: string;
   image: string | null; order: number;
@@ -132,6 +138,11 @@ export async function getTimeline(): Promise<TimelineEntry[]> {
 
 export async function getSettings(): Promise<Record<string, string>> {
   return fetchAPI("/settings");
+}
+
+export async function getPage(slug: string): Promise<Page | null> {
+  const r = await fetchAPI<{ data: Page }>(`/pages/${slug}`).catch(() => null);
+  return r?.data ?? null;
 }
 
 export async function getBankAccounts(): Promise<BankAccount[]> {
