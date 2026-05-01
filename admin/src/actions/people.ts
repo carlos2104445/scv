@@ -42,3 +42,31 @@ export async function deletePerson(id: string) {
   revalidatePath("/content/people");
   redirect("/content/people");
 }
+
+export async function reorderPerson(id: string, direction: "up" | "down") {
+  const person = await prisma.person.findUnique({ where: { id } });
+  if (!person) return;
+
+  // Find siblings in the same category, sorted by order
+  const siblings = await prisma.person.findMany({
+    where: { category: person.category },
+    orderBy: { order: "asc" },
+  });
+
+  const idx = siblings.findIndex((s) => s.id === id);
+  if (idx === -1) return;
+
+  const swapIdx = direction === "up" ? idx - 1 : idx + 1;
+  if (swapIdx < 0 || swapIdx >= siblings.length) return;
+
+  const sibling = siblings[swapIdx];
+
+  // Swap order values
+  await prisma.$transaction([
+    prisma.person.update({ where: { id: person.id }, data: { order: sibling.order } }),
+    prisma.person.update({ where: { id: sibling.id }, data: { order: person.order } }),
+  ]);
+
+  revalidatePath("/content/people");
+}
+
