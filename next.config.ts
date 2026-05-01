@@ -12,6 +12,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "admin.kitchen251.tech",
+      },
+      {
+        protocol: "https",
+        hostname: "dashboard.kitchen251.tech",
+      },
     ],
   },
 };

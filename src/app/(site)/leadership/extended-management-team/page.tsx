@@ -1,5 +1,5 @@
 import { PageHero } from "@/components/blocks/PageHero";
-import { PersonGrid } from "@/components/blocks/PersonGrid";
+import { PersonSlider } from "@/components/blocks/PersonSlider";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -22,7 +22,7 @@ export default async function ExtendedManagementPage() {
       />
       <section className="section-padding">
         <div className="container-xl">
-          <PersonGrid people={members} />
+          <PersonSlider people={members} />
         </div>
       </section>
     </>
