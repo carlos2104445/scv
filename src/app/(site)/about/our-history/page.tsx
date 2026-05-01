@@ -1,17 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { PageHero } from "@/components/blocks/PageHero";
 
 const timeline = [
-  { year: "1986", title: "Foundation", desc: "Mrs. Tsehay Roschli establishes Selam Children's Village in Addis Ababa to care for orphaned and vulnerable children." },
-  { year: "1990", title: "First Family Homes", desc: "Construction of the first family-model homes begins, creating a nurturing environment for children in small family units." },
-  { year: "1998", title: "TVET College Launch", desc: "Selam Technical & Vocational Education Training College is established, beginning with 3 departments." },
-  { year: "2005", title: "Expansion", desc: "TVET College expands to 8 departments. Community support programs are launched for surrounding neighborhoods." },
-  { year: "2010", title: "Youth Programs", desc: "Youth Support Program is launched to help grown children transition to independent, productive lives." },
-  { year: "2015", title: "11 TVET Departments", desc: "College reaches full capacity with 11 departments, becoming one of Ethiopia's leading vocational training institutions." },
-  { year: "2020", title: "Community Outreach", desc: "Major expansion of community programs including elderly women support, hygiene kit distribution, and women's economic empowerment." },
-  { year: "2025", title: "40 Years of Service", desc: "Celebrating four decades of transforming lives, with over 255 children in care and thousands of TVET graduates." },
+  { year: "1986", title: "Foundation of Selam Children's Village", desc: "Mrs. Tsehay Roschli establishes Selam Children's Village in Addis Ababa to care for orphaned and vulnerable children.", imageUrl: "/images/history/1986.jpg" },
+  { year: "1987", title: "Official Inauguration", desc: "The Village is officially inaugurated and begins its core mission of providing a loving home and education.", imageUrl: "/images/history/1987.jpg" },
+  { year: "1989", title: "Selam Technical and Vocational College", desc: "Selam Technical & Vocational Education Training College (STVC) is established to equip youth with marketable skills.", imageUrl: "/images/history/1989.jpg" },
+  { year: "1990", title: "Selam Primary Schools & Family Homes", desc: "Construction of the first family-model homes begins, and Selam Primary Schools are established to provide quality education.", imageUrl: "/images/history/1990.jpg" },
+  { year: "1994", title: "Selam High School", desc: "Selam High School is opened to continue the educational journey of our students through higher grades.", imageUrl: "/images/history/1994.jpg" },
+  { year: "2003", title: "Second Children's Village at Kotebe", desc: "Expansion continues with the establishment of a second Children's Village in Kotebe to reach more children in need.", imageUrl: "/images/history/2003.jpg" },
+  { year: "2010", title: "Youth Programs", desc: "Youth Support Program is launched to help grown children transition to independent, productive lives.", imageUrl: "/images/history/2010.jpg" },
+  { year: "2014", title: "Daycare Center", desc: "A Daycare Center is established to support early childhood development and assist working mothers in the community.", imageUrl: "/images/history/2014.jpg" },
+  { year: "2020", title: "Community Outreach Expansion", desc: "Major expansion of community programs including elderly women support, hygiene kit distribution, and women's economic empowerment.", imageUrl: "/images/history/2020.jpg" },
+  { year: "2025", title: "Continuing the Legacy", desc: "Celebrating four decades of transforming lives, with over 255 children in care and thousands of TVET graduates.", imageUrl: "/images/history/2025.jpg" },
 ];
 
 export default function OurHistoryPage() {
@@ -63,12 +66,19 @@ export default function OurHistoryPage() {
                   <div className="absolute left-6 md:left-1/2 w-3 h-3 rounded-full bg-brand-orange border-2 border-white shadow-md -translate-x-1.5 md:-translate-x-1.5 mt-2 z-10" />
                   
                   {/* Content */}
-                  <div className={`ml-14 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                    <span className="inline-block px-3 py-1 rounded-full bg-brand-orange text-white text-sm font-bold mb-2">
+                  <div className={`ml-14 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12 md:text-right flex flex-col items-start md:items-end" : "md:pl-12 flex flex-col items-start"}`}>
+                    <span className="inline-block px-3 py-1 rounded-full bg-brand-orange text-white text-sm font-bold mb-3">
                       {item.year}
                     </span>
+                    
+                    {item.imageUrl && (
+                      <div className="relative w-full max-w-sm aspect-video rounded-xl overflow-hidden shadow-md mb-4 bg-neutral-100 border border-neutral-100 group">
+                        <Image src={item.imageUrl} alt={item.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                      </div>
+                    )}
+                    
                     <h3 className="text-lg font-bold text-brand-dark tracking-normal">{item.title}</h3>
-                    <p className="mt-2 text-sm text-neutral-600 leading-relaxed">{item.desc}</p>
+                    <p className={`mt-2 text-sm text-neutral-600 leading-relaxed ${i % 2 === 0 ? "md:text-right" : "text-left"}`}>{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
