@@ -1,42 +1,100 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ImpactCounter } from "@/components/blocks/SectionHeading";
-import type { ImpactStat } from "@/lib/api";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { SectionHeading } from "@/components/blocks/SectionHeading";
 
-const fallbackStats: ImpactStat[] = [
-  { id: "1", label: "Children in Care", value: 255, suffix: "+", order: 0 },
-  { id: "2", label: "Years of Service", value: 40, suffix: "", order: 1 },
-  { id: "3", label: "TVET Departments", value: 11, suffix: "", order: 2 },
-];
+function Counter({ end, suffix = "" }: { end: number; suffix?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const [count, setCount] = useState(0);
 
-export function ImpactSection({ stats: propStats }: { stats?: ImpactStat[] }) {
-  const stats = propStats && propStats.length > 0 ? propStats : fallbackStats;
+  useEffect(() => {
+    if (!inView) return;
+    let start = 0;
+    const step = end / (2 * 60);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 1000 / 60);
+    return () => clearInterval(timer);
+  }, [inView, end]);
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
-      <div className="absolute inset-0">
-        <Image src="/images/projects/campus.png" alt="" fill className="object-cover" />
-      </div>
-      <div className="absolute inset-0 bg-brand-dark/85" />
+    <span ref={ref}>
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+}
 
-      <div className="relative z-10 container-xl">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-orange/20 text-brand-orange text-xs font-semibold tracking-wide uppercase mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
-            Our Impact
-          </span>
-          <h2 className="text-white">Making a Difference, Every Day</h2>
-          <p className="mt-4 text-lg text-white/60 max-w-2xl mx-auto">
-            Numbers that represent real lives transformed through decades of dedicated service.
-          </p>
-        </motion.div>
+const stats = [
+  {
+    value: 255,
+    suffix: "+",
+    label: "Children in Care",
+    description: "Providing family-based care for orphaned and vulnerable children across three locations.",
+    bg: "bg-[#FF7F6B]",
+    descColor: "text-white/80",
+    image: "/images/projects/children-care.png",
+  },
+  {
+    value: 10000,
+    suffix: "+",
+    label: "Individuals Supported",
+    description: "Training and empowering youth and communities through education and vocational programs.",
+    bg: "bg-brand-dark",
+    descColor: "text-white/80",
+    image: "/images/projects/community.png",
+  },
+  {
+    value: 40,
+    suffix: "+",
+    label: "Years of Service",
+    description: "Four decades of dedicated service building brighter futures for Ethiopia's children.",
+    bg: "bg-[#FFD966]",
+    descColor: "text-brand-dark/70",
+    image: "/images/projects/campus.png",
+  },
+];
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+export function ImpactSection() {
+  return (
+    <section className="section-padding bg-white">
+      <div className="container-xl">
+        <SectionHeading
+          badge="Impactful Metrics"
+          title="Programs that change lives"
+          subtitle="Together, we can make a real impact in communities across Ethiopia. Help us bring hope and support."
+        />
+
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map((stat, i) => (
-            <motion.div key={stat.id} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }} className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-              <ImpactCounter end={stat.value} suffix={stat.suffix || ""} label={stat.label} />
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.15 }}
+              className={`relative rounded-3xl ${stat.bg} text-white p-8 overflow-hidden min-h-[300px] flex flex-col justify-between`}
+            >
+              <div className="relative z-10">
+                <p className="text-5xl md:text-6xl font-bold font-serif leading-none">
+                  <Counter end={stat.value} suffix={stat.suffix} />
+                </p>
+                <p className="text-lg font-semibold mt-3">{stat.label}</p>
+                <p className={`mt-3 text-sm leading-relaxed ${stat.descColor}`}>
+                  {stat.description}
+                </p>
+              </div>
+              <div className="absolute bottom-0 right-0 w-32 h-32 opacity-20">
+                <Image src={stat.image} alt="" fill className="object-cover rounded-tl-3xl" />
+              </div>
             </motion.div>
           ))}
         </div>

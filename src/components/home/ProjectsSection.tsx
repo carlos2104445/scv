@@ -5,23 +5,25 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
-import type { Project } from "@/lib/api";
+import { projects } from "@/data/projects";
 
 const categoryColors: Record<string, string> = {
-  CYC: "bg-blue-100 text-blue-700",
-  COMMUNITY: "bg-emerald-100 text-emerald-700",
-  TVET: "bg-purple-100 text-purple-700",
-  PROJECT: "bg-amber-100 text-amber-700",
+  cyc: "bg-blue-100 text-blue-700",
+  community: "bg-emerald-100 text-emerald-700",
+  tvet: "bg-purple-100 text-purple-700",
+  project: "bg-amber-100 text-amber-700",
 };
 
 const categoryLabels: Record<string, string> = {
-  CYC: "Child & Youth Care",
-  COMMUNITY: "Community Support",
-  TVET: "TVET",
-  PROJECT: "Project",
+  cyc: "Child & Youth Care",
+  community: "Community Support",
+  tvet: "TVET",
+  project: "Project",
 };
 
-export function ProjectsSection({ projects = [] }: { projects?: Project[] }) {
+const featured = projects.slice(0, 3);
+
+export function ProjectsSection() {
   return (
     <section className="section-padding bg-neutral-50">
       <div className="container-xl">
@@ -32,7 +34,7 @@ export function ProjectsSection({ projects = [] }: { projects?: Project[] }) {
         />
 
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
+          {featured.map((project, i) => (
             <motion.div
               key={project.slug}
               initial={{ opacity: 0, y: 24 }}
@@ -44,23 +46,17 @@ export function ProjectsSection({ projects = [] }: { projects?: Project[] }) {
                 href={`/what-we-do/${project.slug}`}
                 className="group block card-base hover-lift h-full"
               >
-                {/* Project image */}
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src={project.coverImage || "/images/projects/placeholder.jpg"}
+                    src={project.image || "/images/projects/campus.png"}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  {/* Category badge */}
                   <div className="absolute top-3 left-3 z-10">
-                    <span
-                      className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
-                        categoryColors[project.category]
-                      }`}
-                    >
-                      {categoryLabels[project.category]}
+                    <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${categoryColors[project.category] || "bg-neutral-100 text-neutral-700"}`}>
+                      {categoryLabels[project.category] || project.category}
                     </span>
                   </div>
                 </div>
