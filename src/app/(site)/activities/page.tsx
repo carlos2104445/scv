@@ -121,7 +121,7 @@ export default function ActivitiesPage() {
                   <h3 className="text-lg font-bold text-brand-dark tracking-normal">
                     {activity.title}
                   </h3>
-                  <p className="mt-2 text-sm text-neutral-600 leading-relaxed">
+                  <p className="mt-2 text-neutral-600 leading-relaxed">
                     {activity.description}
                   </p>
                 </div>

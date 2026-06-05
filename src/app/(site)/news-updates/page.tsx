@@ -31,7 +31,7 @@ export default function NewsPage() {
                   </div>
                   <div className="p-5">
                     <h3 className="text-lg font-bold text-brand-dark group-hover:text-brand-orange transition-colors tracking-normal line-clamp-2">{a.title}</h3>
-                    <p className="mt-2 text-sm text-neutral-600 line-clamp-2">{a.excerpt}</p>
+                    <p className="mt-2 text-neutral-600 line-clamp-2">{a.excerpt}</p>
                     <div className="mt-3 flex items-center gap-1 text-brand-orange text-sm font-semibold">Read More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></div>
                   </div>
                 </Link>

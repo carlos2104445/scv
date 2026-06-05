@@ -65,7 +65,7 @@ export default function TVETPage() {
                     <CheckCircle2 className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-bold text-brand-dark">{reason.title}</h4>
-                      <p className="text-sm text-neutral-600 mt-1">{reason.desc}</p>
+                      <p className="text-neutral-600 mt-1">{reason.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -101,7 +101,7 @@ export default function TVETPage() {
                     <h3 className="text-base font-bold text-brand-dark group-hover:text-brand-orange transition-colors tracking-normal">
                       {dept.shortTitle}
                     </h3>
-                    <p className="mt-2 text-sm text-neutral-600 line-clamp-2">{dept.description}</p>
+                    <p className="mt-2 text-neutral-600 line-clamp-2">{dept.description}</p>
                     <div className="mt-3 flex flex-wrap gap-1.5">
                       {dept.highlights.slice(0, 2).map((h) => (
                         <span key={h} className="px-2 py-0.5 rounded text-xs bg-neutral-100 text-neutral-500">

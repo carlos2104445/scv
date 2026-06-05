@@ -57,7 +57,7 @@ export default function AboutPage() {
                 </div>
                 <p className="text-2xl font-bold text-brand-dark font-serif">{item.value}</p>
                 <p className="text-sm font-semibold text-brand-dark mt-1">{item.label}</p>
-                <p className="text-xs text-neutral-500">{item.desc}</p>
+                <p className="text-sm text-neutral-500">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -95,7 +95,7 @@ export default function AboutPage() {
                   <h3 className="text-xl font-bold text-brand-dark group-hover:text-brand-orange transition-colors tracking-normal">
                     {section.title}
                   </h3>
-                  <p className="mt-3 text-sm text-neutral-600 leading-relaxed">
+                  <p className="mt-3 text-neutral-600 leading-relaxed">
                     {section.content}
                   </p>
                   <div className="mt-4 flex items-center gap-1 text-brand-orange text-sm font-semibold">

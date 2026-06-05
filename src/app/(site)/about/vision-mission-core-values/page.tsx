@@ -84,7 +84,7 @@ export default function VisionMissionPage() {
                       <value.icon className="w-6 h-6 text-brand-orange" />
                     </div>
                     <h3 className="text-lg font-bold text-brand-dark mb-2">{value.title}</h3>
-                    <p className="text-sm text-neutral-600 leading-relaxed">{value.description}</p>
+                    <p className="text-neutral-600 leading-relaxed">{value.description}</p>
                   </motion.div>
                 ))}
               </div>
