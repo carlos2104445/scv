@@ -2,12 +2,13 @@
 
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { use, useState, useEffect } from "react";
+import { use } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Heart, ArrowRight, BarChart3, Globe, CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ImpactCounter } from "@/components/blocks/SectionHeading";
-import type { Project } from "@/lib/api";
+import { projects } from "@/data/projects";
 
 const sdgNames: Record<number, string> = {
   1: "No Poverty", 2: "Zero Hunger", 3: "Good Health", 4: "Quality Education",
@@ -15,35 +16,20 @@ const sdgNames: Record<number, string> = {
   16: "Peace & Justice", 17: "Partnerships",
 };
 
-const API = process.env.NEXT_PUBLIC_ADMIN_API_URL || "https://dashboard.kitchen251.tech/api/v1";
-
 export default function ProjectDetailPage({ params }: { params: Promise<{ project: string }> }) {
   const { project: slug } = use(params);
-  const [project, setProject] = useState<Project | null>(null);
-  const [allProjects, setAllProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
+  const project = projects.find((p) => p.slug === slug);
 
-  useEffect(() => {
-    fetch(`${API}/projects`).then(r => r.json()).then(res => {
-      const projects: Project[] = res.data || [];
-      setAllProjects(projects);
-      const found = projects.find((p) => p.slug === slug);
-      setProject(found || null);
-      setLoading(false);
-    }).catch(() => setLoading(false));
-  }, [slug]);
-
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 border-4 border-brand-orange border-t-transparent rounded-full animate-spin" /></div>;
   if (!project) notFound();
 
-  const bodyParagraphs = project.body.split("\n\n").filter(Boolean);
-  const services = Array.isArray(project.services) ? project.services : [];
+  const bodyParagraphs = [project.description, ...(project.additionalParagraphs || [])];
+  const services = project.services || [];
 
   return (
     <>
       <PageHero
         title={project.title}
-        subtitle={project.excerpt || ""}
+        subtitle={project.excerpt}
         breadcrumbs={[
           { label: "What We Do", href: "/what-we-do" },
           { label: project.title, href: `/what-we-do/${project.slug}` },
@@ -58,6 +44,11 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ projec
               <motion.div
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               >
+                {/* Project image */}
+                <div className="relative aspect-[16/9] rounded-2xl overflow-hidden mb-8">
+                  <Image src={project.image} alt={project.title} fill className="object-cover" />
+                </div>
+
                 {bodyParagraphs.map((paragraph, idx) => (
                   <p key={idx} className="text-lg text-neutral-600 leading-relaxed mt-4 first:mt-0">
                     {paragraph}
@@ -138,7 +129,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ projec
                 <div className="card-base p-6">
                   <h3 className="text-lg font-bold text-brand-dark mb-4 tracking-normal">Related Programs</h3>
                   <div className="space-y-2">
-                    {allProjects.slice(0, 5).filter(p => p.slug !== slug).map((p) => (
+                    {projects.slice(0, 5).filter(p => p.slug !== slug).map((p) => (
                       <Link
                         key={p.slug}
                         href={`/what-we-do/${p.slug}`}

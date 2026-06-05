@@ -103,25 +103,9 @@ export const navigation = {
       label: "About Us",
       href: "/about",
       children: [
+        { label: "Who We Are", href: "/about/who-we-are" },
         { label: "Our History", href: "/about/our-history" },
-        {
-          label: "Our Leadership",
-          href: "/leadership/executive-board-members",
-          children: [
-            {
-              label: "Executive Board Members",
-              href: "/leadership/executive-board-members",
-            },
-            {
-              label: "Senior Management Team",
-              href: "/leadership/senior-management-team",
-            },
-            {
-              label: "Extended Management Team",
-              href: "/leadership/extended-management-team",
-            },
-          ],
-        },
+        { label: "Vision, Mission & Values", href: "/about/vision-mission-core-values" },
       ],
     },
     {

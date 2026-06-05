@@ -90,15 +90,10 @@ export function PersonSlider({ people }: { people: Person[] }) {
                 <div className="relative w-full aspect-[3/4] rounded-2xl bg-gradient-to-br from-neutral-100 to-neutral-50 border border-neutral-200 overflow-hidden mb-4 group-hover:shadow-xl group-hover:shadow-brand-orange/10 transition-all duration-500">
                   {person.photo ? (
                     <Image
-                      src={
-                        person.photo.startsWith("http")
-                          ? person.photo
-                          : `https://dashboard.kitchen251.tech${person.photo}`
-                      }
+                      src={person.photo}
                       alt={person.name}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      unoptimized={person.photo.startsWith("http")}
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">

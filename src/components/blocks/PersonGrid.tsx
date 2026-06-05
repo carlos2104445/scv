@@ -34,11 +34,10 @@ export function PersonGrid({ people }: { people: Person[] }) {
             <div className="relative w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br from-neutral-100 to-neutral-50 border border-neutral-200 flex items-center justify-center overflow-hidden mb-4 group-hover:shadow-lg group-hover:shadow-brand-orange/10 transition-all duration-300">
               {person.photo ? (
                 <Image 
-                  src={person.photo.startsWith("http") ? person.photo : `https://dashboard.kitchen251.tech${person.photo}`}
+                  src={person.photo}
                   alt={person.name} 
                   fill 
                   className="object-cover transition-transform duration-500 group-hover:scale-110" 
-                  unoptimized={person.photo.startsWith("http")}
                 />
               ) : (
                 <span className="text-2xl font-serif font-bold text-neutral-400 group-hover:text-brand-orange transition-colors relative z-10">

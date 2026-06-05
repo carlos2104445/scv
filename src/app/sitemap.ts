@@ -13,10 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/about/who-we-are`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/about/our-history`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/about/vision-mission-core-values`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/leadership/executive-board-members`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/leadership/senior-management-team`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/leadership/extended-management-team`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/leadership/board-switzerland`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+
     { url: `${BASE}/what-we-do`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/what-we-do/children-youth-community-support`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/all-projects`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },

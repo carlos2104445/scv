@@ -1,8 +1,15 @@
-import { Page } from "@/lib/api";
 import { PageHero } from "@/components/blocks/PageHero";
 import { marked } from "marked";
 
-export async function GenericPage({ page, breadcrumbs }: { page: Page; breadcrumbs?: { label: string; href: string }[] }) {
+interface PageData {
+  title: string;
+  slug: string;
+  heroImage?: string | null;
+  body: string;
+  seoDesc?: string | null;
+}
+
+export async function GenericPage({ page, breadcrumbs }: { page: PageData; breadcrumbs?: { label: string; href: string }[] }) {
   const content = await marked.parse(page.body || "");
 
   return (

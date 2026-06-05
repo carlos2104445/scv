@@ -1,21 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, GraduationCap, CheckCircle2, BarChart3 } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ImpactCounter } from "@/components/blocks/SectionHeading";
-import { useState, useEffect } from "react";
-import type { Department } from "@/lib/api";
-
-const API = process.env.NEXT_PUBLIC_ADMIN_API_URL || "https://dashboard.kitchen251.tech/api/v1";
+import { departments } from "@/data/departments";
 
 export default function TVETPage() {
-  const [departments, setDepartments] = useState<Department[]>([]);
-
-  useEffect(() => {
-    fetch(`${API}/departments`).then(r => r.json()).then(res => setDepartments(res.data || [])).catch(() => {});
-  }, []);
   return (
     <>
       <PageHero
@@ -30,7 +23,7 @@ export default function TVETPage() {
             className="max-w-4xl mx-auto mb-16"
           >
             <p className="text-lg text-neutral-600 leading-relaxed mb-6 text-center">
-              Selam Technical and Vocational College is an extension of Selam Children's Village that provides Technical and Vocational Training to children who grow up in the organization, and applicants from the communities at subsidized cost-sharing and scholarship schemes.
+              Selam Technical and Vocational College is an extension of Selam Children&apos;s Village that provides Technical and Vocational Training to children who grow up in the organization, and applicants from the communities at subsidized cost-sharing and scholarship schemes.
             </p>
             
             {/* KPIs */}
@@ -98,8 +91,8 @@ export default function TVETPage() {
                   href={`/technical-vocational-training/${dept.slug}`}
                   className="group block card-base hover-lift h-full"
                 >
-                  <div className="relative h-36 bg-gradient-to-br from-purple-50 to-violet-50 flex items-center justify-center">
-                    <GraduationCap className="w-12 h-12 text-purple-200 group-hover:text-purple-400 transition-colors" />
+                  <div className="relative h-36 overflow-hidden">
+                    <Image src={dept.image} alt={dept.shortTitle} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
                     <div className="absolute top-3 right-3 bg-purple-100 text-purple-700 px-2.5 py-1 rounded-full text-xs font-medium">
                       TVET
                     </div>

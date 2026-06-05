@@ -1,9 +1,9 @@
-import { getPage } from "@/lib/api";
+import { getStaticPage } from "@/data/pages";
 import { GenericPage } from "@/components/blocks/GenericPage";
 import { notFound } from "next/navigation";
 
-export default async function HowToHelpPage() {
-  const page = await getPage("how-to-help");
+export default function HowToHelpPage() {
+  const page = getStaticPage("how-to-help");
   if (!page) return notFound();
 
   return (
