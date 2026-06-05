@@ -14,7 +14,7 @@ export function CTABanner() {
         className="relative mx-auto max-w-7xl rounded-3xl bg-gradient-to-br from-[#FF7F6B] to-brand-orange overflow-hidden py-16 md:py-20 px-8 md:px-16 text-center"
       >
         <div className="absolute inset-0 opacity-10">
-          <Image src="/images/projects/campus.png" alt="" fill className="object-cover" />
+          <Image src="/images/hero/real-hero-3.jpg" alt="" fill className="object-cover" />
         </div>
         <div className="relative z-10">
           <h2 className="text-white text-3xl md:text-5xl font-serif font-bold leading-tight max-w-2xl mx-auto">

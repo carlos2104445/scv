@@ -41,7 +41,7 @@ const stats = [
     description: "Providing family-based care for orphaned and vulnerable children across three locations.",
     bg: "bg-[#FF7F6B]",
     descColor: "text-white/80",
-    image: "/images/projects/children-care.png",
+    image: "/images/projects/family-model-real.jpg",
   },
   {
     value: 10000,
@@ -50,7 +50,7 @@ const stats = [
     description: "Training and empowering youth and communities through education and vocational programs.",
     bg: "bg-brand-dark",
     descColor: "text-white/80",
-    image: "/images/projects/community.png",
+    image: "/images/projects/youth-real.jpg",
   },
   {
     value: 40,
@@ -59,7 +59,7 @@ const stats = [
     description: "Four decades of dedicated service building brighter futures for Ethiopia's children.",
     bg: "bg-[#FFD966]",
     descColor: "text-brand-dark/70",
-    image: "/images/projects/campus.png",
+    image: "/images/projects/campus-real.jpg",
   },
 ];
 

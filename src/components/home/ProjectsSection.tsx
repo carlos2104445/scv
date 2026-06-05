@@ -48,7 +48,7 @@ export function ProjectsSection() {
               >
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src={project.image || "/images/projects/campus.png"}
+                    src={project.image || "/images/projects/campus-real.jpg"}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"

@@ -68,7 +68,7 @@ export function HeroSection() {
           >
             <div className="relative rounded-3xl overflow-hidden aspect-[4/5] max-h-[600px]">
               <Image
-                src="/images/hero/slide-1.png"
+                src="/images/hero/real-hero-1.jpg"
                 alt="Children at Selam Village"
                 fill
                 className="object-cover"
