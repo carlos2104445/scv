@@ -341,4 +341,38 @@ export const majorProjects: Project[] = [
     ],
     sdgs: [8, 17],
   },
+  {
+    slug: "bbw-project",
+    title: "BBW Project",
+    category: "project",
+    excerpt: "Building Bridges for Work — connecting youth to meaningful employment opportunities.",
+    description: "The BBW (Building Bridges for Work) Project is a collaborative initiative aimed at bridging the gap between vocational training and the labor market. Working closely with industry partners and government stakeholders, the project focuses on creating sustainable pathways from education to employment for disadvantaged youth in urban areas.",
+    additionalParagraphs: [
+      "Through a combination of targeted skills training, workplace mentoring, and job matching services, the BBW Project has helped hundreds of young people secure stable employment. The project also works with employers to develop apprenticeship frameworks that benefit both businesses and trainees.",
+      "The BBW Project operates in close coordination with Selam TVET College, leveraging its existing training infrastructure while introducing innovative pedagogical approaches aligned with current labor market demands."
+    ],
+    image: "/images/projects/bridge.jpg",
+    kpis: [
+      { label: "Youth Trained", value: 200 },
+      { label: "Job Placements", value: 150 },
+    ],
+    sdgs: [4, 8, 10],
+  },
+  {
+    slug: "qiyas-project",
+    title: "Qiyas Project",
+    category: "project",
+    excerpt: "Quality Improvement for Youth and Adolescent Services — strengthening institutional capacity.",
+    description: "The Qiyas Project focuses on quality improvement within youth development organizations, aiming to enhance the standards of care, education, and vocational training services provided to vulnerable youth and adolescents across Ethiopia.",
+    additionalParagraphs: [
+      "By introducing standardized assessment frameworks, monitoring tools, and continuous improvement methodologies, Qiyas helps organizations like Selam Children's Village measure and enhance the impact of their programs.",
+      "The project emphasizes evidence-based practices, staff capacity building, and institutional strengthening to ensure that services for youth and adolescents meet the highest possible standards of quality and effectiveness."
+    ],
+    image: "/images/projects/eye.jpg",
+    kpis: [
+      { label: "Organizations Assessed", value: 15 },
+      { label: "Staff Trained", value: 120 },
+    ],
+    sdgs: [4, 10, 16],
+  },
 ];

@@ -44,35 +44,6 @@ export const navigation = {
   ],
   main: [
     {
-      label: "About Us",
-      href: "/about",
-      children: [
-        { label: "About Our Organization", href: "/about" },
-        { label: "Who We Are", href: "/about/who-we-are" },
-        { label: "Our History", href: "/about/our-history" },
-        {
-          label: "Vision, Mission & Core Values",
-          href: "/about/vision-mission-core-values",
-        },
-        {
-          label: "Executive Board Members",
-          href: "/leadership/executive-board-members",
-        },
-        {
-          label: "Senior Management Team",
-          href: "/leadership/senior-management-team",
-        },
-        {
-          label: "Extended Management Team",
-          href: "/leadership/extended-management-team",
-        },
-        {
-          label: "Board Switzerland",
-          href: "/leadership/board-switzerland",
-        },
-      ],
-    },
-    {
       label: "What We Do",
       href: "/what-we-do",
       children: [
@@ -84,33 +55,110 @@ export const navigation = {
               label: "Family Model Village",
               href: "/what-we-do/family-model-village-child-care",
             },
-            { label: "Day Care", href: "/what-we-do/day-care" },
             {
               label: "Youth Support Program",
               href: "/what-we-do/youth-support-program",
-            },
-            { label: "School Feeding", href: "/what-we-do/school-feeding" },
-            {
-              label: "Educational Support",
-              href: "/what-we-do/educational-support",
             },
             { label: "Selam Clinic", href: "/what-we-do/selam-clinic" },
           ],
         },
         {
-          label: "Technical & Vocational Training",
-          href: "/technical-vocational-training",
+          label: "Community Support",
+          href: "/what-we-do/children-youth-community-support",
+          children: [
+            { label: "Day Care", href: "/what-we-do/day-care" },
+            { label: "School Feeding", href: "/what-we-do/school-feeding" },
+            {
+              label: "Women Economic Empowerment",
+              href: "/what-we-do/women-economic-empowerment",
+            },
+            {
+              label: "Hygiene Kit Support for Girls",
+              href: "/what-we-do/hygiene-kit-support-for-girls",
+            },
+            {
+              label: "Educational Support",
+              href: "/what-we-do/educational-support",
+            },
+            {
+              label: "Destitute Elderly Women Support",
+              href: "/what-we-do/destitute-elderly-women-support",
+            },
+          ],
         },
-        { label: "All Projects", href: "/all-projects" },
+        {
+          label: "Selam TVET College",
+          href: "/technical-vocational-training",
+          children: [
+            {
+              label: "Trainings",
+              href: "/technical-vocational-training",
+            },
+            { label: "Projects", href: "/all-projects" },
+          ],
+        },
       ],
     },
     {
-      label: "News & Resources",
+      label: "About Us",
+      href: "/about",
+      children: [
+        { label: "Our History", href: "/about/our-history" },
+        {
+          label: "Our Leadership",
+          href: "/leadership/executive-board-members",
+          children: [
+            {
+              label: "Executive Board Members",
+              href: "/leadership/executive-board-members",
+            },
+            {
+              label: "Senior Management Team",
+              href: "/leadership/senior-management-team",
+            },
+            {
+              label: "Extended Management Team",
+              href: "/leadership/extended-management-team",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      label: "Where We Work",
+      href: "/where-we-work",
+      children: [
+        { label: "Addis Ababa", href: "/where-we-work/addis-ababa" },
+        { label: "Sheno", href: "/where-we-work/sheno" },
+        { label: "Welayita Sodo", href: "/where-we-work/welayita-sodo" },
+      ],
+    },
+    {
+      label: "Get Involved",
+      href: "/get-involved",
+      children: [
+        { label: "Donate", href: "/get-involved/donate" },
+        {
+          label: "Volunteer",
+          href: "/get-involved/become-a-volunteer",
+        },
+        { label: "Be A Partner", href: "/get-involved/be-a-partner" },
+        { label: "Careers", href: "/job-openings" },
+        { label: "Contact Us", href: "/get-involved/contact-us" },
+      ],
+    },
+    {
+      label: "Latest",
       href: "/news-updates",
       children: [
-        { label: "News & Updates", href: "/news-updates" },
-        { label: "Event Calendar", href: "/event-calendar" },
-        { label: "Gallery", href: "/gallery" },
+        { label: "News", href: "/news-updates" },
+        { label: "Activities", href: "/activities" },
+      ],
+    },
+    {
+      label: "Resources",
+      href: "/resources/publication",
+      children: [
         { label: "Publications", href: "/resources/publication" },
         {
           label: "Newsletter & Magazine",
@@ -122,20 +170,6 @@ export const navigation = {
           label: "Policies & Guidelines",
           href: "/resources/policies-guidelines",
         },
-      ],
-    },
-    {
-      label: "Get Involved",
-      href: "/get-involved",
-      children: [
-        { label: "How to Help", href: "/get-involved/how-to-help" },
-        { label: "Donate", href: "/get-involved/donate" },
-        {
-          label: "Become a Volunteer",
-          href: "/get-involved/become-a-volunteer",
-        },
-        { label: "Job Openings", href: "/job-openings" },
-        { label: "Contact Us", href: "/get-involved/contact-us" },
       ],
     },
   ],

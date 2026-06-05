@@ -9,6 +9,8 @@ import { EventsSection } from "@/components/home/EventsSection";
 import { TeamSection } from "@/components/home/TeamSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { PartnersSection } from "@/components/home/PartnersSection";
+import { WaysToHelpSection } from "@/components/home/WaysToHelpSection";
+import { NewsletterSection } from "@/components/home/NewsletterSection";
 import {
   getHeroSlides, getImpactStats, getProjects, getNews, getEvents,
   getTestimonials, getPartners, getPeople, getSettings,
@@ -44,7 +46,9 @@ export default async function HomePage() {
         <ScrollDepthWrapper><EventsSection events={events} /></ScrollDepthWrapper>
         <ScrollDepthWrapper><TeamSection people={people} /></ScrollDepthWrapper>
         <ScrollDepthWrapper><TestimonialsSection testimonials={testimonials} /></ScrollDepthWrapper>
+        <ScrollDepthWrapper><WaysToHelpSection /></ScrollDepthWrapper>
         <ScrollDepthWrapper><PartnersSection partners={partners} /></ScrollDepthWrapper>
+        <ScrollDepthWrapper><NewsletterSection /></ScrollDepthWrapper>
       </main>
       <Footer />
     </>
