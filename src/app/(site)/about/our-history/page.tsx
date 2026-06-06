@@ -21,6 +21,7 @@ export default function OurHistoryPage() {
   return (
     <>
       <PageHero
+        badge="Our History"
         title="Our History"
         subtitle="Four decades of transforming lives — from a small initiative to one of Ethiopia's leading child welfare organizations."
         breadcrumbs={[

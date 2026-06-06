@@ -17,6 +17,7 @@ export default function DepartmentPage({ params }: { params: Promise<{ departmen
   return (
     <>
       <PageHero
+        badge="TVET College"
         title={dept.name}
         subtitle={dept.description}
         breadcrumbs={[

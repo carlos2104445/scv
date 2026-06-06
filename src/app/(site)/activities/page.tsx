@@ -77,9 +77,9 @@ export default function ActivitiesPage() {
   return (
     <>
       <PageHero
+        badge="Recent Activities"
         title="Activities"
         subtitle="Events, celebrations, and milestones from across Selam Children's Village."
-        breadcrumbs={[{ label: "Activities", href: "/activities" }]}
       />
 
       <section className="section-padding">

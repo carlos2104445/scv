@@ -8,6 +8,7 @@ export default function ExtendedManagementPage() {
   return (
     <>
       <PageHero
+        badge="Leadership"
         title="Extended Management Team"
         subtitle="Experienced managers supporting organizational operations across all departments."
         breadcrumbs={[

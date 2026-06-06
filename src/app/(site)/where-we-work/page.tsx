@@ -12,9 +12,9 @@ export default function WhereWeWorkPage() {
   return (
     <>
       <PageHero
+        badge="Our Locations"
         title="Where We Work"
         subtitle="Serving vulnerable children and communities across Ethiopia from three strategic locations."
-        breadcrumbs={[{ label: "Where We Work", href: "/where-we-work" }]}
       />
 
       <section className="section-padding bg-white">
@@ -36,7 +36,7 @@ export default function WhereWeWorkPage() {
               >
                 <Link
                   href={`/where-we-work/${loc.slug}`}
-                  className="group block card-base hover-lift h-full"
+                  className="group block rounded-2xl border border-neutral-200 bg-white h-full shadow-sm hover:shadow-md transition-shadow overflow-hidden"
                 >
                   <div className="relative h-52 overflow-hidden">
                     <Image

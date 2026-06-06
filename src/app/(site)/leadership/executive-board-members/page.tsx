@@ -8,6 +8,7 @@ export default function ExecutiveBoardPage() {
   return (
     <>
       <PageHero
+        badge="Leadership"
         title="Executive Board Members"
         subtitle="Dedicated leaders providing strategic governance and oversight for Selam Children's Village."
         breadcrumbs={[

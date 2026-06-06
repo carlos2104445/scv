@@ -7,18 +7,19 @@ import { PageHero } from "@/components/blocks/PageHero";
 import { ImpactCounter } from "@/components/blocks/SectionHeading";
 
 const highlights = [
-  { icon: Home, title: "Family-Based Care", desc: "Children live in small family units guided by dedicated house mothers providing personalized care and emotional support." },
-  { icon: GraduationCap, title: "Education & TVET", desc: "From primary school through vocational college — 11 TVET departments training the next generation of skilled professionals." },
-  { icon: Stethoscope, title: "Healthcare", desc: "On-campus clinic providing comprehensive healthcare to children, staff, and surrounding community members." },
-  { icon: Users, title: "Community Programs", desc: "Women's economic empowerment, elderly support, hygiene kits for girls, and school feeding programs." },
-  { icon: Heart, title: "Youth Transition", desc: "Supporting grown children as they transition to independent, productive lives with job placement and mentorship." },
-  { icon: Building2, title: "Multi-Campus", desc: "Operating across Addis Ababa, Sheno, and Welayita Sodo to reach more vulnerable children and communities." },
+  { icon: Home, title: "Family-Based Care", desc: "Children live in small family units guided by dedicated house mothers providing personalized care and emotional support.", color: "bg-rose-50 text-rose-600", borderColor: "border-rose-200" },
+  { icon: GraduationCap, title: "Education & TVET", desc: "From primary school through vocational college — 11 TVET departments training the next generation of skilled professionals.", color: "bg-blue-50 text-blue-600", borderColor: "border-blue-200" },
+  { icon: Stethoscope, title: "Healthcare", desc: "On-campus clinic providing comprehensive healthcare to children, staff, and surrounding community members.", color: "bg-emerald-50 text-emerald-600", borderColor: "border-emerald-200" },
+  { icon: Users, title: "Community Programs", desc: "Women's economic empowerment, elderly support, hygiene kits for girls, and school feeding programs.", color: "bg-amber-50 text-amber-600", borderColor: "border-amber-200" },
+  { icon: Heart, title: "Youth Transition", desc: "Supporting grown children as they transition to independent, productive lives with job placement and mentorship.", color: "bg-purple-50 text-purple-600", borderColor: "border-purple-200" },
+  { icon: Building2, title: "Multi-Campus", desc: "Operating across Addis Ababa, Sheno, and Welayita Sodo to reach more vulnerable children and communities.", color: "bg-brand-orange-50 text-brand-orange", borderColor: "border-brand-orange-100" },
 ];
 
 export default function WhoWeArePage() {
   return (
     <>
       <PageHero
+        badge="About Us"
         title="Who We Are"
         subtitle="A comprehensive Ethiopian non-profit serving the most vulnerable children and youth since 1986."
         breadcrumbs={[
@@ -52,14 +53,25 @@ export default function WhoWeArePage() {
         </div>
       </section>
 
-      {/* Impact Numbers */}
-      <section className="py-16 bg-brand-dark text-white">
+      {/* Impact Numbers — Kindoora yellow card */}
+      <section className="py-16">
         <div className="container-xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <ImpactCounter end={255} label="Children in Care" suffix="+" />
-            <ImpactCounter end={4000} label="TVET Graduates" suffix="+" />
-            <ImpactCounter end={40} label="Years of Service" suffix="+" />
-            <ImpactCounter end={11} label="TVET Departments" />
+          <div className="text-center mb-10">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-orange-50 border border-brand-orange-100 mb-4">
+              <span className="w-5 h-5 rounded-full bg-brand-orange flex items-center justify-center">
+                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+              </span>
+              <span className="text-sm font-semibold text-brand-dark">Our Impacts</span>
+            </span>
+            <h2 className="text-brand-dark">Since our founding, Selam has made an extensive impact</h2>
+          </div>
+          <div className="rounded-3xl bg-amber-100 py-12 px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <ImpactCounter end={255} label="Children in Care" suffix="+" />
+              <ImpactCounter end={4000} label="TVET Graduates" suffix="+" />
+              <ImpactCounter end={40} label="Years of Service" suffix="+" />
+              <ImpactCounter end={11} label="TVET Departments" />
+            </div>
           </div>
         </div>
       </section>
@@ -79,10 +91,10 @@ export default function WhoWeArePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="card-base hover-lift p-6"
+                className={`rounded-2xl border ${h.borderColor} bg-white p-6 shadow-sm hover:shadow-md transition-shadow`}
               >
-                <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center mb-4">
-                  <h.icon className="w-6 h-6 text-brand-orange" />
+                <div className={`w-12 h-12 rounded-xl ${h.color} flex items-center justify-center mb-4`}>
+                  <h.icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-bold text-brand-dark mb-2">{h.title}</h3>
                 <p className="text-neutral-600 leading-relaxed">{h.desc}</p>

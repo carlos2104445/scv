@@ -50,7 +50,9 @@ export default function SearchPage() {
 
   return (
     <>
-      <PageHero title="Search" subtitle="Find what you're looking for." breadcrumbs={[{ label: "Search", href: "/search" }]} />
+      <PageHero
+        badge="Search"
+        title="Search" subtitle="Find what you're looking for." breadcrumbs={[{ label: "Search", href: "/search" }]} />
       <section className="section-padding">
         <div className="container-xl">
           <div className="max-w-2xl mx-auto">
@@ -77,7 +79,7 @@ export default function SearchPage() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="group block card-base hover-lift p-5"
+                  className="group block rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>

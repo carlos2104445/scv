@@ -15,13 +15,15 @@ const resourceLinks = [
 export default function ResourcesPage() {
   return (
     <>
-      <PageHero title="Resources" subtitle="Publications, reports, and organizational documents." breadcrumbs={[{ label: "Resources", href: "/resources" }]} />
+      <PageHero
+        badge="Resources"
+        title="Resources" subtitle="Publications, reports, and organizational documents." breadcrumbs={[{ label: "Resources", href: "/resources" }]} />
       <section className="section-padding">
         <div className="container-xl">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {resourceLinks.map((r, i) => (
               <motion.div key={r.href} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-                <Link href={r.href} className="group block card-base hover-lift p-6 h-full">
+                <Link href={r.href} className="group block rounded-2xl border border-neutral-200 bg-white p-6 h-full shadow-sm hover:shadow-md transition-shadow">
                   <FileText className="w-8 h-8 text-brand-orange mb-4" />
                   <h3 className="font-bold text-brand-dark group-hover:text-brand-orange transition-colors tracking-normal">{r.title}</h3>
                   <p className="mt-2 text-neutral-600">{r.desc}</p>

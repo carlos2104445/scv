@@ -41,6 +41,7 @@ export default async function NewsDetailPage({ params }: Props) {
   return (
     <>
       <PageHero
+        badge="Blog & Updates"
         title={article.title}
         breadcrumbs={[
           { label: "News", href: "/news-updates" },
@@ -106,7 +107,7 @@ export default async function NewsDetailPage({ params }: Props) {
                   <Link
                     key={r.slug}
                     href={`/news-updates/${r.slug}`}
-                    className="group block card-base hover-lift"
+                    className="group block rounded-2xl border border-neutral-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden"
                   >
                     <div className="relative h-40 overflow-hidden">
                       <Image

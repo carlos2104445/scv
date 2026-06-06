@@ -8,6 +8,7 @@ export default function SeniorManagementPage() {
   return (
     <>
       <PageHero
+        badge="Leadership"
         title="Senior Management Team"
         subtitle="The core leadership team driving day-to-day operations and strategic initiatives."
         breadcrumbs={[

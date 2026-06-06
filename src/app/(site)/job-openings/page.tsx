@@ -7,11 +7,13 @@ import { PageHero } from "@/components/blocks/PageHero";
 export default function JobOpeningsPage() {
   return (
     <>
-      <PageHero title="Job Openings" subtitle="Join our team and make a difference in the lives of children and communities." breadcrumbs={[{ label: "Job Openings", href: "/job-openings" }]} />
+      <PageHero
+        badge="Careers"
+        title="Job Openings" subtitle="Join our team and make a difference in the lives of children and communities." breadcrumbs={[{ label: "Job Openings", href: "/job-openings" }]} />
       <section className="section-padding">
         <div className="container-xl">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl mx-auto text-center space-y-8">
-            <div className="w-20 h-20 mx-auto rounded-2xl bg-brand-orange/10 flex items-center justify-center">
+            <div className="w-20 h-20 mx-auto rounded-2xl bg-brand-orange-50 border border-brand-orange-100 flex items-center justify-center">
               <Briefcase className="w-10 h-10 text-brand-orange" />
             </div>
             <div>
@@ -20,7 +22,7 @@ export default function JobOpeningsPage() {
                 We currently have no open positions. New opportunities are posted here when available. Check back regularly or follow us on social media for announcements.
               </p>
             </div>
-            <div className="card-base p-8 text-left space-y-4">
+            <div className="rounded-2xl border border-neutral-200 bg-white p-8 text-left space-y-4 shadow-sm">
               <h3 className="text-lg font-bold text-brand-dark flex items-center gap-2">
                 <Bell className="w-5 h-5 text-brand-orange" />
                 Stay Notified
