@@ -30,7 +30,7 @@ export const projects: Project[] = [
       { title: "Holistic Health", description: "Comprehensive medical care at the Selam Clinic." },
       { title: "Empowerment", description: "Life-skills training and education to build confident, independent futures." }
     ],
-    image: "/images/projects/family-village.jpg",
+    image: "/images/projects/family-model-real.jpg",
     kpis: [
       { label: "Children in Care", value: 255 },
       { label: "Male", value: 157 },
@@ -55,7 +55,7 @@ export const projects: Project[] = [
       { title: "Nutritional Support", description: "Three nutritious meals provided per day from Monday to Saturday." },
       { title: "Early Childhood Care", description: "Dedicated support for children aged 2-4 from economically vulnerable families." }
     ],
-    image: "/images/projects/daycare.jpg",
+    image: "/images/projects/daycare-real.jpg",
     kpis: [
       { label: "Children Enrolled", value: 242 },
       { label: "Male", value: 149 },
@@ -82,7 +82,7 @@ export const projects: Project[] = [
       { title: "Technical Skill Training", description: "Hands-on vocational paths for immediate career entry." },
       { title: "Higher Education", description: "Support for university studies based on academic merit and personal interest." }
     ],
-    image: "/images/projects/youth-support.jpg",
+    image: "/images/projects/youth-real.jpg",
     kpis: [
       { label: "Number of Youth", value: 93 },
       { label: "Male", value: 59 },
@@ -106,7 +106,7 @@ export const projects: Project[] = [
       { title: "Academic Performance Support", description: "Reducing malnutrition to improve school attendance and cognitive development." },
       { title: "Community Reach", description: "Extending feeding programs to surrounding government-owned schools." }
     ],
-    image: "/images/projects/school-feeding.jpg",
+    image: "/images/projects/school-feeding-real.jpg",
     kpis: [
       { label: "Total Children", value: 526 },
       { label: "Male", value: 260 },
@@ -155,7 +155,7 @@ export const projects: Project[] = [
       { title: "Work Therapy", description: "Supplying handicraft materials to encourage therapeutic engagement and skill use." },
       { title: "Holistic Care", description: "Offering a supportive community network for widows and those living with chronic illnesses." }
     ],
-    image: "/images/projects/elderly-support.jpg",
+    image: "/images/projects/elderly-real.jpg",
     kpis: [
       { label: "Total Women Supported", value: 10 },
     ],
@@ -177,7 +177,7 @@ export const projects: Project[] = [
       { title: "Reducing Absenteeism", description: "Ensuring girls do not miss school due to lack of basic menstrual hygiene products." },
       { title: "Community Outreach", description: "Extending the support beyond Selam to surrounding government schools." }
     ],
-    image: "/images/projects/hygiene-kit.jpg",
+    image: "/images/projects/hygiene-kit-real.jpg",
     kpis: [
       { label: "Total Girls Supported", value: 300 },
     ],
@@ -199,7 +199,7 @@ export const projects: Project[] = [
       { title: "Start-up Funding", description: "Providing matching funds to help women successfully launch and sustain their small businesses." },
       { title: "Self-Reliance Support", description: "Empowering women to become financially independent and support their families." }
     ],
-    image: "/images/projects/women-empowerment.jpg",
+    image: "/images/projects/women-empowerment-real.jpg",
     kpis: [
       { label: "Women Supported", value: 30 },
     ],
@@ -224,7 +224,7 @@ export const projects: Project[] = [
       { title: "General Medicine", description: "A dedicated Outpatient Department (OPD) for daily health concerns." },
       { title: "Dental Care", description: "We are proud to announce that the clinic has recently been licensed to provide professional dental services to our children, youth, and community members." }
     ],
-    image: "/images/projects/clinic.jpg",
+    image: "/images/projects/clinic-real.jpg",
     kpis: [
       { label: "Patients Reached", value: 16688 },
       { label: "Healthcare Workers", value: 8 },
@@ -244,7 +244,7 @@ export const majorProjects: Project[] = [
       "The overall objective of the program was to contribute to sustainable poverty reduction, improved gender relations and social stability of women and youths in Addis Ababa by increasing their income and access to economic opportunities. The project provided short-term vocational skill training and facilitated employment for 89 youths.",
       "Through the LI-WAY Project, SCV has facilitated the establishment of a legal savings and credit association named “Selam LI-WAY-EYE Saving and Credit Association”. The association has 188 members and SCV has deposited a total amount of 1,800,000.00 ETB as an initial capital. Currently, the capital of the association has increased to 3,000,000.00 ETB. 73 members have accessed loan from the association and all of them successfully repaid."
     ],
-    image: "/images/projects/li-way.jpg",
+    image: "/images/projects/women-emp-real.jpg",
     kpis: [
       { label: "Beneficiaries", value: 1500 },
       { label: "Jobs Created", value: 320 },
@@ -266,7 +266,7 @@ export const majorProjects: Project[] = [
       { title: "Youth Training", description: "250 Adolescents and young adults are trained in five elected vocational areas." },
       { title: "Job Placement", description: "A job placement service for graduates is established at the local education provider." }
     ],
-    image: "/images/projects/bina.jpg",
+    image: "/images/tvet/tvet-general-1.jpg",
     kpis: [
       { label: "Youth Served", value: 450 },
       { label: "Graduated", value: 280 },
@@ -284,7 +284,7 @@ export const majorProjects: Project[] = [
       "The agreement has signed to provide training to 1,000 operators of 50 manufacturing companies. The partnership agreement is worth of 5.9 million ETB.",
       "Currently, 105 (91 Male, 14 Female) individuals are attending capacity building training."
     ],
-    image: "/images/projects/bridge.jpg",
+    image: "/images/projects/campus-real.jpg",
     kpis: [
       { label: "Children Reached", value: 300 },
       { label: "Families Reunited", value: 120 },
@@ -302,7 +302,7 @@ export const majorProjects: Project[] = [
       "From SCV’s side, the project has concentrated on two districts of the city in particular: Woredas 3, 4, 6 and 7 of the Addis Ketema sub-city, and Woredas 9, 10, 11, 12 and 14 of Yeka sub-city.",
       "We are addressing the unemployed and under-employed young people through our TVET College by delivering quality short-term and level II training freely in five selected sectors such as Metal Works, Furniture Making, Hotel kitchen Operation, Catering Services and Garment."
     ],
-    image: "/images/projects/paseway.jpg",
+    image: "/images/projects/edu-support-real.jpg",
     kpis: [
       { label: "Participants", value: 800 },
       { label: "Businesses Launched", value: 200 },
@@ -321,7 +321,7 @@ export const majorProjects: Project[] = [
       "EYE is a five years project that is being implemented in two Sub Cities of Addis Ababa, Yeka and Bole. The project is intended to create employment opportunities for 3000 youths by providing short-term TVET training in nine fields.",
       "As per the project agreement, EYE Project provided hard and soft skills training to 3358 youths. Out of this, 2664 youths have graduated and 2596 youths have been linked with wage and self-employment opportunities."
     ],
-    image: "/images/projects/eye.jpg",
+    image: "/images/projects/youth-support-real.jpg",
     kpis: [
       { label: "Students Trained", value: 650 },
       { label: "Employment Rate", value: 78, suffix: "%" },
@@ -334,7 +334,7 @@ export const majorProjects: Project[] = [
     category: "project",
     excerpt: "Collaborating with government and industry for sustainable impact.",
     description: "Our PPP initiatives bring together government agencies, private enterprises, and development partners to create scalable models for youth employment and social enterprise.",
-    image: "/images/projects/ppp.jpg",
+    image: "/images/scv-top-view.jpg",
     kpis: [
       { label: "Partner Organizations", value: 25 },
       { label: "Programs Running", value: 8 },
@@ -351,7 +351,7 @@ export const majorProjects: Project[] = [
       "Through a combination of targeted skills training, workplace mentoring, and job matching services, the BBW Project has helped hundreds of young people secure stable employment. The project also works with employers to develop apprenticeship frameworks that benefit both businesses and trainees.",
       "The BBW Project operates in close coordination with Selam TVET College, leveraging its existing training infrastructure while introducing innovative pedagogical approaches aligned with current labor market demands."
     ],
-    image: "/images/projects/bridge.jpg",
+    image: "/images/tvet/tvet-general-3.jpg",
     kpis: [
       { label: "Youth Trained", value: 200 },
       { label: "Job Placements", value: 150 },
@@ -368,7 +368,7 @@ export const majorProjects: Project[] = [
       "By introducing standardized assessment frameworks, monitoring tools, and continuous improvement methodologies, Qiyas helps organizations like Selam Children's Village measure and enhance the impact of their programs.",
       "The project emphasizes evidence-based practices, staff capacity building, and institutional strengthening to ensure that services for youth and adolescents meet the highest possible standards of quality and effectiveness."
     ],
-    image: "/images/projects/eye.jpg",
+    image: "/images/gallery-kids.jpg",
     kpis: [
       { label: "Organizations Assessed", value: 15 },
       { label: "Staff Trained", value: 120 },
