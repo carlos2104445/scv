@@ -5,7 +5,7 @@ import { PageHero } from "@/components/blocks/PageHero";
 
 const galleries = [
   { slug: "family-model-village", title: "Family Model Village", count: 24, image: "/images/projects/family-model-real.jpg" },
-  { slug: "tvet-college-activities", title: "TVET College Activities", count: 18, image: "/images/tvet/metal-manufacturing.jpg" },
+  { slug: "tvet-college-activities", title: "TVET College Activities", count: 18, image: "/images/tvet/tvet-general-1.jpg" },
   { slug: "community-programs", title: "Community Programs", count: 12, image: "/images/projects/women-empowerment-real.jpg" },
   { slug: "graduation-ceremonies", title: "Graduation Ceremonies", count: 20, image: "/images/projects/youth-real.jpg" },
   { slug: "campus-life", title: "Campus Life", count: 15, image: "/images/projects/campus-real.jpg" },
