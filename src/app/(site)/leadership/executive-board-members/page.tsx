@@ -1,14 +1,9 @@
 import { PageHero } from "@/components/blocks/PageHero";
 import { PersonSlider } from "@/components/blocks/PersonSlider";
-import { prisma } from "@/lib/prisma";
+import { getPeopleByCategory } from "@/data/people";
 
-export const dynamic = "force-dynamic";
-
-export default async function ExecutiveBoardPage() {
-  const members = await prisma.person.findMany({
-    where: { category: "BOARD", status: "PUBLISHED" },
-    orderBy: { order: "asc" },
-  });
+export default function ExecutiveBoardPage() {
+  const members = getPeopleByCategory("BOARD");
 
   return (
     <>

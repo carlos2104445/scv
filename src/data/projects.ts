@@ -130,7 +130,7 @@ export const projects: Project[] = [
       { title: "School Materials", description: "Provision of essential stationery, backpacks, and required school uniforms." },
       { title: "Tutorial Support", description: "After-school tutoring and academic guidance to improve performance." }
     ],
-    image: "/images/projects/education.png",
+    image: "/images/projects/education-real.jpg",
     kpis: [
       { label: "Students Supported", value: 202 },
       { label: "Male", value: 114 },

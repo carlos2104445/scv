@@ -66,7 +66,7 @@ export default function WhatWeDoPage() {
                   <h3 className="text-xl font-bold text-brand-dark group-hover:text-brand-orange transition-colors tracking-normal">
                     {area.title}
                   </h3>
-                  <p className="mt-3 text-neutral-600 text-sm leading-relaxed">{area.description}</p>
+                  <p className="mt-3 text-neutral-600 leading-relaxed">{area.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {area.programs.map((p) => (
                       <span key={p} className="px-2.5 py-1 rounded-full bg-neutral-100 text-xs text-neutral-600 font-medium">

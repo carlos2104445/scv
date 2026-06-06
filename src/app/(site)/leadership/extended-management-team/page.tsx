@@ -1,14 +1,9 @@
 import { PageHero } from "@/components/blocks/PageHero";
-import { PersonSlider } from "@/components/blocks/PersonSlider";
-import { prisma } from "@/lib/prisma";
+import { PersonGrid } from "@/components/blocks/PersonGrid";
+import { getPeopleByCategory } from "@/data/people";
 
-export const dynamic = "force-dynamic";
-
-export default async function ExtendedManagementPage() {
-  const members = await prisma.person.findMany({
-    where: { category: "EXTENDED", status: "PUBLISHED" },
-    orderBy: { order: "asc" },
-  });
+export default function ExtendedManagementPage() {
+  const members = getPeopleByCategory("EXTENDED");
 
   return (
     <>
@@ -22,7 +17,7 @@ export default async function ExtendedManagementPage() {
       />
       <section className="section-padding">
         <div className="container-xl">
-          <PersonSlider people={members} />
+          <PersonGrid people={members} />
         </div>
       </section>
     </>

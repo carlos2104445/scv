@@ -1,9 +1,9 @@
-import { getPage } from "@/lib/api";
+import { getStaticPage } from "@/data/pages";
 import { GenericPage } from "@/components/blocks/GenericPage";
 import { notFound } from "next/navigation";
 
-export default async function NewsletterPage() {
-  const page = await getPage("newsletter-magazine");
+export default function NewsletterPage() {
+  const page = getStaticPage("newsletter-magazine");
   if (!page) return notFound();
 
   return (

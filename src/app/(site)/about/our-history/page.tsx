@@ -92,7 +92,7 @@ export default function OurHistoryPage() {
                     )}
                     
                     <h3 className="text-lg font-bold text-brand-dark tracking-normal">{item.title}</h3>
-                    <p className={`mt-2 text-sm text-neutral-600 leading-relaxed ${i % 2 === 0 ? "md:text-right" : "text-left"}`}>{item.desc}</p>
+                    <p className={`mt-2 text-neutral-600 leading-relaxed ${i % 2 === 0 ? "md:text-right" : "text-left"}`}>{item.desc}</p>
                   </div>
                 </motion.div>
               ))}

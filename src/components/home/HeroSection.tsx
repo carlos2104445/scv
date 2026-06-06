@@ -3,85 +3,118 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Heart, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
-import type { HeroSlide } from "@/lib/api";
+import { ArrowRight } from "lucide-react";
 
-const fallbackSlides: HeroSlide[] = [
-  { id: "1", image: "/images/hero/slide-1.png", title: "Transforming Lives.", subtitle: "Four Decades of Nurturing Hope.", description: "Since 1986, Selam Children's Village has been providing comprehensive care, education, and vocational training to Ethiopia's most vulnerable children and youth.", ctaLabel: "Learn More", ctaUrl: "/about", ctaSecLabel: "Donate Now", ctaSecUrl: "/get-involved/donate", gradient: "from-brand-dark/80 via-brand-dark/50 to-transparent", order: 0 },
-];
-
-export function HeroSection({ slides: propSlides }: { slides?: HeroSlide[] }) {
-  const slides = propSlides && propSlides.length > 0 ? propSlides : fallbackSlides;
-  const [current, setCurrent] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const next = useCallback(() => setCurrent((c) => (c + 1) % slides.length), [slides.length]);
-  const prev = useCallback(() => setCurrent((c) => (c - 1 + slides.length) % slides.length), [slides.length]);
-
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(next, 6000);
-    return () => clearInterval(timer);
-  }, [isPaused, next]);
-
-  const slide = slides[current];
-
+export function HeroSection() {
   return (
-    <section
-      className="relative h-[85vh] min-h-[600px] max-h-[900px] overflow-hidden"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      aria-label="Hero slider"
-    >
-      {slides.map((s, i) => (
-        <div key={s.id} className={`absolute inset-0 transition-opacity duration-1000 ${i === current ? "opacity-100" : "opacity-0"}`}>
-          <div className="absolute inset-0">
-            <Image src={s.image} alt="" fill className={`object-cover transition-transform duration-[8000ms] ease-out ${i === current ? "scale-110" : "scale-100"}`} priority={i === 0} />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/70 via-brand-dark/40 to-brand-dark/30 z-[1]" />
-          <div className={`absolute inset-0 bg-gradient-to-r ${s.gradient || "from-brand-dark/80 via-brand-dark/50 to-transparent"} z-[1]`} />
-        </div>
-      ))}
+    <section className="relative bg-white pt-8 pb-16 md:pt-12 md:pb-24 overflow-hidden">
+      <div className="container-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left — Text content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="flex items-center gap-2 mb-6">
+              <div className="flex -space-x-2">
+                <div className="w-8 h-8 rounded-full bg-brand-orange-100 border-2 border-white flex items-center justify-center text-xs font-bold text-brand-orange">S</div>
+                <div className="w-8 h-8 rounded-full bg-blue-100 border-2 border-white flex items-center justify-center text-xs font-bold text-blue-600">C</div>
+                <div className="w-8 h-8 rounded-full bg-emerald-100 border-2 border-white flex items-center justify-center text-xs font-bold text-emerald-600">V</div>
+              </div>
+              <span className="text-sm font-medium text-neutral-500">
+                1000+ Lives transformed since 1986
+              </span>
+            </div>
 
-      <div className="relative z-10 h-full flex items-center">
-        <div className="container-xl">
-          <motion.div key={current} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-2xl">
-            <h1 className="text-white leading-tight tracking-normal">
-              <span className="block">{slide.title}</span>
-              <span className="block text-brand-orange">{slide.subtitle}</span>
+            <h1 className="text-brand-dark leading-[1.1]">
+              Together for making a{" "}
+              <span className="text-brand-orange">brighter future</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl lg:text-2xl text-white/80 leading-relaxed">{slide.description}</p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              {slide.ctaLabel && slide.ctaUrl && (
-                <Link href={slide.ctaUrl} className="btn-primary text-base px-8 py-4">
-                  {slide.ctaLabel} <ArrowRight className="w-5 h-5" />
-                </Link>
-              )}
-              {slide.ctaSecLabel && slide.ctaSecUrl && (
-                <Link href={slide.ctaSecUrl} className="inline-flex items-center gap-2 border-2 border-white/30 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all">
-                  <Heart className="w-5 h-5" /> {slide.ctaSecLabel}
-                </Link>
-              )}
+
+            <p className="mt-6 text-lg md:text-xl text-neutral-600 leading-relaxed max-w-lg">
+              Since 1986, Selam Children&apos;s Village has been providing
+              comprehensive care, education, and vocational training to
+              Ethiopia&apos;s most vulnerable children and youth.
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Link href="/get-involved/donate" className="inline-flex items-center gap-2 bg-brand-dark text-white px-7 py-4 rounded-full font-semibold hover:bg-neutral-800 transition-colors">
+                Donate Now <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link href="/about" className="inline-flex items-center gap-2 text-brand-dark font-semibold hover:text-brand-orange transition-colors">
+                Learn More
+              </Link>
+            </div>
+
+            {/* Partners strip */}
+            <div className="mt-12 pt-8 border-t border-neutral-100">
+              <p className="text-sm text-neutral-400 font-medium mb-4">Our most loved partners</p>
+              <div className="flex items-center gap-6 opacity-50 grayscale">
+                <Image src="/images/partners/Save-the-Children-800x164.png" alt="Save the Children" width={120} height={30} className="h-6 w-auto object-contain" />
+                <Image src="/images/partners/Plan-International-400x154.png" alt="Plan International" width={100} height={30} className="h-6 w-auto object-contain" />
+                <Image src="/images/partners/Woord-en-Daad.png" alt="Woord en Daad" width={100} height={30} className="h-6 w-auto object-contain" />
+                <Image src="/images/partners/bfz.png" alt="bfz" width={60} height={30} className="h-6 w-auto object-contain hidden sm:block" />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right — Hero image with floating cards */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] max-h-[600px]">
+              <Image
+                src="/images/hero/real-hero-1.jpg"
+                alt="Children at Selam Village"
+                fill
+                className="object-cover"
+                priority
+              />
+              {/* Floating quote card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="absolute top-6 left-4 right-4 sm:right-auto sm:left-6 sm:max-w-[280px] bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-brand-orange-50 flex-shrink-0 flex items-center justify-center">
+                    <span className="text-brand-orange text-lg">&ldquo;</span>
+                  </div>
+                  <p className="text-sm text-brand-dark font-medium leading-snug">
+                    &ldquo;Because of this organization, I was given hope and a second chance.&rdquo;
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Floating stats card */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1 }}
+                className="absolute bottom-6 right-4 sm:right-6 bg-white/95 backdrop-blur-sm rounded-2xl px-5 py-4 shadow-lg"
+              >
+                <p className="text-sm font-semibold text-brand-dark">Dedicated team</p>
+                <p className="text-xs text-neutral-500 mt-1 max-w-[200px]">
+                  Providing essential resources and care to those in need.
+                </p>
+                <div className="flex items-center gap-2 mt-3">
+                  <div className="flex -space-x-1.5">
+                    <div className="w-7 h-7 rounded-full bg-brand-orange-100 border-2 border-white" />
+                    <div className="w-7 h-7 rounded-full bg-blue-100 border-2 border-white" />
+                    <div className="w-7 h-7 rounded-full bg-emerald-100 border-2 border-white" />
+                  </div>
+                  <span className="text-2xl font-bold text-brand-dark font-serif">1k</span>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </div>
-
-      <button onClick={prev} className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-all" aria-label="Previous slide">
-        <ChevronLeft className="w-6 h-6" />
-      </button>
-      <button onClick={next} className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white hover:bg-white/20 transition-all" aria-label="Next slide">
-        <ChevronRight className="w-6 h-6" />
-      </button>
-
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-        {slides.map((_, i) => (
-          <button key={i} onClick={() => setCurrent(i)} className={`h-2 rounded-full transition-all duration-300 ${i === current ? "w-8 bg-brand-orange" : "w-2 bg-white/40 hover:bg-white/60"}`} aria-label={`Go to slide ${i + 1}`} />
-        ))}
-      </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent z-10" />
     </section>
   );
 }

@@ -1,9 +1,9 @@
-import { getPage } from "@/lib/api";
+import { getStaticPage } from "@/data/pages";
 import { GenericPage } from "@/components/blocks/GenericPage";
 import { notFound } from "next/navigation";
 
-export default async function PoliciesPage() {
-  const page = await getPage("policies-guidelines");
+export default function PoliciesPage() {
+  const page = getStaticPage("policies-guidelines");
   if (!page) return notFound();
 
   return (

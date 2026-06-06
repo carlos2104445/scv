@@ -52,7 +52,7 @@ export default function DonatePage() {
             </div>
 
             {/* Content */}
-            <div className="space-y-6 text-neutral-700 leading-relaxed text-[15px] sm:text-base">
+            <div className="space-y-6 text-neutral-700 leading-relaxed">
               <p>
                 Selam Children Village resource mobilization comprises fundraising and leveraging for the continued and increased allocation of resources for safeguarding and protecting most vulnerable children, youth, and community members. SCV execute these predetermined objectives by getting funds from donors abroad and income generated from cost recovery activities performed locally.
               </p>
@@ -90,7 +90,7 @@ export default function DonatePage() {
                       </div>
                       <div>
                         <h3 className="font-bold text-brand-dark tracking-normal">{account.bank}</h3>
-                        <p className="text-sm text-neutral-500">{account.branch}</p>
+                        <p className="text-neutral-500">{account.branch}</p>
                       </div>
                     </div>
                     <span className="px-2.5 py-1 rounded-full bg-brand-orange-50 text-brand-orange text-xs font-medium">
@@ -121,7 +121,7 @@ export default function DonatePage() {
             <div className="mt-16 pt-10 border-t border-neutral-200">
               <div className="text-center mb-8">
                 <h3 className="text-xl font-bold text-brand-dark">Online Donations</h3>
-                <p className="text-sm text-neutral-500 mt-1">We will integrate Chapa and GoFundMe platforms below.</p>
+                <p className="text-neutral-500 mt-1">We will integrate Chapa and GoFundMe platforms below.</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-60 pointer-events-none">
                 {/* Chapa Placeholder */}

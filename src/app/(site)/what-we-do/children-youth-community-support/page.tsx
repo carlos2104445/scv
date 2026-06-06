@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
@@ -41,14 +42,14 @@ export default function CYCSupportPage() {
                   href={`/what-we-do/${project.slug}`}
                   className="group block card-base hover-lift h-full"
                 >
-                  <div className="relative h-40 bg-gradient-to-br from-brand-orange/10 to-brand-orange/5 flex items-center justify-center">
-                    <span className="text-4xl font-serif font-bold text-brand-orange/20">{project.title[0]}</span>
+                  <div className="relative h-48 overflow-hidden">
+                    <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
                   </div>
                   <div className="p-5">
                     <h3 className="text-lg font-bold text-brand-dark group-hover:text-brand-orange transition-colors tracking-normal">
                       {project.title}
                     </h3>
-                    <p className="mt-2 text-sm text-neutral-600 line-clamp-2">{project.excerpt}</p>
+                    <p className="mt-2 text-neutral-600 line-clamp-2">{project.excerpt}</p>
                     <div className="mt-4 flex items-center gap-1 text-brand-orange text-sm font-semibold">
                       Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>

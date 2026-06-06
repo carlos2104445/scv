@@ -1,28 +1,17 @@
 "use client";
 
 import { notFound } from "next/navigation";
-import { use, useState, useEffect } from "react";
+import { use } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { CheckCircle2, GraduationCap } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
-import type { Department } from "@/lib/api";
-
-const API = process.env.NEXT_PUBLIC_ADMIN_API_URL || "https://dashboard.kitchen251.tech/api/v1";
+import { departments } from "@/data/departments";
 
 export default function DepartmentPage({ params }: { params: Promise<{ department: string }> }) {
   const { department: slug } = use(params);
-  const [dept, setDept] = useState<Department | null>(null);
-  const [loading, setLoading] = useState(true);
+  const dept = departments.find((d) => d.slug === slug);
 
-  useEffect(() => {
-    fetch(`${API}/departments`).then(r => r.json()).then(res => {
-      const found = (res.data as Department[]).find((d) => d.slug === slug);
-      setDept(found || null);
-      setLoading(false);
-    }).catch(() => setLoading(false));
-  }, [slug]);
-
-  if (loading) return <div className="min-h-screen flex items-center justify-center"><div className="w-8 h-8 border-4 border-brand-orange border-t-transparent rounded-full animate-spin" /></div>;
   if (!dept) notFound();
 
   return (
@@ -42,30 +31,19 @@ export default function DepartmentPage({ params }: { params: Promise<{ departmen
             <div className="lg:col-span-2">
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                 
-                {dept.image && (
-                  <div className="mb-8 rounded-2xl overflow-hidden aspect-[16/9] relative">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={dept.image}
-                      alt={dept.name}
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
-                )}
+                <div className="mb-8 rounded-2xl overflow-hidden aspect-[16/9] relative">
+                  <Image src={dept.image} alt={dept.name} fill className="object-cover" />
+                </div>
 
-                <p className="text-lg text-neutral-600 leading-relaxed mb-6">{dept.description}</p>
+                <div className="space-y-4 mb-10">
+                  {dept.body.split("\n\n").filter(Boolean).map((para, idx) => (
+                    <p key={idx} className="text-lg text-neutral-600 leading-relaxed">
+                      {para}
+                    </p>
+                  ))}
+                </div>
 
-                {dept.body && dept.body !== dept.description && (
-                  <div className="space-y-4 mb-10">
-                    {dept.body.split("\n\n").filter(Boolean).map((para, idx) => (
-                      <p key={idx} className="text-lg text-neutral-600 leading-relaxed">
-                        {para}
-                      </p>
-                    ))}
-                  </div>
-                )}
-
-                {dept.services && Array.isArray(dept.services) && (dept.services as { title: string; description: string }[]).length > 0 && (
+                {dept.services.length > 0 && (
                   <div className="mt-12 mb-10">
                     <h3 className="text-xl font-bold text-brand-dark tracking-normal mb-6">Key Training Areas</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

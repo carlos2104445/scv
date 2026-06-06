@@ -24,7 +24,7 @@ export default function ResourcesPage() {
                 <Link href={r.href} className="group block card-base hover-lift p-6 h-full">
                   <FileText className="w-8 h-8 text-brand-orange mb-4" />
                   <h3 className="font-bold text-brand-dark group-hover:text-brand-orange transition-colors tracking-normal">{r.title}</h3>
-                  <p className="mt-2 text-sm text-neutral-600">{r.desc}</p>
+                  <p className="mt-2 text-neutral-600">{r.desc}</p>
                   <div className="mt-3 flex items-center gap-1 text-brand-orange text-sm font-semibold">Browse <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></div>
                 </Link>
               </motion.div>
