@@ -46,7 +46,8 @@ export default function VolunteerPage() {
     return (
       <>
         <PageHero
-          title="Become a Volunteer"
+        badge="Get Involved"
+        title="Become a Volunteer"
           breadcrumbs={[
             { label: "Get Involved", href: "/get-involved/how-to-help" },
             { label: "Volunteer", href: "/get-involved/become-a-volunteer" },
@@ -70,6 +71,7 @@ export default function VolunteerPage() {
   return (
     <>
       <PageHero
+        badge="Get Involved"
         title="Become a Volunteer"
         subtitle="Join our team and make a meaningful impact in the lives of children and youth."
         breadcrumbs={[
@@ -115,7 +117,7 @@ export default function VolunteerPage() {
             <motion.form
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               onSubmit={handleSubmit(onSubmit)}
-              className="card-base p-8 space-y-6"
+              className="rounded-2xl border border-neutral-200 bg-white p-8 space-y-6 shadow-sm"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>

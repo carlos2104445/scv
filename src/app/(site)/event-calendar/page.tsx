@@ -22,12 +22,14 @@ const categoryColors: Record<string, string> = {
 export default function EventCalendarPage() {
   return (
     <>
-      <PageHero title="Events" subtitle="Upcoming events and activities at Selam Children's Village." breadcrumbs={[{ label: "Events", href: "/event-calendar" }]} />
+      <PageHero
+        badge="Events"
+        title="Events" subtitle="Upcoming events and activities at Selam Children's Village." breadcrumbs={[{ label: "Events", href: "/event-calendar" }]} />
       <section className="section-padding">
         <div className="container-xl">
           <div className="max-w-4xl mx-auto space-y-6">
             {events.map((e, i) => (
-              <motion.div key={e.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="card-base hover-lift p-6 flex gap-6">
+              <motion.div key={e.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="rounded-2xl border border-neutral-200 bg-white shadow-sm hover:shadow-md transition-shadow p-6 flex gap-6">
                 <div className="shrink-0 w-20 h-20 rounded-2xl bg-brand-orange flex flex-col items-center justify-center text-white">
                   <span className="text-sm font-medium uppercase">{new Date(e.date).toLocaleDateString("en-US", { month: "short" })}</span>
                   <span className="text-2xl font-bold">{new Date(e.date).getDate()}</span>

@@ -13,6 +13,7 @@ export default function CYCSupportPage() {
   return (
     <>
       <PageHero
+        badge="Our Programs"
         title="Children, Youth & Community Support"
         subtitle="Our core programs providing holistic care, education, and community development services."
         breadcrumbs={[
@@ -40,7 +41,7 @@ export default function CYCSupportPage() {
               >
                 <Link
                   href={`/what-we-do/${project.slug}`}
-                  className="group block card-base hover-lift h-full"
+                  className="group block rounded-2xl border border-neutral-200 bg-white h-full shadow-sm hover:shadow-md transition-shadow overflow-hidden"
                 >
                   <div className="relative h-48 overflow-hidden">
                     <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />

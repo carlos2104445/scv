@@ -31,6 +31,7 @@ const quickLinks = [
   { label: "News & Updates", href: "/news-updates" },
   { label: "Gallery", href: "/gallery" },
   { label: "Events", href: "/event-calendar" },
+  { label: "Leadership", href: "/leadership/executive-board-members" },
 ];
 
 const getInvolvedLinks = [

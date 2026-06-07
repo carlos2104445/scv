@@ -28,6 +28,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ projec
   return (
     <>
       <PageHero
+        badge="Our Programs"
         title={project.title}
         subtitle={project.excerpt}
         breadcrumbs={[
@@ -118,7 +119,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ projec
                 transition={{ delay: 0.2 }}
                 className="sticky top-28 space-y-6"
               >
-                <div className="card-base p-6 bg-gradient-to-br from-brand-orange-50 to-white">
+                <div className="rounded-2xl border border-brand-orange-100 bg-brand-orange-50 p-6">
                   <h3 className="text-lg font-bold text-brand-dark tracking-normal">Support This Program</h3>
                   <p className="mt-2 text-sm text-neutral-600">Your donation directly supports this program and the lives it transforms.</p>
                   <Link href="/get-involved/donate" className="btn-primary w-full mt-4 text-center">
@@ -126,7 +127,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ projec
                   </Link>
                 </div>
 
-                <div className="card-base p-6">
+                <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
                   <h3 className="text-lg font-bold text-brand-dark mb-4 tracking-normal">Related Programs</h3>
                   <div className="space-y-2">
                     {projects.slice(0, 5).filter(p => p.slug !== slug).map((p) => (

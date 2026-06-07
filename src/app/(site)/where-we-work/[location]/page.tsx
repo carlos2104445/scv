@@ -30,6 +30,7 @@ export default function LocationPage({ params }: { params: Promise<{ location: s
   return (
     <>
       <PageHero
+        badge="Our Locations"
         title={loc.name}
         subtitle={loc.region}
         breadcrumbs={[
@@ -135,7 +136,7 @@ export default function LocationPage({ params }: { params: Promise<{ location: s
                 >
                   <Link
                     href={`/where-we-work/${otherLoc.slug}`}
-                    className="group flex items-center gap-5 card-base hover-lift p-5"
+                    className="group flex items-center gap-5 rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow"
                   >
                     <div className="relative w-24 h-24 rounded-xl overflow-hidden shrink-0">
                       <Image

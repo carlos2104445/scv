@@ -18,6 +18,7 @@ export default function AnnualReportPage() {
   return (
     <>
       <PageHero
+        badge="Resources"
         title="Annual Reports"
         subtitle="Download our Annual Reports detailing the vital work of Selam Children's Village."
         breadcrumbs={[
@@ -36,8 +37,8 @@ export default function AnnualReportPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {reports.map((r) => (
-              <div key={r.id} className="card-base p-6 flex flex-col items-center text-center">
-                <div className="w-14 h-14 rounded-2xl bg-brand-orange/10 flex items-center justify-center mb-4">
+              <div key={r.id} className="rounded-2xl border border-neutral-200 bg-white p-6 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center mb-4">
                   <FileText className="w-7 h-7 text-brand-orange" />
                 </div>
                 <h3 className="text-lg font-bold text-brand-dark">{r.title}</h3>

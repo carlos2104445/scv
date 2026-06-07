@@ -7,6 +7,7 @@ export default function BoardSwitzerlandPage() {
   return (
     <>
       <PageHero
+        badge="Leadership"
         title="Board Switzerland"
         subtitle="Selam Charity Switzerland — supporting Selam Children's Village from Europe."
         breadcrumbs={[
