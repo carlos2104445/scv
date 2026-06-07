@@ -1,0 +1,41 @@
+{
+  "node": {
+    "4030beb0073c5f05e42ad4d5690f51c0665b2ec077": {
+      "workers": {
+        "app/(admin)/site/hero-slides/new/page": {
+          "moduleId": 44702,
+          "async": true,
+          "exportedName": "createHeroSlide",
+          "filename": "admin/src/actions/hero-slides.ts"
+        }
+      },
+      "exportedName": "createHeroSlide",
+      "filename": "admin/src/actions/hero-slides.ts"
+    },
+    "40f080ad142a0e08e61824b21940964223b3c7d640": {
+      "workers": {
+        "app/(admin)/site/hero-slides/new/page": {
+          "moduleId": 44702,
+          "async": true,
+          "exportedName": "deleteHeroSlide",
+          "filename": "admin/src/actions/hero-slides.ts"
+        }
+      },
+      "exportedName": "deleteHeroSlide",
+      "filename": "admin/src/actions/hero-slides.ts"
+    },
+    "60c9c986c37da304d81f92d8afc76b210b6bba52f2": {
+      "workers": {
+        "app/(admin)/site/hero-slides/new/page": {
+          "moduleId": 44702,
+          "async": true,
+          "exportedName": "updateHeroSlide",
+          "filename": "admin/src/actions/hero-slides.ts"
+        }
+      },
+      "exportedName": "updateHeroSlide",
+      "filename": "admin/src/actions/hero-slides.ts"
+    }
+  },
+  "edge": {}
+}

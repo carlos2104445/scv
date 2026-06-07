@@ -1,0 +1,41 @@
+{
+  "node": {
+    "40965b2522376330d3606b3bf5d703b78508d6fd90": {
+      "workers": {
+        "app/(admin)/content/partners/new/page": {
+          "moduleId": 83745,
+          "async": true,
+          "exportedName": "deletePartner",
+          "filename": "admin/src/actions/partners.ts"
+        }
+      },
+      "exportedName": "deletePartner",
+      "filename": "admin/src/actions/partners.ts"
+    },
+    "40ca17383ecc416ea928a8ef0997894ec4393b1bb5": {
+      "workers": {
+        "app/(admin)/content/partners/new/page": {
+          "moduleId": 83745,
+          "async": true,
+          "exportedName": "createPartner",
+          "filename": "admin/src/actions/partners.ts"
+        }
+      },
+      "exportedName": "createPartner",
+      "filename": "admin/src/actions/partners.ts"
+    },
+    "60d9e4b406538687b3b95bce7a95b40bfd6b85f389": {
+      "workers": {
+        "app/(admin)/content/partners/new/page": {
+          "moduleId": 83745,
+          "async": true,
+          "exportedName": "updatePartner",
+          "filename": "admin/src/actions/partners.ts"
+        }
+      },
+      "exportedName": "updatePartner",
+      "filename": "admin/src/actions/partners.ts"
+    }
+  },
+  "edge": {}
+}

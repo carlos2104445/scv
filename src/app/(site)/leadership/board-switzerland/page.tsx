@@ -1,7 +1,5 @@
-"use client";
-
+import { AnimatedSection, AnimatedItem } from "@/components/global/AnimatedSection";
 import { PageHero } from "@/components/blocks/PageHero";
-import { motion } from "framer-motion";
 
 export default function BoardSwitzerlandPage() {
   return (
@@ -17,10 +15,7 @@ export default function BoardSwitzerlandPage() {
       />
       <section className="section-padding">
         <div className="container-xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <AnimatedSection
             className="max-w-3xl mx-auto text-center"
           >
             <h2>Selam Charity Switzerland</h2>
@@ -30,7 +25,7 @@ export default function BoardSwitzerlandPage() {
             <p className="mt-4 text-neutral-600 leading-relaxed">
               Through their dedicated efforts, Selam Charity Switzerland has helped secure critical funding for infrastructure projects, educational programs, and community development initiatives that directly benefit the children and communities we serve.
             </p>
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
     </>

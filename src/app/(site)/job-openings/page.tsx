@@ -1,18 +1,20 @@
-"use client";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Briefcase, Mail, Bell } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
+import { AnimatedSection } from "@/components/global/AnimatedSection";
 
 export default function JobOpeningsPage() {
   return (
     <>
       <PageHero
         badge="Careers"
-        title="Job Openings" subtitle="Join our team and make a difference in the lives of children and communities." breadcrumbs={[{ label: "Job Openings", href: "/job-openings" }]} />
+        title="Job Openings"
+        subtitle="Join our team and make a difference in the lives of children and communities."
+        breadcrumbs={[{ label: "Job Openings", href: "/job-openings" }]}
+      />
       <section className="section-padding">
         <div className="container-xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl mx-auto text-center space-y-8">
+          <AnimatedSection className="max-w-2xl mx-auto text-center space-y-8">
             <div className="w-20 h-20 mx-auto rounded-2xl bg-brand-orange-50 border border-brand-orange-100 flex items-center justify-center">
               <Briefcase className="w-10 h-10 text-brand-orange" />
             </div>
@@ -40,7 +42,7 @@ export default function JobOpeningsPage() {
                 Volunteer With Us Instead
               </Link>
             </div>
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
     </>

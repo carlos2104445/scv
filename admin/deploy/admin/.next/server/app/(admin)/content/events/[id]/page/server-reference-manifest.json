@@ -1,0 +1,41 @@
+{
+  "node": {
+    "40aa28933ff9020c4cdd085a418e923f4e040c5a5a": {
+      "workers": {
+        "app/(admin)/content/events/[id]/page": {
+          "moduleId": 43800,
+          "async": true,
+          "exportedName": "deleteEvent",
+          "filename": "admin/src/actions/events.ts"
+        }
+      },
+      "exportedName": "deleteEvent",
+      "filename": "admin/src/actions/events.ts"
+    },
+    "40db37a79353cf443883f71d369dcc528595014ae8": {
+      "workers": {
+        "app/(admin)/content/events/[id]/page": {
+          "moduleId": 43800,
+          "async": true,
+          "exportedName": "createEvent",
+          "filename": "admin/src/actions/events.ts"
+        }
+      },
+      "exportedName": "createEvent",
+      "filename": "admin/src/actions/events.ts"
+    },
+    "6095d5581632039e2eb147ba6d3694fc2d9873173d": {
+      "workers": {
+        "app/(admin)/content/events/[id]/page": {
+          "moduleId": 43800,
+          "async": true,
+          "exportedName": "updateEvent",
+          "filename": "admin/src/actions/events.ts"
+        }
+      },
+      "exportedName": "updateEvent",
+      "filename": "admin/src/actions/events.ts"
+    }
+  },
+  "edge": {}
+}

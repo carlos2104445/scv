@@ -1,10 +1,8 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Heart, Users, GraduationCap, Home, Stethoscope, Building2 } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ImpactCounter } from "@/components/blocks/SectionHeading";
+import { AnimatedSection, AnimatedItem } from "@/components/global/AnimatedSection";
 
 const highlights = [
   { icon: Home, title: "Family-Based Care", desc: "Children live in small family units guided by dedicated house mothers providing personalized care and emotional support.", color: "bg-rose-50 text-rose-600", borderColor: "border-rose-200" },
@@ -32,7 +30,7 @@ export default function WhoWeArePage() {
       <section className="section-padding">
         <div className="container-xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <AnimatedSection variant="slideRight">
               <h2 className="text-3xl font-bold text-brand-dark mb-6">Our Story</h2>
               <div className="space-y-4 text-neutral-700 leading-relaxed">
                 <p>
@@ -45,15 +43,15 @@ export default function WhoWeArePage() {
                   Our campus in the Kotebe area of Addis Ababa hosts a comprehensive range of facilities including residential family homes, a school, a TVET college with 11 departments, a clinic, recreational areas, and administrative offices.
                 </p>
               </div>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+            </AnimatedSection>
+            <AnimatedSection className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               <Image src="/images/hero/real-hero-1.jpg" alt="Children at Selam Village" fill className="object-cover" />
-            </motion.div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* Impact Numbers — Kindoora yellow card */}
+      {/* Impact Numbers */}
       <section className="py-16">
         <div className="container-xl">
           <div className="text-center mb-10">
@@ -85,12 +83,9 @@ export default function WhoWeArePage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {highlights.map((h, i) => (
-              <motion.div
+              <AnimatedItem
                 key={h.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
+                index={i}
                 className={`rounded-2xl border ${h.borderColor} bg-white p-6 shadow-sm hover:shadow-md transition-shadow`}
               >
                 <div className={`w-12 h-12 rounded-xl ${h.color} flex items-center justify-center mb-4`}>
@@ -98,7 +93,7 @@ export default function WhoWeArePage() {
                 </div>
                 <h3 className="text-lg font-bold text-brand-dark mb-2">{h.title}</h3>
                 <p className="text-neutral-600 leading-relaxed">{h.desc}</p>
-              </motion.div>
+              </AnimatedItem>
             ))}
           </div>
         </div>
@@ -108,10 +103,10 @@ export default function WhoWeArePage() {
       <section className="section-padding">
         <div className="container-xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+            <AnimatedSection variant="slideRight" className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               <Image src="/images/projects/campus-real.jpg" alt="SCV Campus" fill className="object-cover" />
-            </motion.div>
-            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            </AnimatedSection>
+            <AnimatedSection>
               <h2 className="text-3xl font-bold text-brand-dark mb-6">Our Impact</h2>
               <div className="space-y-4 text-neutral-700 leading-relaxed">
                 <p>
@@ -124,7 +119,7 @@ export default function WhoWeArePage() {
                   Today, Selam Children&apos;s Village continues to grow, reaching more communities and developing innovative programs to address the evolving needs of vulnerable children and youth in Ethiopia.
                 </p>
               </div>
-            </motion.div>
+            </AnimatedSection>
           </div>
         </div>
       </section>

@@ -1,0 +1,18 @@
+{
+  "status": 404,
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(site)/layout,_N_T_/(site)/get-involved/layout,_N_T_/(site)/get-involved/how-to-help/layout,_N_T_/(site)/get-involved/how-to-help/page,_N_T_/get-involved/how-to-help"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHNpdGUp/get-involved/how-to-help/__PAGE__",
+    "/!KHNpdGUp/get-involved/how-to-help",
+    "/!KHNpdGUp/get-involved",
+    "/!KHNpdGUp",
+    "/_index",
+    "/_head"
+  ]
+}

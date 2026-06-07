@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(site)/layout,_N_T_/(site)/get-involved/layout,_N_T_/(site)/get-involved/become-a-volunteer/layout,_N_T_/(site)/get-involved/become-a-volunteer/page,_N_T_/get-involved/become-a-volunteer"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHNpdGUp/get-involved/become-a-volunteer/__PAGE__",
+    "/!KHNpdGUp/get-involved/become-a-volunteer",
+    "/!KHNpdGUp/get-involved",
+    "/!KHNpdGUp",
+    "/_index",
+    "/_head"
+  ]
+}

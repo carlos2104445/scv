@@ -1,0 +1,17 @@
+{
+  "node": {
+    "608c65eaba218502ae9b722106294228cfdf8d66af": {
+      "workers": {
+        "app/(admin)/content/people/page": {
+          "moduleId": 78949,
+          "async": true,
+          "exportedName": "reorderPerson",
+          "filename": "admin/src/actions/people.ts"
+        }
+      },
+      "exportedName": "reorderPerson",
+      "filename": "admin/src/actions/people.ts"
+    }
+  },
+  "edge": {}
+}

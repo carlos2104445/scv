@@ -1,0 +1,41 @@
+{
+  "node": {
+    "4044ff5f2792aed2fe4e07a08e0d194e465b419f2c": {
+      "workers": {
+        "app/(admin)/content/publications/[id]/page": {
+          "moduleId": 62853,
+          "async": true,
+          "exportedName": "deletePublication",
+          "filename": "admin/src/actions/publications.ts"
+        }
+      },
+      "exportedName": "deletePublication",
+      "filename": "admin/src/actions/publications.ts"
+    },
+    "406189a050a091d3f76540949a67a6efd7dc0a3287": {
+      "workers": {
+        "app/(admin)/content/publications/[id]/page": {
+          "moduleId": 62853,
+          "async": true,
+          "exportedName": "createPublication",
+          "filename": "admin/src/actions/publications.ts"
+        }
+      },
+      "exportedName": "createPublication",
+      "filename": "admin/src/actions/publications.ts"
+    },
+    "60fc97830912c007864982a95e7a66fdec938ae30b": {
+      "workers": {
+        "app/(admin)/content/publications/[id]/page": {
+          "moduleId": 62853,
+          "async": true,
+          "exportedName": "updatePublication",
+          "filename": "admin/src/actions/publications.ts"
+        }
+      },
+      "exportedName": "updatePublication",
+      "filename": "admin/src/actions/publications.ts"
+    }
+  },
+  "edge": {}
+}

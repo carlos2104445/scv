@@ -1,0 +1,41 @@
+{
+  "node": {
+    "404906778f00079c239c50fd5feaaeed2405fd4c80": {
+      "workers": {
+        "app/(admin)/content/gallery/new/page": {
+          "moduleId": 32406,
+          "async": true,
+          "exportedName": "deleteAlbum",
+          "filename": "admin/src/actions/gallery.ts"
+        }
+      },
+      "exportedName": "deleteAlbum",
+      "filename": "admin/src/actions/gallery.ts"
+    },
+    "40e8f2660fff355257553f5f079c209291d863ddf3": {
+      "workers": {
+        "app/(admin)/content/gallery/new/page": {
+          "moduleId": 32406,
+          "async": true,
+          "exportedName": "createAlbum",
+          "filename": "admin/src/actions/gallery.ts"
+        }
+      },
+      "exportedName": "createAlbum",
+      "filename": "admin/src/actions/gallery.ts"
+    },
+    "60b085b4a17df3917aa72584ce496a645dde6050bf": {
+      "workers": {
+        "app/(admin)/content/gallery/new/page": {
+          "moduleId": 32406,
+          "async": true,
+          "exportedName": "updateAlbum",
+          "filename": "admin/src/actions/gallery.ts"
+        }
+      },
+      "exportedName": "updateAlbum",
+      "filename": "admin/src/actions/gallery.ts"
+    }
+  },
+  "edge": {}
+}

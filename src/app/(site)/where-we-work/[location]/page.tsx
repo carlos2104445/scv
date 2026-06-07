@@ -1,9 +1,8 @@
-"use client";
-
+import { AnimatedSection, AnimatedItem } from "@/components/global/AnimatedSection";
+import { notFound } from "next/navigation";
 import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { MapPin, Calendar, ArrowRight, CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
@@ -13,19 +12,7 @@ export default function LocationPage({ params }: { params: Promise<{ location: s
   const { location: slug } = use(params);
   const loc = getLocationBySlug(slug);
 
-  if (!loc) {
-    return (
-      <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-brand-dark">Location Not Found</h1>
-          <p className="mt-2 text-neutral-600">The requested location does not exist.</p>
-          <Link href="/where-we-work" className="btn-primary mt-6 inline-flex">
-            View All Locations
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  if (!loc) notFound();
 
   return (
     <>
@@ -42,10 +29,7 @@ export default function LocationPage({ params }: { params: Promise<{ location: s
       <section className="section-padding bg-white">
         <div className="container-xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+            <AnimatedSection
             >
               <div className="relative h-80 rounded-2xl overflow-hidden">
                 <Image
@@ -65,12 +49,9 @@ export default function LocationPage({ params }: { params: Promise<{ location: s
                   Established {loc.established}
                 </span>
               </div>
-            </motion.div>
+            </AnimatedSection>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+            <AnimatedSection
             >
               <h2 className="text-2xl font-bold text-brand-dark mb-4">About This Location</h2>
               <p className="text-neutral-600 leading-relaxed">{loc.description}</p>
@@ -86,7 +67,7 @@ export default function LocationPage({ params }: { params: Promise<{ location: s
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -100,17 +81,13 @@ export default function LocationPage({ params }: { params: Promise<{ location: s
           />
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {loc.programs.map((p, i) => (
-              <motion.div
+              <AnimatedSection
                 key={p}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
                 className="flex items-center gap-3 rounded-xl bg-white border border-neutral-100 px-5 py-4 shadow-sm"
               >
                 <div className="w-2 h-2 rounded-full bg-brand-orange shrink-0" />
                 <span className="text-sm font-medium text-brand-dark">{p}</span>
-              </motion.div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -127,12 +104,8 @@ export default function LocationPage({ params }: { params: Promise<{ location: s
             {locations
               .filter((l) => l.slug !== loc.slug)
               .map((otherLoc, i) => (
-                <motion.div
+                <AnimatedSection
                   key={otherLoc.slug}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
                 >
                   <Link
                     href={`/where-we-work/${otherLoc.slug}`}
@@ -157,7 +130,7 @@ export default function LocationPage({ params }: { params: Promise<{ location: s
                       </span>
                     </div>
                   </Link>
-                </motion.div>
+                </AnimatedSection>
               ))}
           </div>
         </div>

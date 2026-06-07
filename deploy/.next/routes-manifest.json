@@ -1,0 +1,282 @@
+{
+  "version": 3,
+  "pages404": true,
+  "appType": "app",
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "onMatchHeaders": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [
+    {
+      "page": "/news-updates/[slug]",
+      "regex": "^/news\\-updates/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/news\\-updates/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/p/[slug]",
+      "regex": "^/p/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/p/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/technical-vocational-training/[department]",
+      "regex": "^/technical\\-vocational\\-training/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPdepartment": "nxtPdepartment"
+      },
+      "namedRegex": "^/technical\\-vocational\\-training/(?<nxtPdepartment>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/what-we-do/[project]",
+      "regex": "^/what\\-we\\-do/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPproject": "nxtPproject"
+      },
+      "namedRegex": "^/what\\-we\\-do/(?<nxtPproject>[^/]+?)(?:/)?$"
+    }
+  ],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/about",
+      "regex": "^/about(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about(?:/)?$"
+    },
+    {
+      "page": "/about/our-history",
+      "regex": "^/about/our\\-history(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about/our\\-history(?:/)?$"
+    },
+    {
+      "page": "/about/vision-mission-core-values",
+      "regex": "^/about/vision\\-mission\\-core\\-values(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about/vision\\-mission\\-core\\-values(?:/)?$"
+    },
+    {
+      "page": "/about/who-we-are",
+      "regex": "^/about/who\\-we\\-are(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about/who\\-we\\-are(?:/)?$"
+    },
+    {
+      "page": "/all-projects",
+      "regex": "^/all\\-projects(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/all\\-projects(?:/)?$"
+    },
+    {
+      "page": "/event-calendar",
+      "regex": "^/event\\-calendar(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/event\\-calendar(?:/)?$"
+    },
+    {
+      "page": "/gallery",
+      "regex": "^/gallery(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/gallery(?:/)?$"
+    },
+    {
+      "page": "/get-involved",
+      "regex": "^/get\\-involved(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/get\\-involved(?:/)?$"
+    },
+    {
+      "page": "/get-involved/become-a-volunteer",
+      "regex": "^/get\\-involved/become\\-a\\-volunteer(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/get\\-involved/become\\-a\\-volunteer(?:/)?$"
+    },
+    {
+      "page": "/get-involved/contact-us",
+      "regex": "^/get\\-involved/contact\\-us(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/get\\-involved/contact\\-us(?:/)?$"
+    },
+    {
+      "page": "/get-involved/donate",
+      "regex": "^/get\\-involved/donate(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/get\\-involved/donate(?:/)?$"
+    },
+    {
+      "page": "/get-involved/how-to-help",
+      "regex": "^/get\\-involved/how\\-to\\-help(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/get\\-involved/how\\-to\\-help(?:/)?$"
+    },
+    {
+      "page": "/job-openings",
+      "regex": "^/job\\-openings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/job\\-openings(?:/)?$"
+    },
+    {
+      "page": "/leadership",
+      "regex": "^/leadership(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/leadership(?:/)?$"
+    },
+    {
+      "page": "/leadership/board-switzerland",
+      "regex": "^/leadership/board\\-switzerland(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/leadership/board\\-switzerland(?:/)?$"
+    },
+    {
+      "page": "/leadership/executive-board-members",
+      "regex": "^/leadership/executive\\-board\\-members(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/leadership/executive\\-board\\-members(?:/)?$"
+    },
+    {
+      "page": "/leadership/extended-management-team",
+      "regex": "^/leadership/extended\\-management\\-team(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/leadership/extended\\-management\\-team(?:/)?$"
+    },
+    {
+      "page": "/leadership/senior-management-team",
+      "regex": "^/leadership/senior\\-management\\-team(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/leadership/senior\\-management\\-team(?:/)?$"
+    },
+    {
+      "page": "/news-updates",
+      "regex": "^/news\\-updates(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/news\\-updates(?:/)?$"
+    },
+    {
+      "page": "/resources",
+      "regex": "^/resources(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/resources(?:/)?$"
+    },
+    {
+      "page": "/resources/annual-report",
+      "regex": "^/resources/annual\\-report(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/resources/annual\\-report(?:/)?$"
+    },
+    {
+      "page": "/resources/audit-report",
+      "regex": "^/resources/audit\\-report(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/resources/audit\\-report(?:/)?$"
+    },
+    {
+      "page": "/resources/newsletter-magazine",
+      "regex": "^/resources/newsletter\\-magazine(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/resources/newsletter\\-magazine(?:/)?$"
+    },
+    {
+      "page": "/resources/policies-guidelines",
+      "regex": "^/resources/policies\\-guidelines(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/resources/policies\\-guidelines(?:/)?$"
+    },
+    {
+      "page": "/resources/publication",
+      "regex": "^/resources/publication(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/resources/publication(?:/)?$"
+    },
+    {
+      "page": "/robots.txt",
+      "regex": "^/robots\\.txt(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/robots\\.txt(?:/)?$"
+    },
+    {
+      "page": "/search",
+      "regex": "^/search(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/search(?:/)?$"
+    },
+    {
+      "page": "/sitemap.xml",
+      "regex": "^/sitemap\\.xml(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sitemap\\.xml(?:/)?$"
+    },
+    {
+      "page": "/technical-vocational-training",
+      "regex": "^/technical\\-vocational\\-training(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/technical\\-vocational\\-training(?:/)?$"
+    },
+    {
+      "page": "/what-we-do",
+      "regex": "^/what\\-we\\-do(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/what\\-we\\-do(?:/)?$"
+    },
+    {
+      "page": "/what-we-do/children-youth-community-support",
+      "regex": "^/what\\-we\\-do/children\\-youth\\-community\\-support(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/what\\-we\\-do/children\\-youth\\-community\\-support(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

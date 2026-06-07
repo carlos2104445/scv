@@ -1,0 +1,41 @@
+{
+  "node": {
+    "4000d977f0cebae5769cc9280eeb73a65765fa5dab": {
+      "workers": {
+        "app/(admin)/content/news/new/page": {
+          "moduleId": 80208,
+          "async": true,
+          "exportedName": "deleteNews",
+          "filename": "admin/src/actions/news.ts"
+        }
+      },
+      "exportedName": "deleteNews",
+      "filename": "admin/src/actions/news.ts"
+    },
+    "4081e8e8a245b38765f781aceaa3fb93077925540f": {
+      "workers": {
+        "app/(admin)/content/news/new/page": {
+          "moduleId": 80208,
+          "async": true,
+          "exportedName": "createNews",
+          "filename": "admin/src/actions/news.ts"
+        }
+      },
+      "exportedName": "createNews",
+      "filename": "admin/src/actions/news.ts"
+    },
+    "60be16147d023d3be291898bc18b40349639e12e00": {
+      "workers": {
+        "app/(admin)/content/news/new/page": {
+          "moduleId": 80208,
+          "async": true,
+          "exportedName": "updateNews",
+          "filename": "admin/src/actions/news.ts"
+        }
+      },
+      "exportedName": "updateNews",
+      "filename": "admin/src/actions/news.ts"
+    }
+  },
+  "edge": {}
+}

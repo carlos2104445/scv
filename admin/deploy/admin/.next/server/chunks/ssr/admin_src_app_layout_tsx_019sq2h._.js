@@ -1,0 +1,3 @@
+module.exports=[60519,a=>{"use strict";var b=a.i(61909);a.s(["default",0,function({children:a}){return(0,b.jsx)("html",{lang:"en",children:(0,b.jsx)("body",{children:a})})},"metadata",0,{title:{default:"SCV Admin",template:"%s | SCV Admin"},description:"Selam Children's Village — Content Management System",robots:{index:!1,follow:!1}}])},94544,a=>{a.n(a.i(60519))}];
+
+//# sourceMappingURL=admin_src_app_layout_tsx_019sq2h._.js.map

@@ -1,0 +1,18 @@
+{
+  "status": 404,
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(site)/layout,_N_T_/(site)/resources/layout,_N_T_/(site)/resources/annual-report/layout,_N_T_/(site)/resources/annual-report/page,_N_T_/resources/annual-report"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHNpdGUp/resources/annual-report/__PAGE__",
+    "/!KHNpdGUp/resources/annual-report",
+    "/!KHNpdGUp/resources",
+    "/!KHNpdGUp",
+    "/_index",
+    "/_head"
+  ]
+}

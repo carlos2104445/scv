@@ -1,0 +1,18 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(admin)/layout,_N_T_/(admin)/content/layout,_N_T_/(admin)/content/departments/layout,_N_T_/(admin)/content/departments/new/layout,_N_T_/(admin)/content/departments/new/page,_N_T_/content/departments/new"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KGFkbWluKQ/content/departments/new/__PAGE__",
+    "/!KGFkbWluKQ/content/departments/new",
+    "/!KGFkbWluKQ/content/departments",
+    "/!KGFkbWluKQ/content",
+    "/!KGFkbWluKQ",
+    "/_index",
+    "/_head"
+  ]
+}

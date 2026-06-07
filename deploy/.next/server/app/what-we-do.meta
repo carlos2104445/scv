@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(site)/layout,_N_T_/(site)/what-we-do/layout,_N_T_/(site)/what-we-do/page,_N_T_/what-we-do"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHNpdGUp/what-we-do/__PAGE__",
+    "/!KHNpdGUp/what-we-do",
+    "/!KHNpdGUp",
+    "/_index",
+    "/_head"
+  ]
+}

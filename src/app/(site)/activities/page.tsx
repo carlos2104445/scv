@@ -1,10 +1,8 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { MapPin, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
+import { AnimatedItem } from "@/components/global/AnimatedSection";
 
 const activities = [
   {
@@ -92,12 +90,10 @@ export default function ActivitiesPage() {
 
           <div className="mt-14 space-y-6">
             {activities.map((activity, i) => (
-              <motion.div
+              <AnimatedItem
                 key={activity.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
+                index={i}
+                staggerDelay={0.05}
                 className="group flex flex-col md:flex-row gap-6 rounded-2xl bg-white border border-neutral-100 shadow-sm hover:shadow-lg transition-all duration-300 p-6"
               >
                 <div className="md:w-28 shrink-0 flex flex-col items-center justify-center text-center">
@@ -125,7 +121,7 @@ export default function ActivitiesPage() {
                     {activity.description}
                   </p>
                 </div>
-              </motion.div>
+              </AnimatedItem>
             ))}
           </div>
 

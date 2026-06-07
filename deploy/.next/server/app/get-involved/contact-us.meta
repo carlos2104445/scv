@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(site)/layout,_N_T_/(site)/get-involved/layout,_N_T_/(site)/get-involved/contact-us/layout,_N_T_/(site)/get-involved/contact-us/page,_N_T_/get-involved/contact-us"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHNpdGUp/get-involved/contact-us/__PAGE__",
+    "/!KHNpdGUp/get-involved/contact-us",
+    "/!KHNpdGUp/get-involved",
+    "/!KHNpdGUp",
+    "/_index",
+    "/_head"
+  ]
+}

@@ -1,0 +1,6 @@
+self.__MIDDLEWARE_MATCHERS = [
+  {
+    "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?(?:\\/((?!login|api\\/auth|api\\/v1|api\\/uploads|_next|favicon.ico|images).*))(\\.json)?[\\/#\\?]?$",
+    "originalSource": "/((?!login|api/auth|api/v1|api/uploads|_next|favicon.ico|images).*)"
+  }
+];self.__MIDDLEWARE_MATCHERS_CB && self.__MIDDLEWARE_MATCHERS_CB()

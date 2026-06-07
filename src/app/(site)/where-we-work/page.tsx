@@ -1,8 +1,6 @@
-"use client";
-
+import { AnimatedSection, AnimatedItem } from "@/components/global/AnimatedSection";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { MapPin, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
@@ -27,12 +25,8 @@ export default function WhereWeWorkPage() {
 
           <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8">
             {locations.map((loc, i) => (
-              <motion.div
+              <AnimatedSection
                 key={loc.slug}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.5 }}
               >
                 <Link
                   href={`/where-we-work/${loc.slug}`}
@@ -74,7 +68,7 @@ export default function WhereWeWorkPage() {
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </AnimatedSection>
             ))}
           </div>
         </div>

@@ -1,0 +1,3 @@
+module.exports=[83198,a=>{"use strict";a.s(["default",0,function({children:a}){return a},"metadata",0,{title:"Leadership",description:"Meet the dedicated leaders of Selam Children's Village — executive board members, senior management, and the extended management team.",openGraph:{title:"Leadership | Selam Children's Village"}}])},38170,a=>{a.n(a.i(83198))}];
+
+//# sourceMappingURL=src_app_%28site%29_leadership_layout_tsx_0v577ek._.js.map

@@ -1,7 +1,5 @@
-"use client";
-
+import { AnimatedSection, AnimatedItem } from "@/components/global/AnimatedSection";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Handshake, Building2, GraduationCap, Heart, Mail } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { SectionHeading } from "@/components/blocks/SectionHeading";
@@ -96,12 +94,8 @@ export default function BeAPartnerPage() {
           />
           <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-8">
             {partnershipTypes.map((type, i) => (
-              <motion.div
+              <AnimatedSection
                 key={type.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
                 className="group relative rounded-2xl p-8 bg-white border border-neutral-100 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden"
               >
                 <div className={`absolute top-0 right-0 w-32 h-32 ${type.bg} rounded-full -translate-y-12 translate-x-12 group-hover:scale-150 transition-transform duration-500`} />
@@ -122,7 +116,7 @@ export default function BeAPartnerPage() {
                     ))}
                   </ul>
                 </div>
-              </motion.div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -137,16 +131,12 @@ export default function BeAPartnerPage() {
           />
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             {currentPartners.map((partner, i) => (
-              <motion.div
+              <AnimatedSection
                 key={partner}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
                 className="px-6 py-3 rounded-full bg-white border border-neutral-200 text-sm font-medium text-brand-dark shadow-sm"
               >
                 {partner}
-              </motion.div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
@@ -154,10 +144,7 @@ export default function BeAPartnerPage() {
 
       <section className="section-padding bg-brand-dark text-white">
         <div className="container-xl text-center max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <AnimatedSection
           >
             <h2 className="text-white">Ready to Partner?</h2>
             <p className="mt-4 text-white/70 text-lg leading-relaxed">
@@ -173,7 +160,7 @@ export default function BeAPartnerPage() {
                 Donate Now
               </Link>
             </div>
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
     </>

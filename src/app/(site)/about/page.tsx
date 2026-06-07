@@ -1,9 +1,7 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Calendar, Users, GraduationCap, Building, Heart, Eye } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
+import { AnimatedSection, AnimatedItem } from "@/components/global/AnimatedSection";
 
 const highlights = [
   { icon: Calendar, label: "Founded", value: "1986", desc: "By Mrs. Tsehay Roschli" },
@@ -54,20 +52,14 @@ export default function AboutPage() {
           <div className="rounded-3xl bg-amber-100 py-10 px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               {highlights.map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
+                <AnimatedItem key={item.label} index={i} staggerDelay={0.1}>
                   <div className="w-12 h-12 mx-auto rounded-xl bg-white/70 flex items-center justify-center mb-3">
                     <item.icon className="w-6 h-6 text-brand-dark" />
                   </div>
                   <p className="text-3xl font-bold text-brand-dark font-serif">{item.value}</p>
                   <p className="text-sm font-semibold text-brand-dark mt-1">{item.label}</p>
                   <p className="text-sm text-neutral-600">{item.desc}</p>
-                </motion.div>
+                </AnimatedItem>
               ))}
             </div>
           </div>
@@ -77,12 +69,7 @@ export default function AboutPage() {
       {/* Intro */}
       <section className="py-12">
         <div className="container-xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
-          >
+          <AnimatedSection className="max-w-4xl mx-auto text-center">
             <h2 className="text-brand-dark">Our Story</h2>
             <p className="mt-6 text-lg text-neutral-600 leading-relaxed">
               Selam Children&apos;s Village was founded in 1986 by Mrs. Tsehay Roschli, a Swiss-Ethiopian social worker with a profound vision: to create a nurturing environment where Ethiopia&apos;s most vulnerable children could grow, learn, and thrive. What began as a small initiative has blossomed into one of the country&apos;s most comprehensive child welfare organizations, serving hundreds of children and youth through direct care, education, vocational training, and community support programs.
@@ -90,7 +77,7 @@ export default function AboutPage() {
             <p className="mt-4 text-lg text-neutral-600 leading-relaxed">
               Today, our campus in the Kotebe area of Addis Ababa is home to a children&apos;s village organized in family-style units, a fully accredited TVET college with 11 departments, a health clinic, and numerous support services. We believe that every child deserves a chance to reach their full potential, and we work tirelessly to make that belief a reality.
             </p>
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -99,13 +86,7 @@ export default function AboutPage() {
         <div className="container-xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {sections.map((section, i) => (
-              <motion.div
-                key={section.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
+              <AnimatedItem key={section.title} index={i} staggerDelay={0.1}>
                 <Link
                   href={section.href}
                   className={`group block rounded-2xl border ${section.borderColor} bg-white p-6 h-full shadow-sm hover:shadow-md transition-shadow`}
@@ -124,7 +105,7 @@ export default function AboutPage() {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>
-              </motion.div>
+              </AnimatedItem>
             ))}
           </div>
         </div>

@@ -1,8 +1,6 @@
-"use client";
-
+import { AnimatedSection, AnimatedItem } from "@/components/global/AnimatedSection";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ArrowRight, GraduationCap, CheckCircle2, BarChart3 } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ImpactCounter } from "@/components/blocks/SectionHeading";
@@ -19,8 +17,7 @@ export default function TVETPage() {
       />
       <section className="section-padding">
         <div className="container-xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          <AnimatedSection
             className="max-w-4xl mx-auto mb-16"
           >
             <p className="text-lg text-neutral-600 leading-relaxed mb-6 text-center">
@@ -72,7 +69,7 @@ export default function TVETPage() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </AnimatedSection>
 
           <div className="text-center mb-10">
             <h3 className="text-2xl font-bold text-brand-dark tracking-normal">Our Departments</h3>
@@ -81,12 +78,8 @@ export default function TVETPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {departments.map((dept, i) => (
-              <motion.div
+              <AnimatedSection
                 key={dept.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
               >
                 <Link
                   href={`/technical-vocational-training/${dept.slug}`}
@@ -115,7 +108,7 @@ export default function TVETPage() {
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </AnimatedSection>
             ))}
           </div>
         </div>

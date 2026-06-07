@@ -1,0 +1,41 @@
+{
+  "node": {
+    "406208cee4737c3b44b368cc76a811aa9496b88dc9": {
+      "workers": {
+        "app/(admin)/content/jobs/[id]/page": {
+          "moduleId": 80083,
+          "async": true,
+          "exportedName": "createJob",
+          "filename": "admin/src/actions/jobs.ts"
+        }
+      },
+      "exportedName": "createJob",
+      "filename": "admin/src/actions/jobs.ts"
+    },
+    "408ca75654e10b6f60c77cdf685724d61db4bc3769": {
+      "workers": {
+        "app/(admin)/content/jobs/[id]/page": {
+          "moduleId": 80083,
+          "async": true,
+          "exportedName": "deleteJob",
+          "filename": "admin/src/actions/jobs.ts"
+        }
+      },
+      "exportedName": "deleteJob",
+      "filename": "admin/src/actions/jobs.ts"
+    },
+    "600875d950fd4d1bcc6e3b611ce29d758f112bd379": {
+      "workers": {
+        "app/(admin)/content/jobs/[id]/page": {
+          "moduleId": 80083,
+          "async": true,
+          "exportedName": "updateJob",
+          "filename": "admin/src/actions/jobs.ts"
+        }
+      },
+      "exportedName": "updateJob",
+      "filename": "admin/src/actions/jobs.ts"
+    }
+  },
+  "edge": {}
+}

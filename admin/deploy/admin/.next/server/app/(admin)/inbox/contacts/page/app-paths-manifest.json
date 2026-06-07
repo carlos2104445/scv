@@ -1,0 +1,3 @@
+{
+  "/(admin)/inbox/contacts/page": "app/(admin)/inbox/contacts/page.js"
+}

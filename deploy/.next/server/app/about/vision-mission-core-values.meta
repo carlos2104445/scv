@@ -1,0 +1,18 @@
+{
+  "status": 404,
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(site)/layout,_N_T_/(site)/about/layout,_N_T_/(site)/about/vision-mission-core-values/layout,_N_T_/(site)/about/vision-mission-core-values/page,_N_T_/about/vision-mission-core-values"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHNpdGUp/about/vision-mission-core-values/__PAGE__",
+    "/!KHNpdGUp/about/vision-mission-core-values",
+    "/!KHNpdGUp/about",
+    "/!KHNpdGUp",
+    "/_index",
+    "/_head"
+  ]
+}

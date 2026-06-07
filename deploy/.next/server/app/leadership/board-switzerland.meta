@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(site)/layout,_N_T_/(site)/leadership/layout,_N_T_/(site)/leadership/board-switzerland/layout,_N_T_/(site)/leadership/board-switzerland/page,_N_T_/leadership/board-switzerland"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHNpdGUp/leadership/board-switzerland/__PAGE__",
+    "/!KHNpdGUp/leadership/board-switzerland",
+    "/!KHNpdGUp/leadership",
+    "/!KHNpdGUp",
+    "/_index",
+    "/_head"
+  ]
+}

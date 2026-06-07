@@ -1,0 +1,2 @@
+:HL["/_next/static/chunks/12c0owawz3-np.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"(site)","param":null,"prefetchHints":0,"slots":{"children":{"name":"resources","param":null,"prefetchHints":0,"slots":{"children":{"name":"audit-report","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"h9_vx6SvNPI2JCR557rAC"}

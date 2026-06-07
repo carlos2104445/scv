@@ -1,0 +1,41 @@
+{
+  "node": {
+    "407c4d252e1e4a2ca085180cce3c977fc9d2c570ed": {
+      "workers": {
+        "app/(admin)/donations/bank-accounts/[id]/page": {
+          "moduleId": 84963,
+          "async": true,
+          "exportedName": "deleteBankAccount",
+          "filename": "admin/src/actions/bank-accounts.ts"
+        }
+      },
+      "exportedName": "deleteBankAccount",
+      "filename": "admin/src/actions/bank-accounts.ts"
+    },
+    "40cfd639c0d0d75a680e5f98093724dbdd195ebd07": {
+      "workers": {
+        "app/(admin)/donations/bank-accounts/[id]/page": {
+          "moduleId": 84963,
+          "async": true,
+          "exportedName": "createBankAccount",
+          "filename": "admin/src/actions/bank-accounts.ts"
+        }
+      },
+      "exportedName": "createBankAccount",
+      "filename": "admin/src/actions/bank-accounts.ts"
+    },
+    "605fd63a3451fcaa7e7f2360fd662fb00facabd265": {
+      "workers": {
+        "app/(admin)/donations/bank-accounts/[id]/page": {
+          "moduleId": 84963,
+          "async": true,
+          "exportedName": "updateBankAccount",
+          "filename": "admin/src/actions/bank-accounts.ts"
+        }
+      },
+      "exportedName": "updateBankAccount",
+      "filename": "admin/src/actions/bank-accounts.ts"
+    }
+  },
+  "edge": {}
+}

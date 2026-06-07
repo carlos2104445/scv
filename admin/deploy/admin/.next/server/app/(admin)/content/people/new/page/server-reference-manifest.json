@@ -1,0 +1,53 @@
+{
+  "node": {
+    "40ae2872636e75b6292a2dddace45aa739127663ac": {
+      "workers": {
+        "app/(admin)/content/people/new/page": {
+          "moduleId": 67889,
+          "async": true,
+          "exportedName": "deletePerson",
+          "filename": "admin/src/actions/people.ts"
+        }
+      },
+      "exportedName": "deletePerson",
+      "filename": "admin/src/actions/people.ts"
+    },
+    "40e69bc796064f9d95306eab801d3eced3b0ad1108": {
+      "workers": {
+        "app/(admin)/content/people/new/page": {
+          "moduleId": 67889,
+          "async": true,
+          "exportedName": "createPerson",
+          "filename": "admin/src/actions/people.ts"
+        }
+      },
+      "exportedName": "createPerson",
+      "filename": "admin/src/actions/people.ts"
+    },
+    "6063f53dbf7a7abcf05e8eeef129c21eea80b6d74c": {
+      "workers": {
+        "app/(admin)/content/people/new/page": {
+          "moduleId": 67889,
+          "async": true,
+          "exportedName": "updatePerson",
+          "filename": "admin/src/actions/people.ts"
+        }
+      },
+      "exportedName": "updatePerson",
+      "filename": "admin/src/actions/people.ts"
+    },
+    "608c65eaba218502ae9b722106294228cfdf8d66af": {
+      "workers": {
+        "app/(admin)/content/people/new/page": {
+          "moduleId": 67889,
+          "async": true,
+          "exportedName": "reorderPerson",
+          "filename": "admin/src/actions/people.ts"
+        }
+      },
+      "exportedName": "reorderPerson",
+      "filename": "admin/src/actions/people.ts"
+    }
+  },
+  "edge": {}
+}

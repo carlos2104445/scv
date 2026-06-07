@@ -1,0 +1,3 @@
+module.exports=[32016,a=>{"use strict";a.s(["default",0,function({children:a}){return a},"metadata",0,{title:"TVET College",description:"Selam TVET College offers vocational training across 11 departments — electrical, construction, metal manufacturing, IT, hospitality, and more.",openGraph:{title:"TVET College | Selam Children's Village"}}])},64287,a=>{a.n(a.i(32016))}];
+
+//# sourceMappingURL=src_app_%28site%29_technical-vocational-training_layout_tsx_0_i2jzj._.js.map

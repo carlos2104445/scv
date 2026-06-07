@@ -1,0 +1,18 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(admin)/layout,_N_T_/(admin)/site/layout,_N_T_/(admin)/site/hero-slides/layout,_N_T_/(admin)/site/hero-slides/new/layout,_N_T_/(admin)/site/hero-slides/new/page,_N_T_/site/hero-slides/new"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KGFkbWluKQ/site/hero-slides/new/__PAGE__",
+    "/!KGFkbWluKQ/site/hero-slides/new",
+    "/!KGFkbWluKQ/site/hero-slides",
+    "/!KGFkbWluKQ/site",
+    "/!KGFkbWluKQ",
+    "/_index",
+    "/_head"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "node": {
+    "404b76b3c67cd173349e04c44d86de94b27b2ddcad": {
+      "workers": {
+        "app/(admin)/content/testimonials/new/page": {
+          "moduleId": 87127,
+          "async": true,
+          "exportedName": "deleteTestimonial",
+          "filename": "admin/src/actions/testimonials.ts"
+        }
+      },
+      "exportedName": "deleteTestimonial",
+      "filename": "admin/src/actions/testimonials.ts"
+    },
+    "405d9e9a83e9905be177da7e558119b13912d4b9eb": {
+      "workers": {
+        "app/(admin)/content/testimonials/new/page": {
+          "moduleId": 87127,
+          "async": true,
+          "exportedName": "createTestimonial",
+          "filename": "admin/src/actions/testimonials.ts"
+        }
+      },
+      "exportedName": "createTestimonial",
+      "filename": "admin/src/actions/testimonials.ts"
+    },
+    "609c98ceff2db909af7e34225048d25c2912309eae": {
+      "workers": {
+        "app/(admin)/content/testimonials/new/page": {
+          "moduleId": 87127,
+          "async": true,
+          "exportedName": "updateTestimonial",
+          "filename": "admin/src/actions/testimonials.ts"
+        }
+      },
+      "exportedName": "updateTestimonial",
+      "filename": "admin/src/actions/testimonials.ts"
+    }
+  },
+  "edge": {}
+}

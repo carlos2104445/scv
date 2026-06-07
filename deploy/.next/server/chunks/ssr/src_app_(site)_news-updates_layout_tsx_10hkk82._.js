@@ -1,0 +1,3 @@
+module.exports=[95389,a=>{"use strict";a.s(["default",0,function({children:a}){return a},"metadata",0,{title:"News & Updates",description:"Stay informed about the latest activities, achievements, and stories of transformation from Selam Children's Village.",openGraph:{title:"News & Updates | Selam Children's Village"}}])},58284,a=>{a.n(a.i(95389))}];
+
+//# sourceMappingURL=src_app_%28site%29_news-updates_layout_tsx_10hkk82._.js.map

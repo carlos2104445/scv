@@ -1,0 +1,18 @@
+{
+  "status": 307,
+  "headers": {
+    "location": "/leadership/executive-board-members",
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(site)/layout,_N_T_/(site)/leadership/layout,_N_T_/(site)/leadership/page,_N_T_/leadership"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHNpdGUp/leadership/__PAGE__",
+    "/!KHNpdGUp/leadership",
+    "/!KHNpdGUp",
+    "/_index",
+    "/_head"
+  ]
+}

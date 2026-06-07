@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(site)/layout,_N_T_/(site)/technical-vocational-training/layout,_N_T_/(site)/technical-vocational-training/page,_N_T_/technical-vocational-training"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHNpdGUp/technical-vocational-training/__PAGE__",
+    "/!KHNpdGUp/technical-vocational-training",
+    "/!KHNpdGUp",
+    "/_index",
+    "/_head"
+  ]
+}

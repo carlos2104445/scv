@@ -1,0 +1,17 @@
+{
+  "node": {
+    "4095734575f929c76d0deaf2b97c1f6cc6b636806a": {
+      "workers": {
+        "app/(site)/get-involved/become-a-volunteer/page": {
+          "moduleId": 33523,
+          "async": true,
+          "exportedName": "submitVolunteer",
+          "filename": "src/actions/volunteer.ts"
+        }
+      },
+      "exportedName": "submitVolunteer",
+      "filename": "src/actions/volunteer.ts"
+    }
+  },
+  "edge": {}
+}

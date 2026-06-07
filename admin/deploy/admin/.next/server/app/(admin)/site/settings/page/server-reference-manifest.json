@@ -1,0 +1,17 @@
+{
+  "node": {
+    "401dc3fd90c27e3e7a0aba00279aee7b6f5ca9cee6": {
+      "workers": {
+        "app/(admin)/site/settings/page": {
+          "moduleId": 91132,
+          "async": true,
+          "exportedName": "$$RSC_SERVER_ACTION_0",
+          "filename": "admin/src/app/(admin)/site/settings/page.tsx"
+        }
+      },
+      "exportedName": "$$RSC_SERVER_ACTION_0",
+      "filename": "admin/src/app/(admin)/site/settings/page.tsx"
+    }
+  },
+  "edge": {}
+}

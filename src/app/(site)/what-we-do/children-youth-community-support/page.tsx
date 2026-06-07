@@ -1,8 +1,6 @@
-"use client";
-
+import { AnimatedSection, AnimatedItem } from "@/components/global/AnimatedSection";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { projects } from "@/data/projects";
@@ -23,21 +21,16 @@ export default function CYCSupportPage() {
       />
       <section className="section-padding">
         <div className="container-xl">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-lg text-neutral-600 leading-relaxed max-w-3xl mx-auto text-center mb-14"
-          >
-            Our Children, Youth &amp; Community Support programs form the foundation of Selam Children&apos;s Village. From direct child care in our family-model homes to community outreach initiatives, we address the diverse needs of Ethiopia&apos;s most vulnerable populations.
-          </motion.p>
+          <AnimatedSection>
+            <p className="text-lg text-neutral-600 leading-relaxed max-w-3xl mx-auto text-center mb-14">
+              Our Children, Youth &amp; Community Support programs form the foundation of Selam Children&apos;s Village. From direct child care in our family-model homes to community outreach initiatives, we address the diverse needs of Ethiopia&apos;s most vulnerable populations.
+            </p>
+          </AnimatedSection>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {cycPrograms.map((project, i) => (
-              <motion.div
+              <AnimatedSection
                 key={project.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
               >
                 <Link
                   href={`/what-we-do/${project.slug}`}
@@ -56,7 +49,7 @@ export default function CYCSupportPage() {
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </AnimatedSection>
             ))}
           </div>
         </div>

@@ -1,0 +1,41 @@
+{
+  "node": {
+    "40d9f54d987bbee92596e831da7f87f3e2168313eb": {
+      "workers": {
+        "app/(admin)/content/departments/[id]/page": {
+          "moduleId": 53958,
+          "async": true,
+          "exportedName": "createDepartment",
+          "filename": "admin/src/actions/departments.ts"
+        }
+      },
+      "exportedName": "createDepartment",
+      "filename": "admin/src/actions/departments.ts"
+    },
+    "40e2adc80793248e5fe147cb8fb376c2fd86f42e50": {
+      "workers": {
+        "app/(admin)/content/departments/[id]/page": {
+          "moduleId": 53958,
+          "async": true,
+          "exportedName": "deleteDepartment",
+          "filename": "admin/src/actions/departments.ts"
+        }
+      },
+      "exportedName": "deleteDepartment",
+      "filename": "admin/src/actions/departments.ts"
+    },
+    "601c9732438aef8c9e32823fc247d41f52c21e0e23": {
+      "workers": {
+        "app/(admin)/content/departments/[id]/page": {
+          "moduleId": 53958,
+          "async": true,
+          "exportedName": "updateDepartment",
+          "filename": "admin/src/actions/departments.ts"
+        }
+      },
+      "exportedName": "updateDepartment",
+      "filename": "admin/src/actions/departments.ts"
+    }
+  },
+  "edge": {}
+}

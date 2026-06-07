@@ -1,10 +1,8 @@
-"use client";
-
+import { AnimatedSection, AnimatedItem } from "@/components/global/AnimatedSection";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { use } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Heart, ArrowRight, BarChart3, Globe, CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { ImpactCounter } from "@/components/blocks/SectionHeading";
@@ -42,8 +40,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ projec
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main content */}
             <div className="lg:col-span-2">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              <AnimatedSection
               >
                 {/* Project image */}
                 <div className="relative aspect-[16/9] rounded-2xl overflow-hidden mb-8">
@@ -109,14 +106,12 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ projec
                     </div>
                   </div>
                 )}
-              </motion.div>
+              </AnimatedSection>
             </div>
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
+              <AnimatedSection
                 className="sticky top-28 space-y-6"
               >
                 <div className="rounded-2xl border border-brand-orange-100 bg-brand-orange-50 p-6">
@@ -142,7 +137,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ projec
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </AnimatedSection>
             </div>
           </div>
         </div>

@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(site)/layout,_N_T_/(site)/job-openings/layout,_N_T_/(site)/job-openings/page,_N_T_/job-openings"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/!KHNpdGUp/job-openings/__PAGE__",
+    "/!KHNpdGUp/job-openings",
+    "/!KHNpdGUp",
+    "/_index",
+    "/_head"
+  ]
+}

@@ -1,6 +1,23 @@
 import type { Metadata } from "next";
+import { Public_Sans, Noto_Serif } from "next/font/google";
 import "./globals.css";
 import { organizationJsonLd } from "@/lib/json-ld";
+
+const publicSans = Public_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const notoSerif = Noto_Serif({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -49,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${publicSans.variable} ${notoSerif.variable}`}>
       <body className="min-h-screen flex flex-col">
         {children}
         <script

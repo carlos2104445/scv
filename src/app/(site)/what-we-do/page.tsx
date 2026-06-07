@@ -1,7 +1,5 @@
-"use client";
-
+import { AnimatedSection, AnimatedItem } from "@/components/global/AnimatedSection";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ArrowRight, Users, Building2, GraduationCap, Briefcase } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 
@@ -53,12 +51,8 @@ export default function WhatWeDoPage() {
         <div className="container-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {programAreas.map((area, i) => (
-              <motion.div
+              <AnimatedSection
                 key={area.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
               >
                 <Link href={area.href} className={`group block rounded-2xl border ${area.borderColor} bg-white p-8 h-full shadow-sm hover:shadow-md transition-shadow`}>
                   <div className={`w-14 h-14 rounded-2xl ${area.cardColor} flex items-center justify-center mb-6`}>
@@ -80,7 +74,7 @@ export default function WhatWeDoPage() {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>
-              </motion.div>
+              </AnimatedSection>
             ))}
           </div>
         </div>

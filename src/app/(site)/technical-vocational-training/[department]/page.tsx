@@ -1,12 +1,10 @@
-"use client";
-
 import { notFound } from "next/navigation";
 import { use } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/blocks/PageHero";
 import { departments } from "@/data/departments";
+import { AnimatedSection } from "@/components/global/AnimatedSection";
 
 export default function DepartmentPage({ params }: { params: Promise<{ department: string }> }) {
   const { department: slug } = use(params);
@@ -30,8 +28,7 @@ export default function DepartmentPage({ params }: { params: Promise<{ departmen
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main content */}
             <div className="lg:col-span-2">
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                
+              <AnimatedSection>
                 <div className="mb-8 rounded-2xl overflow-hidden aspect-[16/9] relative">
                   <Image src={dept.image} alt={dept.name} fill className="object-cover" />
                 </div>
@@ -72,7 +69,7 @@ export default function DepartmentPage({ params }: { params: Promise<{ departmen
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </AnimatedSection>
             </div>
           </div>
         </div>

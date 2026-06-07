@@ -1,0 +1,3 @@
+{
+  "/(admin)/inbox/subscribers/page": "app/(admin)/inbox/subscribers/page.js"
+}

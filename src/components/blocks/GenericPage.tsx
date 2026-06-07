@@ -1,5 +1,6 @@
 import { PageHero } from "@/components/blocks/PageHero";
 import { marked } from "marked";
+import DOMPurify from "isomorphic-dompurify";
 
 interface PageData {
   title: string;
@@ -10,7 +11,8 @@ interface PageData {
 }
 
 export async function GenericPage({ page, breadcrumbs }: { page: PageData; breadcrumbs?: { label: string; href: string }[] }) {
-  const content = await marked.parse(page.body || "");
+  const rawHtml = await marked.parse(page.body || "");
+  const content = DOMPurify.sanitize(rawHtml);
 
   return (
     <>

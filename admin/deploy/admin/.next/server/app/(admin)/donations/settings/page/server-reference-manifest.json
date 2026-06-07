@@ -1,0 +1,17 @@
+{
+  "node": {
+    "4073838599cbd307c0a67a67f085e69c32baca3a2d": {
+      "workers": {
+        "app/(admin)/donations/settings/page": {
+          "moduleId": 58786,
+          "async": true,
+          "exportedName": "$$RSC_SERVER_ACTION_0",
+          "filename": "admin/src/app/(admin)/donations/settings/page.tsx"
+        }
+      },
+      "exportedName": "$$RSC_SERVER_ACTION_0",
+      "filename": "admin/src/app/(admin)/donations/settings/page.tsx"
+    }
+  },
+  "edge": {}
+}

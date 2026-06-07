@@ -1,0 +1,29 @@
+{
+  "node": {
+    "40cd930a613d319c0644d8db83918a76e27827ea26": {
+      "workers": {
+        "app/(admin)/site/announcement/page": {
+          "moduleId": 38980,
+          "async": true,
+          "exportedName": "deleteAnnouncement",
+          "filename": "admin/src/actions/announcement.ts"
+        }
+      },
+      "exportedName": "deleteAnnouncement",
+      "filename": "admin/src/actions/announcement.ts"
+    },
+    "40f113743b367f35a4ad87e6355f483b9c3b2ddf9f": {
+      "workers": {
+        "app/(admin)/site/announcement/page": {
+          "moduleId": 38980,
+          "async": true,
+          "exportedName": "upsertAnnouncement",
+          "filename": "admin/src/actions/announcement.ts"
+        }
+      },
+      "exportedName": "upsertAnnouncement",
+      "filename": "admin/src/actions/announcement.ts"
+    }
+  },
+  "edge": {}
+}

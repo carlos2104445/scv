@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { X } from "lucide-react";
 import Image from "next/image";
+import DOMPurify from "isomorphic-dompurify";
 
 /* ─── Types ─── */
 
@@ -185,7 +186,7 @@ function TextModal({
         {/* Title */}
         <h2
           className="text-xl sm:text-2xl font-bold text-brand-dark leading-tight"
-          dangerouslySetInnerHTML={{ __html: config.title }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(config.title) }}
         />
 
         {/* Body — rich HTML */}
@@ -194,7 +195,7 @@ function TextModal({
                      prose-headings:font-serif prose-headings:text-brand-dark
                      prose-a:text-brand-orange prose-a:no-underline hover:prose-a:underline
                      prose-strong:text-brand-dark prose-img:rounded-xl"
-          dangerouslySetInnerHTML={{ __html: config.body }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(config.body) }}
         />
 
         {/* CTA */}

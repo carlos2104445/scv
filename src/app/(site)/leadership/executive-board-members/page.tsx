@@ -1,7 +1,5 @@
-"use client";
-
+import { AnimatedSection, AnimatedItem } from "@/components/global/AnimatedSection";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { PageHero } from "@/components/blocks/PageHero";
 import { getPeopleByCategory, Person } from "@/data/people";
 import { Shield, Users, Briefcase } from "lucide-react";
@@ -18,11 +16,7 @@ function getInitials(name: string) {
 
 function PersonCard({ person, index }: { person: Person; index: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.08, duration: 0.4 }}
+    <AnimatedSection
       className="group"
     >
       <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden">
@@ -59,7 +53,7 @@ function PersonCard({ person, index }: { person: Person; index: number }) {
           )}
         </div>
       </div>
-    </motion.div>
+    </AnimatedSection>
   );
 }
 
@@ -75,10 +69,7 @@ function SectionHeader({
   accentColor: string;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+    <AnimatedSection
       className="text-center mb-12"
     >
       <div
@@ -88,7 +79,7 @@ function SectionHeader({
       </div>
       <h2 className="text-3xl md:text-4xl font-serif font-bold text-brand-dark">{title}</h2>
       <p className="mt-3 text-neutral-500 max-w-2xl mx-auto text-lg">{subtitle}</p>
-    </motion.div>
+    </AnimatedSection>
   );
 }
 
@@ -163,10 +154,7 @@ export default function LeadershipPage() {
       {/* Governance Note */}
       <section className="py-12 bg-neutral-50">
         <div className="container-xl">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <AnimatedSection
             className="rounded-3xl bg-amber-100 p-8 md:p-12 text-center"
           >
             <h3 className="text-2xl font-serif font-bold text-brand-dark mb-4">Our Governance</h3>
@@ -176,7 +164,7 @@ export default function LeadershipPage() {
               programs across our three locations — ensuring every child receives the care, education,
               and support they deserve.
             </p>
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
     </>

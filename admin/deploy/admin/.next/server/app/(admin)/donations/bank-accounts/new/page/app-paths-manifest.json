@@ -1,0 +1,3 @@
+{
+  "/(admin)/donations/bank-accounts/new/page": "app/(admin)/donations/bank-accounts/new/page.js"
+}

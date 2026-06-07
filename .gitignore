@@ -47,3 +47,31 @@ admin/.env
 admin/.deploy_key*
 
 /src/generated/prisma
+
+# secrets & credentials
+test_auth.js
+patch_auth.js
+
+# deployment artifacts
+*.tar.gz
+*.expect
+
+# ops scripts (should live in separate infrastructure repo)
+configure_env.py
+fix_nginx.py
+install_and_start.py
+nginx_setup.py
+run_remote_push.py
+run_seed.py
+run_seed.sh
+run_ssh.py
+scp_seed.py
+setup_keys.py
+test_ssh.py
+tunnel.py
+kitchen251.conf
+pm2_env.txt
+remote_cmds.sh
+remote_env.sh
+remote_start.sh
+provision_vps.sh

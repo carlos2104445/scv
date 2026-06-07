@@ -1,8 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { PageHero } from "@/components/blocks/PageHero";
+import { AnimatedSection, AnimatedItem } from "@/components/global/AnimatedSection";
 
 const timeline = [
   { year: "1986", title: "Foundation of Selam Children's Village", desc: "Mrs. Tsehay Roschli establishes Selam Children's Village in Addis Ababa to care for orphaned and vulnerable children.", imageUrl: "/images/history/foundation-1986.jpg" },
@@ -33,12 +31,7 @@ export default function OurHistoryPage() {
         <div className="container-xl">
           <div className="max-w-3xl mx-auto">
             {/* Founder Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
+            <AnimatedSection className="text-center mb-16">
               <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-brand-orange/20 mb-4 relative">
                 <Image src="/images/history/founder-tsehay.jpg" alt="Mrs. Tsehay Roschli" fill className="object-cover" />
               </div>
@@ -61,18 +54,16 @@ export default function OurHistoryPage() {
                   After securing land on the outskirts of Addis Ababa in Kotebe, she wasted no time. In three months, the house was ready to shelter the children. She went to Bati in Wello, where she had witnessed the misery months prior. She had planned for only 20 children, but she picked 28 children who had lost their parents due to the drought and started the journey of Selam Children&apos;s Village.
                 </p>
               </div>
-            </motion.div>
+            </AnimatedSection>
 
             {/* Timeline */}
             <div className="relative">
               <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-neutral-200 md:-translate-x-px" />
               {timeline.map((item, i) => (
-                <motion.div
+                <AnimatedItem
                   key={item.year}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
+                  index={i}
+                  staggerDelay={0.05}
                   className={`relative flex items-start gap-6 mb-10 ${
                     i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
@@ -95,7 +86,7 @@ export default function OurHistoryPage() {
                     <h3 className="text-lg font-bold text-brand-dark tracking-normal">{item.title}</h3>
                     <p className={`mt-2 text-neutral-600 leading-relaxed ${i % 2 === 0 ? "md:text-right" : "text-left"}`}>{item.desc}</p>
                   </div>
-                </motion.div>
+                </AnimatedItem>
               ))}
             </div>
           </div>
