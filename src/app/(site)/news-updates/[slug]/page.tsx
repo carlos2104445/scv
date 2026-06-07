@@ -10,7 +10,7 @@ type Props = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const article = getNewsArticle(slug);
+  const article = await getNewsArticle(slug);
   if (!article) return {};
   return {
     title: article.seoTitle,
@@ -32,10 +32,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function NewsDetailPage({ params }: Props) {
   const { slug } = await params;
-  const article = getNewsArticle(slug);
+  const article = await getNewsArticle(slug);
   if (!article) return notFound();
 
-  const related = getRelatedArticles(slug, 3);
+  const related = await getRelatedArticles(slug, 3);
   const paragraphs = article.content.split("\n\n").filter(Boolean);
 
   return (
