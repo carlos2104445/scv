@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  allowedDevOrigins: ["47df8b63a584-tunnel-kd3vtirp.devinapps.com"],
   experimental: {
     serverActions: {
       bodySizeLimit: "10mb",
