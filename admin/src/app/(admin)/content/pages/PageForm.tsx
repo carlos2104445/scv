@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, Save, Eye, Trash2 } from "lucide-react";
 import { slugify } from "@/lib/utils";
 import { ImageUpload } from "@/components/ui/ImageUpload";
+import { RichTextEditor } from "@/components/ui/RichTextEditor";
 
 interface PageFormProps {
   initialData?: {
@@ -66,8 +67,12 @@ export function PageForm({ initialData, action, deleteAction }: PageFormProps) {
               <input name="slug" value={slug} onChange={(e) => { setSlug(e.target.value); setAutoSlug(false); }} className="input-field font-mono text-sm" required />
             </div>
             <div>
-              <label className="label">Body Content (HTML/Markdown)</label>
-              <textarea name="body" defaultValue={initialData?.body || ""} rows={18} className="input-field font-mono text-sm resize-y" placeholder="## Main Heading..." required />
+              <label className="label">Body Content</label>
+              <RichTextEditor
+                name="body"
+                defaultValue={initialData?.body || ""}
+                placeholder="Write your page content here..."
+              />
             </div>
           </div>
         </div>

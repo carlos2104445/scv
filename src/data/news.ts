@@ -1,10 +1,11 @@
 /**
- * News & Articles data — scraped from the live WordPress site.
+ * News & Articles data.
  *
- * Each article stores its own SEO fields so page-level metadata can be
- * generated easily. When a CMS is connected later, replace `newsArticles`
- * with an API call returning the same `NewsArticle` shape.
+ * Getter functions try the CMS API first (when CMS_API_URL is set) and
+ * fall back to the static array below.
  */
+
+import { cmsGet } from "@/lib/cms";
 
 export interface NewsArticle {
   /** URL-friendly identifier */
@@ -383,21 +384,60 @@ The SCV Executive Board Chairman Ato Wondwossen Teshome, on behalf of Selam Chil
 ];
 
 // ---------------------------------------------------------------------------
-// Helpers — these make it easy to swap for CMS calls later
+// CMS response shapes
 // ---------------------------------------------------------------------------
 
-export function getNewsArticle(slug: string): NewsArticle | undefined {
+interface CmsNewsItem {
+  id: string;
+  title: string;
+  slug: string;
+  publishDate: string;
+  coverImage: string | null;
+  excerpt: string | null;
+  category: string;
+  tags: string[];
+  featured: boolean;
+  body?: string;
+  seoTitle?: string | null;
+  seoDesc?: string | null;
+}
+
+function toArticle(n: CmsNewsItem): NewsArticle {
+  return {
+    slug: n.slug,
+    title: n.title,
+    date: n.publishDate,
+    category: (n.category === "press" ? "News" : n.category === "story" ? "Updates" : "News") as NewsArticle["category"],
+    excerpt: n.excerpt || "",
+    content: n.body || n.excerpt || "",
+    image: n.coverImage || "/images/news/general-assembly-2024.jpg",
+    seoTitle: n.seoTitle || n.title,
+    seoDescription: n.excerpt || "",
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Helpers — try CMS API first, fall back to static data
+// ---------------------------------------------------------------------------
+
+export async function getNewsArticle(slug: string): Promise<NewsArticle | undefined> {
+  const cms = await cmsGet<CmsNewsItem>(`/news/${slug}`);
+  if (cms) return toArticle(cms);
   return newsArticles.find((a) => a.slug === slug);
 }
 
-export function getNewsArticles(): NewsArticle[] {
+export async function getNewsArticles(): Promise<NewsArticle[]> {
+  const cms = await cmsGet<{ data: CmsNewsItem[] }>("/news?limit=100");
+  if (cms?.data?.length) return cms.data.map(toArticle);
   return newsArticles;
 }
 
-export function getNewsArticlesByCategory(category: NewsArticle["category"]): NewsArticle[] {
-  return newsArticles.filter((a) => a.category === category);
+export async function getNewsArticlesByCategory(category: NewsArticle["category"]): Promise<NewsArticle[]> {
+  const all = await getNewsArticles();
+  return all.filter((a) => a.category === category);
 }
 
-export function getRelatedArticles(currentSlug: string, limit = 3): NewsArticle[] {
-  return newsArticles.filter((a) => a.slug !== currentSlug).slice(0, limit);
+export async function getRelatedArticles(currentSlug: string, limit = 3): Promise<NewsArticle[]> {
+  const all = await getNewsArticles();
+  return all.filter((a) => a.slug !== currentSlug).slice(0, limit);
 }

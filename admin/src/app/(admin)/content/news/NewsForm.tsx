@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, Save, Eye, Trash2, ChevronDown } from "lucide-react";
 import { cn, slugify } from "@/lib/utils";
 import { ImageUpload } from "@/components/ui/ImageUpload";
+import { RichTextEditor } from "@/components/ui/RichTextEditor";
 
 interface NewsFormProps {
   initialData?: {
@@ -103,7 +104,11 @@ export function NewsForm({ initialData, action, deleteAction }: NewsFormProps) {
             </div>
             <div>
               <label className="label">Body</label>
-              <textarea name="body" defaultValue={initialData?.body || ""} rows={12} className="input-field resize-y font-mono text-sm" placeholder="Write your content here... (Markdown/HTML supported)" required />
+              <RichTextEditor
+                name="body"
+                defaultValue={initialData?.body || ""}
+                placeholder="Write your content here..."
+              />
             </div>
           </div>
 
