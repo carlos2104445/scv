@@ -37,6 +37,7 @@ export default function AllProjectsPage() {
   return (
     <>
       <PageHero
+        badge="Our Projects"
         title="All Projects & Programs"
         subtitle="Explore our comprehensive range of programs and development initiatives."
         breadcrumbs={[{ label: "All Projects", href: "/all-projects" }]}
@@ -71,7 +72,7 @@ export default function AllProjectsPage() {
                 transition={{ delay: i * 0.05 }}
                 layout
               >
-                <Link href={`/what-we-do/${project.slug}`} className="group block card-base hover-lift h-full">
+                <Link href={`/what-we-do/${project.slug}`} className="group block rounded-2xl border border-neutral-200 bg-white h-full shadow-sm hover:shadow-md transition-shadow overflow-hidden">
                   <div className="relative h-44 overflow-hidden">
                     <Image
                       src={project.image}

@@ -11,7 +11,7 @@ const programAreas = [
     title: "Children, Youth & Community Support",
     description: "Comprehensive care programs for orphaned and vulnerable children, youth development, and community outreach.",
     href: "/what-we-do/children-youth-community-support",
-    color: "from-blue-500 to-indigo-600",
+    cardColor: "bg-blue-50 text-blue-600", borderColor: "border-blue-200",
     programs: ["Family Model Village", "Day Care", "Youth Support", "School Feeding", "Educational Support", "Selam Clinic"],
   },
   {
@@ -19,7 +19,7 @@ const programAreas = [
     title: "Community Support Programs",
     description: "Empowering community members through economic development, health education, and social welfare programs.",
     href: "/what-we-do/children-youth-community-support",
-    color: "from-emerald-500 to-teal-600",
+    cardColor: "bg-emerald-50 text-emerald-600", borderColor: "border-emerald-200",
     programs: ["Elderly Women Support", "Hygiene Kit for Girls", "Women Economic Empowerment"],
   },
   {
@@ -27,7 +27,7 @@ const programAreas = [
     title: "Technical & Vocational Training",
     description: "Our TVET College offers industry-relevant vocational training across 11 departments.",
     href: "/technical-vocational-training",
-    color: "from-purple-500 to-violet-600",
+    cardColor: "bg-purple-50 text-purple-600", borderColor: "border-purple-200",
     programs: ["11 Departments", "Industry Partnerships", "Practical Training", "Job Placement"],
   },
   {
@@ -35,7 +35,7 @@ const programAreas = [
     title: "Development Projects",
     description: "Large-scale initiatives implemented in partnership with international development organizations.",
     href: "/all-projects",
-    color: "from-brand-orange to-brand-orange-dark",
+    cardColor: "bg-brand-orange-50 text-brand-orange", borderColor: "border-brand-orange-100",
     programs: ["Li-Way Project", "BINA Project", "Bridge Project", "PaSeway Project", "EYE Project"],
   },
 ];
@@ -44,6 +44,7 @@ export default function WhatWeDoPage() {
   return (
     <>
       <PageHero
+        badge="Our Programs"
         title="What We Do"
         subtitle="Comprehensive programs addressing the needs of children, youth, and communities across Ethiopia."
         breadcrumbs={[{ label: "What We Do", href: "/what-we-do" }]}
@@ -59,9 +60,9 @@ export default function WhatWeDoPage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
               >
-                <Link href={area.href} className="group block card-base hover-lift p-8 h-full">
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${area.color} flex items-center justify-center mb-6`}>
-                    <area.icon className="w-7 h-7 text-white" />
+                <Link href={area.href} className={`group block rounded-2xl border ${area.borderColor} bg-white p-8 h-full shadow-sm hover:shadow-md transition-shadow`}>
+                  <div className={`w-14 h-14 rounded-2xl ${area.cardColor} flex items-center justify-center mb-6`}>
+                    <area.icon className="w-7 h-7" />
                   </div>
                   <h3 className="text-xl font-bold text-brand-dark group-hover:text-brand-orange transition-colors tracking-normal">
                     {area.title}

@@ -34,13 +34,13 @@ export default function DonatePage() {
   return (
     <>
       <PageHero
+        badge="Donations"
         title="Donate"
         subtitle="Your generous contribution transforms lives. Every birr makes a difference."
         breadcrumbs={[
           { label: "Get Involved", href: "/get-involved/how-to-help" },
           { label: "Donate", href: "/get-involved/donate" },
         ]}
-        backgroundImageUrl="/images/contact-banner.jpg"
       />
       <section className="section-padding">
         <div className="container-xl">
@@ -82,7 +82,7 @@ export default function DonatePage() {
             {/* Offline Banks */}
             <div className="space-y-4">
               {bankAccounts.map((account) => (
-                <div key={account.abbr} className="card-base p-6">
+                <div key={account.abbr} className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center">
@@ -125,17 +125,17 @@ export default function DonatePage() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-60 pointer-events-none">
                 {/* Chapa Placeholder */}
-                <div className="group card-base p-8 text-center bg-neutral-50">
-                  <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-4">
-                    <span className="text-white font-bold text-lg">ETB</span>
+                <div className="group rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-sm">
+                  <div className="w-14 h-14 mx-auto rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center mb-4">
+                    <span className="text-emerald-600 font-bold text-lg">ETB</span>
                   </div>
                   <h3 className="text-xl font-bold text-brand-dark tracking-normal">Donate via Chapa</h3>
                   <p className="mt-2 text-sm text-neutral-600">Coming Soon</p>
                 </div>
                 {/* GoFundMe Placeholder */}
-                <div className="group card-base p-8 text-center bg-neutral-50">
-                  <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center mb-4">
-                    <Heart className="w-6 h-6 text-white" />
+                <div className="group rounded-2xl border border-neutral-200 bg-white p-8 text-center shadow-sm">
+                  <div className="w-14 h-14 mx-auto rounded-2xl bg-rose-50 border border-rose-200 flex items-center justify-center mb-4">
+                    <Heart className="w-6 h-6 text-rose-600" />
                   </div>
                   <h3 className="text-xl font-bold text-brand-dark tracking-normal">GoFundMe Campaign</h3>
                   <p className="mt-2 text-sm text-neutral-600">Coming Soon</p>

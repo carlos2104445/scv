@@ -12,6 +12,7 @@ export default function TVETPage() {
   return (
     <>
       <PageHero
+        badge="TVET College"
         title="Technical & Vocational Education Training"
         subtitle="Selam TVET College — empowering youth with industry-relevant skills across 11 departments."
         breadcrumbs={[{ label: "TVET College", href: "/technical-vocational-training" }]}
@@ -26,20 +27,20 @@ export default function TVETPage() {
               Selam Technical and Vocational College is an extension of Selam Children&apos;s Village that provides Technical and Vocational Training to children who grow up in the organization, and applicants from the communities at subsidized cost-sharing and scholarship schemes.
             </p>
             
-            {/* KPIs */}
+            {/* KPIs — yellow card */}
             <div className="mt-12 mb-16">
-              <div className="flex items-center justify-center gap-2 mb-8">
-                <BarChart3 className="w-6 h-6 text-brand-orange" />
-                <h3 className="text-2xl font-bold text-brand-dark tracking-normal">Our Impact</h3>
+              <div className="text-center mb-8">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-orange-50 border border-brand-orange-100 mb-4">
+                  <span className="w-5 h-5 rounded-full bg-brand-orange flex items-center justify-center">
+                    <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                  </span>
+                  <span className="text-sm font-semibold text-brand-dark">Our Impact</span>
+                </span>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div className="p-6 rounded-2xl bg-white border border-neutral-100 shadow-sm">
+              <div className="rounded-3xl bg-amber-100 py-12 px-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                   <ImpactCounter end={1295} label="Youth Trained" />
-                </div>
-                <div className="p-6 rounded-2xl bg-white border border-neutral-100 shadow-sm">
                   <ImpactCounter end={62} suffix="%" label="COC Pass Rate" />
-                </div>
-                <div className="p-6 rounded-2xl bg-white border border-neutral-100 shadow-sm">
                   <ImpactCounter end={222} label="Graduates Employed" />
                 </div>
               </div>
@@ -89,7 +90,7 @@ export default function TVETPage() {
               >
                 <Link
                   href={`/technical-vocational-training/${dept.slug}`}
-                  className="group block card-base hover-lift h-full"
+                  className="group block rounded-2xl border border-neutral-200 bg-white h-full shadow-sm hover:shadow-md transition-shadow overflow-hidden"
                 >
                   <div className="relative h-36 overflow-hidden">
                     <Image src={dept.image} alt={dept.shortTitle} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />

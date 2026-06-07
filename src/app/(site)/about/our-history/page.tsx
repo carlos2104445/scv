@@ -5,22 +5,23 @@ import Image from "next/image";
 import { PageHero } from "@/components/blocks/PageHero";
 
 const timeline = [
-  { year: "1986", title: "Foundation of Selam Children's Village", desc: "Mrs. Tsehay Roschli establishes Selam Children's Village in Addis Ababa to care for orphaned and vulnerable children.", imageUrl: "/images/history/1986.jpg" },
-  { year: "1987", title: "Official Inauguration", desc: "The Village is officially inaugurated and begins its core mission of providing a loving home and education.", imageUrl: "/images/history/1987.jpg" },
-  { year: "1989", title: "Selam Technical and Vocational College", desc: "Selam Technical & Vocational Education Training College (STVC) is established to equip youth with marketable skills.", imageUrl: "/images/history/1989.jpg" },
-  { year: "1990", title: "Selam Primary Schools & Family Homes", desc: "Construction of the first family-model homes begins, and Selam Primary Schools are established to provide quality education.", imageUrl: "/images/history/1990.jpg" },
-  { year: "1994", title: "Selam High School", desc: "Selam High School is opened to continue the educational journey of our students through higher grades.", imageUrl: "/images/history/1994.jpg" },
-  { year: "2003", title: "Second Children's Village at Kotebe", desc: "Expansion continues with the establishment of a second Children's Village in Kotebe to reach more children in need.", imageUrl: "/images/history/2003.jpg" },
-  { year: "2010", title: "Youth Programs", desc: "Youth Support Program is launched to help grown children transition to independent, productive lives.", imageUrl: "/images/history/2010.jpg" },
-  { year: "2014", title: "Daycare Center", desc: "A Daycare Center is established to support early childhood development and assist working mothers in the community.", imageUrl: "/images/history/2014.jpg" },
-  { year: "2020", title: "Community Outreach Expansion", desc: "Major expansion of community programs including elderly women support, hygiene kit distribution, and women's economic empowerment.", imageUrl: "/images/history/2020.jpg" },
-  { year: "2025", title: "Continuing the Legacy", desc: "Celebrating four decades of transforming lives, with over 255 children in care and thousands of TVET graduates.", imageUrl: "/images/history/2025.jpg" },
+  { year: "1986", title: "Foundation of Selam Children's Village", desc: "Mrs. Tsehay Roschli establishes Selam Children's Village in Addis Ababa to care for orphaned and vulnerable children.", imageUrl: "/images/history/foundation-1986.jpg" },
+  { year: "1987", title: "Official Inauguration & Primary School", desc: "The Village is officially inaugurated in the presence of high government officials, and Selam Primary School 1 is established.", imageUrl: "/images/history/scv-founders.jpg" },
+  { year: "1988", title: "Selam Clinic Established", desc: "With funding from the Embassy of Switzerland, Selam Clinic is established to provide health services to needy children and community members.", imageUrl: "/images/history/selam-construction1.jpg" },
+  { year: "1989", title: "Selam Technical and Vocational College", desc: "Selam Technical & Vocational Education Training College (STVC) is established to equip youth with marketable skills.", imageUrl: "/images/history/selam-school1.jpg" },
+  { year: "1990", title: "Selam Primary Schools (Grade 7 & 8)", desc: "Selam Primary Schools (Grade 7 & 8) are established, expanding the educational services for children.", imageUrl: "/images/history/selam-construction2.jpg" },
+  { year: "1994", title: "Selam High School", desc: "Selam High School is inaugurated to continue the educational journey of students through higher grades.", imageUrl: "/images/history/history-overview.jpg" },
+  { year: "2003", title: "Second Children's Village at Kotebe", desc: "A second Children's Village is established at Kotebe near Hana Mariam Church, funded through agricultural and self-sustaining income.", imageUrl: "/images/history/scv-top-view.jpg" },
+  { year: "2014", title: "Daycare Center", desc: "A Daycare Center is established to support early childhood development and assist working mothers in the community.", imageUrl: "/images/history/event-photo.jpg" },
+  { year: "2020", title: "Community Outreach Expansion", desc: "Major expansion of community programs including elderly women support, hygiene kit distribution, and women's economic empowerment.", imageUrl: "/images/history/community-event.jpg" },
+  { year: "2025", title: "Continuing the Legacy", desc: "Celebrating four decades of transforming lives, with over 255 children in care and thousands of TVET graduates.", imageUrl: "/images/history/graduation-event.jpg" },
 ];
 
 export default function OurHistoryPage() {
   return (
     <>
       <PageHero
+        badge="Our History"
         title="Our History"
         subtitle="Four decades of transforming lives — from a small initiative to one of Ethiopia's leading child welfare organizations."
         breadcrumbs={[
@@ -38,8 +39,8 @@ export default function OurHistoryPage() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <div className="w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-brand-orange to-brand-orange-dark flex items-center justify-center mb-4">
-                <span className="text-3xl font-serif font-bold text-white">TR</span>
+              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-brand-orange/20 mb-4 relative">
+                <Image src="/images/history/founder-tsehay.jpg" alt="Mrs. Tsehay Roschli" fill className="object-cover" />
               </div>
               <h2 className="text-2xl">Our Founder</h2>
               <p className="mt-2 text-brand-orange font-semibold">Mrs. Tsehay Roschli</p>

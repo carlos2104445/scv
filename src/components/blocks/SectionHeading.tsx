@@ -88,11 +88,11 @@ export function ImpactCounter({
 
   return (
     <div ref={ref} className="text-center">
-      <p className="text-4xl md:text-5xl font-bold text-brand-orange font-serif">
+      <p className="text-4xl md:text-5xl font-bold text-brand-dark font-serif">
         {count.toLocaleString()}
         {suffix}
       </p>
-      <p className="mt-2 text-sm text-neutral-600 font-medium">{label}</p>
+      <p className="mt-2 text-sm text-neutral-700 font-medium">{label}</p>
     </div>
   );
 }

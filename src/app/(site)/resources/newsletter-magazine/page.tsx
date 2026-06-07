@@ -15,6 +15,7 @@ export default function NewsletterPage() {
   return (
     <>
       <PageHero
+        badge="Resources"
         title="Newsletter & Magazine"
         subtitle="Stay connected with Selam Children's Village through our regular publications."
         breadcrumbs={[
@@ -27,8 +28,8 @@ export default function NewsletterPage() {
         <div className="container-xl max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {/* Annual Magazine */}
-            <div className="card-base p-8">
-              <div className="w-14 h-14 rounded-2xl bg-brand-orange/10 flex items-center justify-center mb-4">
+            <div className="rounded-2xl border border-brand-orange-100 bg-white p-8 shadow-sm">
+              <div className="w-14 h-14 rounded-2xl bg-brand-orange-50 border border-brand-orange-100 flex items-center justify-center mb-4">
                 <BookOpen className="w-7 h-7 text-brand-orange" />
               </div>
               <h2 className="text-xl font-bold text-brand-dark mb-3">Annual Magazines</h2>
@@ -43,8 +44,8 @@ export default function NewsletterPage() {
             </div>
 
             {/* Newsletter */}
-            <div className="card-base p-8">
-              <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-4">
+            <div className="rounded-2xl border border-blue-200 bg-white p-8 shadow-sm">
+              <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center mb-4">
                 <Mail className="w-7 h-7 text-blue-600" />
               </div>
               <h2 className="text-xl font-bold text-brand-dark mb-3">Newsletters</h2>

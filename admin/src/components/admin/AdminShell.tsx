@@ -10,7 +10,7 @@ import {
   Users, CalendarDays, Briefcase, Image, BookOpen, MessageSquareQuote,
   Handshake, Inbox, Mail, UserCheck, ClipboardList, AtSign,
   Landmark, Settings, SlidersHorizontal, ImagePlay, Megaphone,
-  ChevronDown, Menu, X, LogOut, Search, Bell,
+  ChevronDown, Menu, X, LogOut, Search, Bell, ShieldCheck,
 } from "lucide-react";
 
 interface NavItem {
@@ -63,6 +63,7 @@ const navItems: NavItem[] = [
     ],
   },
   { label: "Media", href: "/media", icon: Image },
+  { label: "Users", href: "/users", icon: ShieldCheck },
 ];
 
 const navIcons: Record<string, React.ElementType> = {
