@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Lock, Mail, AlertCircle, Loader2 } from "lucide-react";
 
@@ -17,19 +16,55 @@ export default function LoginPage() {
     setError("");
     setLoading(true);
 
-    const result = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
+    try {
+      // Build base URL without embedded credentials (tunnel URLs include user:pass@)
+      const base = `${window.location.protocol}//${window.location.host}`;
 
-    setLoading(false);
+      // Fetch CSRF token first
+      const csrfRes = await fetch(`${base}/api/auth/csrf`, {
+        credentials: "include",
+      });
+      const { csrfToken } = await csrfRes.json();
 
-    if (result?.error) {
-      setError("Invalid email or password");
-    } else {
-      router.push("/");
-      router.refresh();
+      // Call the credentials callback directly with CSRF token
+      const res = await fetch(`${base}/api/auth/callback/credentials`, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          email,
+          password,
+          csrfToken,
+          redirect: "false",
+          json: "true",
+        }),
+        credentials: "include",
+        redirect: "manual",
+      });
+
+      // redirect: "manual" makes 302 appear as opaqueredirect (status=0)
+      if (res.type === "opaqueredirect" || res.status === 302) {
+        router.push("/");
+        router.refresh();
+      } else if (res.ok) {
+        try {
+          const data = await res.json();
+          if (data.url && !data.url.includes("/login")) {
+            router.push("/");
+            router.refresh();
+          } else {
+            setError("Invalid email or password");
+          }
+        } catch {
+          router.push("/");
+          router.refresh();
+        }
+      } else {
+        setError("Invalid email or password");
+      }
+    } catch {
+      setError("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
