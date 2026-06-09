@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Public_Sans, Noto_Serif } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { organizationJsonLd } from "@/lib/json-ld";
+
+const GA_MEASUREMENT_ID = "G-P26N2LGG9H";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -67,6 +70,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`scroll-smooth ${publicSans.variable} ${notoSerif.variable}`}>
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+      </head>
       <body className="min-h-screen flex flex-col">
         {children}
         <script
